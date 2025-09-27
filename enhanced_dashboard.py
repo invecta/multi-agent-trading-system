@@ -96,6 +96,14 @@ app.layout = html.Div([
     
     html.Div(id='tab-content', style={'padding': '20px'}),
     
+    # Export button (always present)
+    html.Div([
+        html.Button('📄 Export Enhanced PDF Report', id='export-pdf-button', n_clicks=0,
+                   style={'backgroundColor': '#28a745', 'color': 'white', 'border': 'none',
+                         'padding': '15px 30px', 'borderRadius': '5px', 'cursor': 'pointer',
+                         'fontSize': '16px', 'marginTop': '20px', 'display': 'none'})
+    ], style={'textAlign': 'center', 'padding': '20px'}),
+    
     # Download component
     dcc.Download(id="download-pdf")
 ])
@@ -104,7 +112,8 @@ app.layout = html.Div([
 @app.callback(
     [Output('status-display', 'children'),
      Output('metrics-display', 'children'),
-     Output('tab-content', 'children')],
+     Output('tab-content', 'children'),
+     Output('export-pdf-button', 'style')],
     [Input('run-button', 'n_clicks'),
      Input('main-tabs', 'value')],
     [State('symbol-input', 'value'),
@@ -114,11 +123,11 @@ app.layout = html.Div([
 def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
     # Handle initial state
     if n_clicks == 0 and active_tab == 'overview-tab':
-        return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'"
+        return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'", {'display': 'none'}
     
     # If no analysis has been run yet, show message
     if symbol not in backtest_results:
-        return "Ready to analyze", "", "Please run analysis first"
+        return "Ready to analyze", "", "Please run analysis first", {'display': 'none'}
     
     results = backtest_results[symbol]
     
@@ -144,7 +153,14 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
     else:
         tab_content = "Tab content not found"
     
-    return status, metrics, tab_content
+    # Show export button when analysis is available
+    export_button_style = {
+        'backgroundColor': '#28a745', 'color': 'white', 'border': 'none',
+        'padding': '15px 30px', 'borderRadius': '5px', 'cursor': 'pointer',
+        'fontSize': '16px', 'marginTop': '20px', 'display': 'block'
+    }
+    
+    return status, metrics, tab_content, export_button_style
 
 def run_enhanced_analysis(symbol, sector, capital):
     """Run complete enhanced analysis"""
@@ -548,10 +564,7 @@ def create_export_tab(results):
         html.H3(f"📋 Export Enhanced Report for {results['symbol']}"),
         html.Div([
             html.P("Generate a comprehensive PDF report including all analysis results."),
-            html.Button('📄 Export Enhanced PDF Report', id='export-pdf-button', n_clicks=0,
-                       style={'backgroundColor': '#28a745', 'color': 'white', 'border': 'none',
-                             'padding': '15px 30px', 'borderRadius': '5px', 'cursor': 'pointer',
-                             'fontSize': '16px', 'marginTop': '20px'})
+            html.P("Click the 'Export Enhanced PDF Report' button below to download your report.")
         ], style={'textAlign': 'center', 'padding': '40px'})
     ])
 
