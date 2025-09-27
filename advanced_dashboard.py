@@ -708,7 +708,12 @@ def generate_pdf_report(symbol, sector, capital):
         buffer.seek(0)
         pdf_content = buffer.getvalue()
         print(f"PDF generated successfully. Size: {len(pdf_content)} bytes")
-        return pdf_content
+        
+        # Encode PDF content to base64 for Dash download
+        import base64
+        pdf_base64 = base64.b64encode(pdf_content).decode('utf-8')
+        print(f"PDF encoded to base64. Size: {len(pdf_base64)} characters")
+        return pdf_base64
     
     except Exception as e:
         print(f"PDF generation error: {e}")
