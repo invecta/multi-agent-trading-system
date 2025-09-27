@@ -556,7 +556,7 @@ def generate_pdf_report(symbol, sector, capital):
         data = backtest_results[symbol]
         df = data['data']
         results = data['results']
-    
+        
         # Styles
         styles = getSampleStyleSheet()
         title_style = ParagraphStyle(
