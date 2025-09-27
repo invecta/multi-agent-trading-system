@@ -105,61 +105,46 @@ app.layout = html.Div([
     [Output('status-display', 'children'),
      Output('metrics-display', 'children'),
      Output('tab-content', 'children')],
-    [Input('run-button', 'n_clicks')],
+    [Input('run-button', 'n_clicks'),
+     Input('main-tabs', 'value')],
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
      State('capital-input', 'value')]
 )
-def update_dashboard(n_clicks, symbol, sector, capital):
-    if n_clicks == 0:
+def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
+    # Handle initial state
+    if n_clicks == 0 and active_tab == 'overview-tab':
         return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'"
     
-    try:
-        # Run enhanced analysis
-        results = run_enhanced_analysis(symbol, sector, capital)
-        
-        # Update global results
-        backtest_results[symbol] = results
-        
-        # Status
-        status = f"✅ Enhanced analysis completed for {symbol}"
-        
-        # Metrics
-        metrics = create_metrics_display(results)
-        
-        # Tab content
-        tab_content = create_overview_tab(results)
-        
-        return status, metrics, tab_content
-        
-    except Exception as e:
-        return f"❌ Error: {str(e)}", "", f"An error occurred: {str(e)}"
-
-@app.callback(
-    Output('tab-content', 'children'),
-    [Input('main-tabs', 'value')],
-    [State('symbol-input', 'value')]
-)
-def update_tab_content(active_tab, symbol):
+    # If no analysis has been run yet, show message
     if symbol not in backtest_results:
-        return "Please run analysis first"
+        return "Ready to analyze", "", "Please run analysis first"
     
     results = backtest_results[symbol]
     
-    if active_tab == 'overview-tab':
-        return create_overview_tab(results)
-    elif active_tab == 'ml-tab':
-        return create_ml_tab(results)
-    elif active_tab == 'sentiment-tab':
-        return create_sentiment_tab(results)
-    elif active_tab == 'portfolio-tab':
-        return create_portfolio_tab(results)
-    elif active_tab == 'alerts-tab':
-        return create_alerts_tab(results)
-    elif active_tab == 'export-tab':
-        return create_export_tab(results)
+    # Status
+    status = f"✅ Enhanced analysis completed for {symbol}"
     
-    return "Tab content not found"
+    # Metrics
+    metrics = create_metrics_display(results)
+    
+    # Tab content based on active tab
+    if active_tab == 'overview-tab':
+        tab_content = create_overview_tab(results)
+    elif active_tab == 'ml-tab':
+        tab_content = create_ml_tab(results)
+    elif active_tab == 'sentiment-tab':
+        tab_content = create_sentiment_tab(results)
+    elif active_tab == 'portfolio-tab':
+        tab_content = create_portfolio_tab(results)
+    elif active_tab == 'alerts-tab':
+        tab_content = create_alerts_tab(results)
+    elif active_tab == 'export-tab':
+        tab_content = create_export_tab(results)
+    else:
+        tab_content = "Tab content not found"
+    
+    return status, metrics, tab_content
 
 def run_enhanced_analysis(symbol, sector, capital):
     """Run complete enhanced analysis"""
