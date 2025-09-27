@@ -95,6 +95,24 @@ app.layout = html.Div([
             )
         ], style={'display': 'inline-block', 'marginRight': '20px'}),
         
+        html.Div([
+            html.Label("Time Frame:", style={'fontWeight': 'bold'}),
+            dcc.Dropdown(
+                id='timeframe-dropdown',
+                options=[
+                    {'label': '1 Minute', 'value': '1m'},
+                    {'label': '5 Minutes', 'value': '5m'},
+                    {'label': '15 Minutes', 'value': '15m'},
+                    {'label': '1 Hour', 'value': '1h'},
+                    {'label': '4 Hours', 'value': '4h'},
+                    {'label': '1 Day', 'value': '1d'},
+                    {'label': '1 Week', 'value': '1w'}
+                ],
+                value='1d',
+                style={'width': '150px', 'marginRight': '20px'}
+            )
+        ], style={'display': 'inline-block', 'marginRight': '20px'}),
+        
         html.Button('🚀 Run Enhanced Analysis', id='run-button', n_clicks=0,
                    style={'backgroundColor': '#2E86AB', 'color': 'white', 'border': 'none',
                          'padding': '10px 20px', 'borderRadius': '5px', 'cursor': 'pointer'})
@@ -145,9 +163,10 @@ app.layout = html.Div([
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
      State('capital-input', 'value'),
-     State('time-period-dropdown', 'value')]
+     State('time-period-dropdown', 'value'),
+     State('timeframe-dropdown', 'value')]
 )
-def update_dashboard(n_clicks, active_tab, symbol, sector, capital, time_period):
+def update_dashboard(n_clicks, active_tab, symbol, sector, capital, time_period, timeframe):
     # Handle initial state
     if n_clicks == 0 and active_tab == 'overview-tab':
         return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'", {'display': 'none'}
@@ -155,7 +174,7 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital, time_period)
     # If run button was clicked, run the analysis
     if n_clicks and n_clicks > 0:
         try:
-            results = run_enhanced_analysis(symbol, sector, capital, time_period)
+            results = run_enhanced_analysis(symbol, sector, capital, time_period, timeframe)
             backtest_results[symbol] = results
         except Exception as e:
             return f"❌ Error: {str(e)}", "", "Please try again", {'display': 'none'}
@@ -203,12 +222,12 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital, time_period)
     
     return status, metrics, tab_content, export_button_style
 
-def run_enhanced_analysis(symbol, sector, capital, time_period=365):
+def run_enhanced_analysis(symbol, sector, capital, time_period=365, timeframe='1d'):
     """Run complete enhanced analysis"""
-    print(f"Starting enhanced analysis for {symbol} over {time_period} days...")
+    print(f"Starting enhanced analysis for {symbol} over {time_period} days with {timeframe} timeframe...")
     
     # Generate market data
-    df = generate_enhanced_market_data(symbol, sector, time_period)
+    df = generate_enhanced_market_data(symbol, sector, time_period, timeframe)
     
     # Run backtest
     backtest_results = run_enhanced_backtest(df, capital)
@@ -233,6 +252,7 @@ def run_enhanced_analysis(symbol, sector, capital, time_period=365):
         'sector': sector,
         'capital': capital,
         'time_period': time_period,
+        'timeframe': timeframe,
         'backtest': backtest_results,
         'ml_forecast': ml_results,
         'sentiment': sentiment_results,
@@ -240,27 +260,50 @@ def run_enhanced_analysis(symbol, sector, capital, time_period=365):
         'market_data': df
     }
 
-def generate_enhanced_market_data(symbol, sector, time_period=365):
+def generate_enhanced_market_data(symbol, sector, time_period=365, timeframe='1d'):
     """Generate enhanced market data"""
     np.random.seed(42)
-    dates = pd.date_range('2023-01-01', periods=time_period, freq='D')
+    
+    # Convert timeframe to pandas frequency
+    timeframe_map = {
+        '1m': '1min',
+        '5m': '5min', 
+        '15m': '15min',
+        '1h': '1H',
+        '4h': '4H',
+        '1d': 'D',
+        '1w': 'W'
+    }
+    
+    freq = timeframe_map.get(timeframe, 'D')
+    
+    # Calculate number of periods based on timeframe
+    if timeframe in ['1m', '5m', '15m']:
+        # For intraday timeframes, limit to reasonable number of periods
+        periods = min(time_period * 24 * 4, 10000)  # Max 10k periods for performance
+    elif timeframe in ['1h', '4h']:
+        periods = min(time_period * 24, 5000)  # Max 5k periods
+    else:
+        periods = time_period
+    
+    dates = pd.date_range('2023-01-01', periods=periods, freq=freq)
     
     # Base price with trend
-    base_price = 150 + np.cumsum(np.random.randn(time_period) * 0.5)
+    base_price = 150 + np.cumsum(np.random.randn(periods) * 0.5)
     
     # Add sector-specific volatility
     sector_volatility = {'Technology': 0.02, 'Healthcare': 0.015, 'Finance': 0.025, 
                         'Energy': 0.03, 'Consumer': 0.018}
     volatility = sector_volatility.get(sector, 0.02)
     
-    prices = base_price * (1 + np.random.randn(time_period) * volatility)
-    volumes = np.random.randint(1000000, 5000000, time_period)
+    prices = base_price * (1 + np.random.randn(periods) * volatility)
+    volumes = np.random.randint(1000000, 5000000, periods)
     
     df = pd.DataFrame({
         'Date': dates,
-        'Open': prices * (1 + np.random.randn(time_period) * 0.005),
-        'High': prices * (1 + np.abs(np.random.randn(time_period)) * 0.01),
-        'Low': prices * (1 - np.abs(np.random.randn(time_period)) * 0.01),
+        'Open': prices * (1 + np.random.randn(periods) * 0.005),
+        'High': prices * (1 + np.abs(np.random.randn(periods)) * 0.01),
+        'Low': prices * (1 - np.abs(np.random.randn(periods)) * 0.01),
         'Close': prices,
         'Volume': volumes
     })
@@ -848,12 +891,13 @@ def create_export_tab(results):
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
      State('capital-input', 'value'),
-     State('time-period-dropdown', 'value')]
+     State('time-period-dropdown', 'value'),
+     State('timeframe-dropdown', 'value')]
 )
-def export_to_pdf(n_clicks, symbol, sector, capital, time_period):
+def export_to_pdf(n_clicks, symbol, sector, capital, time_period, timeframe):
     if n_clicks and n_clicks > 0 and symbol in backtest_results:
         try:
-            pdf_content = generate_enhanced_pdf_report(symbol, sector, capital, time_period)
+            pdf_content = generate_enhanced_pdf_report(symbol, sector, capital, time_period, timeframe)
             return dict(
                 content=pdf_content,
                 filename=f"{symbol}_enhanced_trading_report.pdf",
@@ -865,7 +909,7 @@ def export_to_pdf(n_clicks, symbol, sector, capital, time_period):
             return None
     return None
 
-def generate_enhanced_pdf_report(symbol, sector, capital, time_period):
+def generate_enhanced_pdf_report(symbol, sector, capital, time_period, timeframe):
     """Generate enhanced PDF report"""
     if symbol not in backtest_results:
         return None
@@ -896,6 +940,7 @@ def generate_enhanced_pdf_report(symbol, sector, capital, time_period):
     <b>Symbol:</b> {symbol}<br/>
     <b>Sector:</b> {sector}<br/>
     <b>Time Period:</b> {time_period} days<br/>
+    <b>Time Frame:</b> {timeframe}<br/>
     <b>Initial Capital:</b> ${capital:,.2f}<br/>
     <b>Final Portfolio Value:</b> ${backtest['final_value']:,.2f}<br/>
     <b>Total Return:</b> {backtest['total_return']:.2%}<br/>
