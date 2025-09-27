@@ -549,13 +549,16 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
 def generate_pdf_report(symbol, sector, capital):
     """Generate comprehensive PDF report"""
     try:
+        print(f"PDF generation started for {symbol}")
         buffer = io.BytesIO()
         doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
         
         # Get data
+        print(f"Accessing backtest results for {symbol}")
         data = backtest_results[symbol]
         df = data['data']
         results = data['results']
+        print(f"Data accessed successfully. Trades: {len(results['trades'])}")
         
         # Styles
         styles = getSampleStyleSheet()
@@ -700,9 +703,12 @@ def generate_pdf_report(symbol, sector, capital):
         story.append(Paragraph(footer_text, styles['Normal']))
     
         # Build PDF
+        print("Building PDF document...")
         doc.build(story)
         buffer.seek(0)
-        return buffer.getvalue()
+        pdf_content = buffer.getvalue()
+        print(f"PDF generated successfully. Size: {len(pdf_content)} bytes")
+        return pdf_content
     
     except Exception as e:
         print(f"PDF generation error: {e}")
