@@ -533,6 +533,11 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
             pdf_content = generate_pdf_report(symbol, sector, capital)
             
             # Return download data
+            print(f"Returning PDF download data for {symbol}")
+            print(f"Content type: {type(pdf_content)}")
+            print(f"Content length: {len(pdf_content) if pdf_content else 0}")
+            print(f"Content preview: {pdf_content[:100] if pdf_content else 'None'}...")
+            
             return dict(
                 content=pdf_content,
                 filename=f"{symbol}_trading_report.pdf",
