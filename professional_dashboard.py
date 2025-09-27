@@ -61,7 +61,7 @@ def generate_professional_data(symbol, start_date, end_date):
     returns = np.random.normal(0.0005, 0.02 * volatility, n_days) + trend/n_days
     
     prices = [base_price]
-    volumes = []
+    volumes = [random.randint(1000000, 10000000)]  # Start with initial volume
     
     for i in range(1, n_days):
         new_price = prices[-1] * (1 + returns[i])
