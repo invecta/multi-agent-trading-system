@@ -1,8 +1,28 @@
-# Multi-Agent Trading System with Interactive Dashboard
+# Multi-Agent Trading System - Data Analyst Portfolio Showcase
 
-A comprehensive multi-agent trading system that transforms chaotic market data into actionable insights using AI-powered agents and real-time visualization.
+A comprehensive AI-powered trading system demonstrating advanced data analysis, machine learning, and financial modeling capabilities. This project showcases expertise in quantitative finance, risk management, and interactive data visualization.
 
-## 🚀 Features
+## 🎯 Data Analyst Portfolio Highlights
+
+### 📊 Advanced Analytics & Visualization
+- **Interactive Dashboards** - Professional-grade financial dashboards with real-time updates
+- **Statistical Analysis** - Comprehensive risk metrics, performance attribution, and correlation analysis
+- **Sector Analysis** - Cross-sector performance comparison with industry benchmarking
+- **Technical Indicators** - Advanced charting with Bollinger Bands, MACD, RSI, and custom signals
+
+### 🔬 Machine Learning & AI
+- **Multi-Agent System** - AI-powered decision making with specialized agents
+- **Signal Generation** - Machine learning models for trade signal prediction
+- **Risk Management** - Automated position sizing and drawdown protection
+- **Sentiment Analysis** - NLP-based market sentiment integration
+
+### 💼 Professional Features
+- **Comprehensive Reporting** - Executive-level data analysis reports
+- **API Integration** - Real-time market data from multiple sources
+- **Backtesting Framework** - Historical performance validation
+- **Risk Metrics** - Sharpe ratio, Sortino ratio, VaR, and Calmar ratio calculations
+
+## 🚀 Technical Features
 
 ### 🤖 Multi-Agent Architecture
 - **Market Data Agent** - Real-time data collection and streaming
@@ -12,12 +32,12 @@ A comprehensive multi-agent trading system that transforms chaotic market data i
 - **Portfolio Manager Agent** - Trade execution and portfolio optimization
 - **Fundamentals Agent** - Financial statement and macroeconomic analysis
 
-### 📊 Interactive Dashboard
-- **Real-time Backtesting** - Test strategies with historical data
-- **Performance Analytics** - Comprehensive metrics and visualizations
-- **Risk Analysis** - Drawdown and volatility tracking
-- **Trade History** - Complete transaction logging
-- **Multi-Symbol Comparison** - Compare performance across assets
+### 📊 Professional Dashboard Suite
+- **Interactive Analytics Dashboard** - Real-time backtesting with advanced visualizations
+- **Sector Analysis Dashboard** - Cross-sector performance comparison
+- **Risk Management Dashboard** - Comprehensive risk metrics and monitoring
+- **Technical Analysis Dashboard** - Advanced charting with multiple indicators
+- **Performance Attribution Dashboard** - Detailed return analysis and reporting
 
 ### 🔌 API Integration
 - **Alpaca Trading API** - Paper and live trading execution
