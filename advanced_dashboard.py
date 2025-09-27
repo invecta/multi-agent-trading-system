@@ -396,7 +396,12 @@ app.layout = html.Div([
                     html.I(className="fas fa-file-pdf", style={'margin-right': '5px'}),
                     "Export PDF"
                 ], id='export-pdf-button', n_clicks=0, className='button-secondary',
-                style={'width': '100%', 'height': '40px'})
+                style={'width': '100%', 'height': '40px'}),
+                html.Button([
+                    html.I(className="fas fa-download", style={'margin-right': '5px'}),
+                    "Download PDF"
+                ], id='js-download-button', n_clicks=0, className='button-secondary',
+                style={'width': '100%', 'height': '40px', 'margin-top': '5px'})
             ], className='three columns')
         ], className='row', style={'marginBottom': '30px'}),
         
@@ -538,13 +543,34 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
             print(f"Content length: {len(pdf_content) if pdf_content else 0}")
             print(f"Content preview: {pdf_content[:100] if pdf_content else 'None'}...")
             
-            # Return the base64 content in the correct format for dcc.Download
-            return dict(
-                content=pdf_content,
-                filename=f"{symbol}_trading_report.pdf"
-            )
+            # Return the base64 content directly for dcc.Download
+            return pdf_content
         except Exception as e:
             print(f"PDF export error: {e}")
+            import traceback
+            traceback.print_exc()
+            return None
+    
+    return None
+
+@app.callback(
+    Output("download-pdf", "data"),
+    [Input('js-download-button', 'n_clicks')],
+    [State('symbol-input', 'value'),
+     State('sector-dropdown', 'value'),
+     State('capital-input', 'value')]
+)
+def js_download_pdf(n_clicks, symbol, sector, capital):
+    if n_clicks and n_clicks > 0 and symbol and symbol in backtest_results:
+        try:
+            print(f"JS Download: Generating PDF for {symbol}...")
+            # Generate PDF
+            pdf_content = generate_pdf_report(symbol, sector, capital)
+            
+            # Return the base64 content directly for dcc.Download
+            return pdf_content
+        except Exception as e:
+            print(f"JS PDF export error: {e}")
             import traceback
             traceback.print_exc()
             return None
