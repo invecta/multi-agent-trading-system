@@ -422,61 +422,80 @@ app.layout = html.Div([
     [Output('status-display', 'children'),
      Output('metrics-display', 'children'),
      Output('tab-content', 'children')],
-    [Input('run-button', 'n_clicks')],
-    [Input('symbol-input', 'value'),
+    [Input('run-button', 'n_clicks'),
+     Input('symbol-input', 'value'),
      Input('sector-dropdown', 'value'),
      Input('capital-input', 'value'),
      Input('main-tabs', 'value')]
 )
 def update_dashboard(n_clicks, symbol, sector, capital, active_tab):
-    ctx = callback_context
-    if not ctx.triggered:
-        return "Ready to analyze", "No data yet", "Select a tab to view analysis"
+    try:
+        ctx = callback_context
+        if not ctx.triggered:
+            return "Ready to analyze", "No data yet", "Select a tab to view analysis"
+        
+        trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
+        
+        # Handle initial load or tab changes
+        if trigger_id in ['symbol-input', 'sector-dropdown', 'capital-input', 'main-tabs']:
+            if symbol and symbol in backtest_results:
+                status = f"📊 Viewing {symbol} analysis"
+                results = backtest_results[symbol]['results']
+                metrics = f"Return: {results['total_return']:.2%} | Trades: {len(results['trades'])} | Sharpe: {results['sharpe_ratio']:.2f}"
+                content = generate_tab_content(active_tab, backtest_results[symbol])
+                return status, metrics, content
+            else:
+                return "Ready to analyze", "No data yet", "Select a tab to view analysis"
+        
+        if trigger_id == 'run-button' and n_clicks > 0:
+            # Run analysis
+            print(f"=== Starting Enhanced Analysis for {symbol} ===")
+            
+            # Generate data
+            df = generate_enhanced_market_data(symbol, sector)
+            df = calculate_advanced_indicators(df)
+            df = generate_enhanced_signals(df)
+            
+            # Run backtest
+            results = run_enhanced_backtest(df, capital)
+            
+            # Store results
+            backtest_results[symbol] = {
+                'data': df,
+                'results': results,
+                'symbol': symbol,
+                'sector': sector,
+                'capital': capital
+            }
+            
+            status = f"✅ Analysis completed for {symbol} ({sector})"
+            metrics = f"Return: {results['total_return']:.2%} | Trades: {len(results['trades'])} | Sharpe: {results['sharpe_ratio']:.2f}"
+            
+        elif symbol and symbol in backtest_results:
+            status = f"📊 Viewing {symbol} analysis"
+            results = backtest_results[symbol]['results']
+            metrics = f"Return: {results['total_return']:.2%} | Trades: {len(results['trades'])} | Sharpe: {results['sharpe_ratio']:.2f}"
+        else:
+            status = "Ready to analyze"
+            metrics = "No data yet"
+        
+        # Generate tab content
+        if symbol and symbol in backtest_results:
+            content = generate_tab_content(active_tab, backtest_results[symbol])
+        else:
+            content = html.Div([
+                html.H3("No Analysis Data"),
+                html.P("Please run an analysis first by clicking the 'Run Analysis' button.")
+            ])
+        
+        return status, metrics, content
     
-    trigger_id = ctx.triggered[0]['prop_id'].split('.')[0]
-    
-    if trigger_id == 'run-button' and n_clicks > 0:
-        # Run analysis
-        print(f"=== Starting Enhanced Analysis for {symbol} ===")
-        
-        # Generate data
-        df = generate_enhanced_market_data(symbol, sector)
-        df = calculate_advanced_indicators(df)
-        df = generate_enhanced_signals(df)
-        
-        # Run backtest
-        results = run_enhanced_backtest(df, capital)
-        
-        # Store results
-        backtest_results[symbol] = {
-            'data': df,
-            'results': results,
-            'symbol': symbol,
-            'sector': sector,
-            'capital': capital
-        }
-        
-        status = f"✅ Analysis completed for {symbol} ({sector})"
-        metrics = f"Return: {results['total_return']:.2%} | Trades: {len(results['trades'])} | Sharpe: {results['sharpe_ratio']:.2f}"
-        
-    elif symbol in backtest_results:
-        status = f"📊 Viewing {symbol} analysis"
-        results = backtest_results[symbol]['results']
-        metrics = f"Return: {results['total_return']:.2%} | Trades: {len(results['trades'])} | Sharpe: {results['sharpe_ratio']:.2f}"
-    else:
-        status = "Ready to analyze"
-        metrics = "No data yet"
-    
-    # Generate tab content
-    if symbol in backtest_results:
-        content = generate_tab_content(active_tab, backtest_results[symbol])
-    else:
-        content = html.Div([
-            html.H3("No Analysis Data"),
-            html.P("Please run an analysis first by clicking the 'Run Analysis' button.")
+    except Exception as e:
+        print(f"Callback error: {e}")
+        return f"Error: {str(e)}", "Error occurred", html.Div([
+            html.H3("Error"),
+            html.P(f"An error occurred: {str(e)}")
         ])
-    
-    return status, metrics, content
 
 def generate_tab_content(active_tab, data):
     """Generate content for each tab"""
