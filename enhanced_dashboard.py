@@ -78,6 +78,23 @@ app.layout = html.Div([
                      style={'width': '120px', 'marginRight': '20px'})
         ], style={'display': 'inline-block', 'marginRight': '20px'}),
         
+        html.Div([
+            html.Label("Time Period:", style={'fontWeight': 'bold'}),
+            dcc.Dropdown(
+                id='time-period-dropdown',
+                options=[
+                    {'label': '1 Month', 'value': 30},
+                    {'label': '3 Months', 'value': 90},
+                    {'label': '6 Months', 'value': 180},
+                    {'label': '1 Year', 'value': 365},
+                    {'label': '2 Years', 'value': 730},
+                    {'label': '5 Years', 'value': 1825}
+                ],
+                value=365,
+                style={'width': '150px', 'marginRight': '20px'}
+            )
+        ], style={'display': 'inline-block', 'marginRight': '20px'}),
+        
         html.Button('🚀 Run Enhanced Analysis', id='run-button', n_clicks=0,
                    style={'backgroundColor': '#2E86AB', 'color': 'white', 'border': 'none',
                          'padding': '10px 20px', 'borderRadius': '5px', 'cursor': 'pointer'})
@@ -127,9 +144,10 @@ app.layout = html.Div([
      Input('main-tabs', 'value')],
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
-     State('capital-input', 'value')]
+     State('capital-input', 'value'),
+     State('time-period-dropdown', 'value')]
 )
-def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
+def update_dashboard(n_clicks, active_tab, symbol, sector, capital, time_period):
     # Handle initial state
     if n_clicks == 0 and active_tab == 'overview-tab':
         return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'", {'display': 'none'}
@@ -137,7 +155,7 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
     # If run button was clicked, run the analysis
     if n_clicks and n_clicks > 0:
         try:
-            results = run_enhanced_analysis(symbol, sector, capital)
+            results = run_enhanced_analysis(symbol, sector, capital, time_period)
             backtest_results[symbol] = results
         except Exception as e:
             return f"❌ Error: {str(e)}", "", "Please try again", {'display': 'none'}
@@ -185,12 +203,12 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
     
     return status, metrics, tab_content, export_button_style
 
-def run_enhanced_analysis(symbol, sector, capital):
+def run_enhanced_analysis(symbol, sector, capital, time_period=365):
     """Run complete enhanced analysis"""
-    print(f"Starting enhanced analysis for {symbol}...")
+    print(f"Starting enhanced analysis for {symbol} over {time_period} days...")
     
     # Generate market data
-    df = generate_enhanced_market_data(symbol, sector)
+    df = generate_enhanced_market_data(symbol, sector, time_period)
     
     # Run backtest
     backtest_results = run_enhanced_backtest(df, capital)
@@ -214,6 +232,7 @@ def run_enhanced_analysis(symbol, sector, capital):
         'symbol': symbol,
         'sector': sector,
         'capital': capital,
+        'time_period': time_period,
         'backtest': backtest_results,
         'ml_forecast': ml_results,
         'sentiment': sentiment_results,
@@ -221,27 +240,27 @@ def run_enhanced_analysis(symbol, sector, capital):
         'market_data': df
     }
 
-def generate_enhanced_market_data(symbol, sector):
+def generate_enhanced_market_data(symbol, sector, time_period=365):
     """Generate enhanced market data"""
     np.random.seed(42)
-    dates = pd.date_range('2023-01-01', periods=250, freq='D')
+    dates = pd.date_range('2023-01-01', periods=time_period, freq='D')
     
     # Base price with trend
-    base_price = 150 + np.cumsum(np.random.randn(250) * 0.5)
+    base_price = 150 + np.cumsum(np.random.randn(time_period) * 0.5)
     
     # Add sector-specific volatility
     sector_volatility = {'Technology': 0.02, 'Healthcare': 0.015, 'Finance': 0.025, 
                         'Energy': 0.03, 'Consumer': 0.018}
     volatility = sector_volatility.get(sector, 0.02)
     
-    prices = base_price * (1 + np.random.randn(250) * volatility)
-    volumes = np.random.randint(1000000, 5000000, 250)
+    prices = base_price * (1 + np.random.randn(time_period) * volatility)
+    volumes = np.random.randint(1000000, 5000000, time_period)
     
     df = pd.DataFrame({
         'Date': dates,
-        'Open': prices * (1 + np.random.randn(250) * 0.005),
-        'High': prices * (1 + np.abs(np.random.randn(250)) * 0.01),
-        'Low': prices * (1 - np.abs(np.random.randn(250)) * 0.01),
+        'Open': prices * (1 + np.random.randn(time_period) * 0.005),
+        'High': prices * (1 + np.abs(np.random.randn(time_period)) * 0.01),
+        'Low': prices * (1 - np.abs(np.random.randn(time_period)) * 0.01),
         'Close': prices,
         'Volume': volumes
     })
@@ -828,12 +847,13 @@ def create_export_tab(results):
     [Input('export-pdf-button', 'n_clicks')],
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
-     State('capital-input', 'value')]
+     State('capital-input', 'value'),
+     State('time-period-dropdown', 'value')]
 )
-def export_to_pdf(n_clicks, symbol, sector, capital):
+def export_to_pdf(n_clicks, symbol, sector, capital, time_period):
     if n_clicks and n_clicks > 0 and symbol in backtest_results:
         try:
-            pdf_content = generate_enhanced_pdf_report(symbol, sector, capital)
+            pdf_content = generate_enhanced_pdf_report(symbol, sector, capital, time_period)
             return dict(
                 content=pdf_content,
                 filename=f"{symbol}_enhanced_trading_report.pdf",
@@ -845,7 +865,7 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
             return None
     return None
 
-def generate_enhanced_pdf_report(symbol, sector, capital):
+def generate_enhanced_pdf_report(symbol, sector, capital, time_period):
     """Generate enhanced PDF report"""
     if symbol not in backtest_results:
         return None
@@ -875,6 +895,7 @@ def generate_enhanced_pdf_report(symbol, sector, capital):
     summary_text = f"""
     <b>Symbol:</b> {symbol}<br/>
     <b>Sector:</b> {sector}<br/>
+    <b>Time Period:</b> {time_period} days<br/>
     <b>Initial Capital:</b> ${capital:,.2f}<br/>
     <b>Final Portfolio Value:</b> ${backtest['final_value']:,.2f}<br/>
     <b>Total Return:</b> {backtest['total_return']:.2%}<br/>
