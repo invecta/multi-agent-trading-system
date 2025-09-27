@@ -525,57 +525,37 @@ def update_dashboard(n_clicks, symbol, sector, capital, active_tab):
 
 @app.callback(
     Output("download-pdf", "data"),
-    [Input('export-pdf-button', 'n_clicks')],
+    [Input('export-pdf-button', 'n_clicks'),
+     Input('js-download-button', 'n_clicks')],
     [State('symbol-input', 'value'),
      State('sector-dropdown', 'value'),
      State('capital-input', 'value')]
 )
-def export_to_pdf(n_clicks, symbol, sector, capital):
-    if n_clicks and n_clicks > 0 and symbol and symbol in backtest_results:
-        try:
-            print(f"Generating PDF for {symbol}...")
-            # Generate PDF
-            pdf_content = generate_pdf_report(symbol, sector, capital)
-            
-            # Return download data
-            print(f"Returning PDF download data for {symbol}")
-            print(f"Content type: {type(pdf_content)}")
-            print(f"Content length: {len(pdf_content) if pdf_content else 0}")
-            print(f"Content preview: {pdf_content[:100] if pdf_content else 'None'}...")
-            
-            # Return the base64 content directly for dcc.Download
-            return pdf_content
-        except Exception as e:
-            print(f"PDF export error: {e}")
-            import traceback
-            traceback.print_exc()
-            return None
+def export_to_pdf(export_clicks, download_clicks, symbol, sector, capital):
+    # Check if either button was clicked
+    if (export_clicks and export_clicks > 0) or (download_clicks and download_clicks > 0):
+        if symbol and symbol in backtest_results:
+            try:
+                print(f"Generating PDF for {symbol}...")
+                # Generate PDF
+                pdf_content = generate_pdf_report(symbol, sector, capital)
+                
+                # Return download data
+                print(f"Returning PDF download data for {symbol}")
+                print(f"Content type: {type(pdf_content)}")
+                print(f"Content length: {len(pdf_content) if pdf_content else 0}")
+                print(f"Content preview: {pdf_content[:100] if pdf_content else 'None'}...")
+                
+                # Return the base64 content directly for dcc.Download
+                return pdf_content
+            except Exception as e:
+                print(f"PDF export error: {e}")
+                import traceback
+                traceback.print_exc()
+                return None
     
     return None
 
-@app.callback(
-    Output("download-pdf", "data"),
-    [Input('js-download-button', 'n_clicks')],
-    [State('symbol-input', 'value'),
-     State('sector-dropdown', 'value'),
-     State('capital-input', 'value')]
-)
-def js_download_pdf(n_clicks, symbol, sector, capital):
-    if n_clicks and n_clicks > 0 and symbol and symbol in backtest_results:
-        try:
-            print(f"JS Download: Generating PDF for {symbol}...")
-            # Generate PDF
-            pdf_content = generate_pdf_report(symbol, sector, capital)
-            
-            # Return the base64 content directly for dcc.Download
-            return pdf_content
-        except Exception as e:
-            print(f"JS PDF export error: {e}")
-            import traceback
-            traceback.print_exc()
-            return None
-    
-    return None
 
 def generate_pdf_report(symbol, sector, capital):
     """Generate comprehensive PDF report"""
