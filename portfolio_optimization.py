@@ -34,7 +34,8 @@ class PortfolioOptimizer:
         if isinstance(returns, pd.DataFrame):
             expected_returns = returns.mean() * 252  # Annualized
         else:
-            expected_returns = returns.mean() * 252
+            # Single asset case - return as array
+            expected_returns = np.array([returns.mean() * 252])
         
         return expected_returns
     
@@ -51,6 +52,10 @@ class PortfolioOptimizer:
     
     def portfolio_performance(self, weights, expected_returns, covariance_matrix):
         """Calculate portfolio performance metrics"""
+        # Ensure arrays are 1D
+        weights = np.array(weights).flatten()
+        expected_returns = np.array(expected_returns).flatten()
+        
         portfolio_return = np.sum(weights * expected_returns)
         portfolio_variance = np.dot(weights.T, np.dot(covariance_matrix, weights))
         portfolio_volatility = np.sqrt(portfolio_variance)
@@ -65,6 +70,7 @@ class PortfolioOptimizer:
     
     def portfolio_variance(self, weights, covariance_matrix):
         """Portfolio variance for minimization"""
+        weights = np.array(weights).flatten()
         return np.dot(weights.T, np.dot(covariance_matrix, weights))
     
     def optimize_portfolio(self, returns, optimization_type='max_sharpe', target_return=None, target_volatility=None):
@@ -272,6 +278,10 @@ class PortfolioOptimizer:
             covariance_matrix = np.array([[returns.var() * 252]])
         
         # Generate random returns
+        # Ensure expected_returns is 1D and covariance_matrix is 2D
+        expected_returns = np.array(expected_returns).flatten()
+        covariance_matrix = np.array(covariance_matrix)
+        
         simulated_returns = np.random.multivariate_normal(
             expected_returns, covariance_matrix, (num_simulations, time_horizon)
         )
@@ -282,7 +292,9 @@ class PortfolioOptimizer:
         portfolio_values[:, 0] = initial_value
         
         for i in range(time_horizon):
-            portfolio_values[:, i + 1] = portfolio_values[:, i] * (1 + simulated_returns[:, i])
+            # Ensure simulated_returns[:, i] is 1D
+            returns_i = simulated_returns[:, i].flatten()
+            portfolio_values[:, i + 1] = portfolio_values[:, i] * (1 + returns_i)
         
         # Calculate statistics
         final_values = portfolio_values[:, -1]

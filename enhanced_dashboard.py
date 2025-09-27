@@ -25,6 +25,9 @@ from ml_forecasting import MLPriceForecaster
 from sentiment_analysis import SentimentAnalyzer
 from portfolio_optimization import PortfolioOptimizer
 from real_time_alerts import AlertManager
+from economic_calendar import EconomicCalendar
+from options_analysis import OptionsAnalyzer
+from crypto_integration import CryptoAnalyzer
 
 # Initialize Dash app
 app = dash.Dash(__name__, external_stylesheets=['https://codepen.io/chriddyp/pen/bWLwgP.css'])
@@ -36,6 +39,9 @@ ml_forecaster = MLPriceForecaster()
 sentiment_analyzer = SentimentAnalyzer()
 portfolio_optimizer = PortfolioOptimizer()
 alert_manager = AlertManager()
+economic_calendar = EconomicCalendar()
+options_analyzer = OptionsAnalyzer()
+crypto_analyzer = CryptoAnalyzer()
 
 # Layout
 app.layout = html.Div([
@@ -91,6 +97,9 @@ app.layout = html.Div([
         dcc.Tab(label='📰 Sentiment Analysis', value='sentiment-tab'),
         dcc.Tab(label='📈 Portfolio Optimization', value='portfolio-tab'),
         dcc.Tab(label='🚨 Real-time Alerts', value='alerts-tab'),
+        dcc.Tab(label='📅 Economic Calendar', value='economic-tab'),
+        dcc.Tab(label='📊 Options Analysis', value='options-tab'),
+        dcc.Tab(label='₿ Crypto Market', value='crypto-tab'),
         dcc.Tab(label='📋 Export Report', value='export-tab')
     ], style={'marginBottom': '20px'}),
     
@@ -125,6 +134,14 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
     if n_clicks == 0 and active_tab == 'overview-tab':
         return "Ready to analyze", "", "Select parameters and click 'Run Enhanced Analysis'", {'display': 'none'}
     
+    # If run button was clicked, run the analysis
+    if n_clicks and n_clicks > 0:
+        try:
+            results = run_enhanced_analysis(symbol, sector, capital)
+            backtest_results[symbol] = results
+        except Exception as e:
+            return f"❌ Error: {str(e)}", "", "Please try again", {'display': 'none'}
+    
     # If no analysis has been run yet, show message
     if symbol not in backtest_results:
         return "Ready to analyze", "", "Please run analysis first", {'display': 'none'}
@@ -148,6 +165,12 @@ def update_dashboard(n_clicks, active_tab, symbol, sector, capital):
         tab_content = create_portfolio_tab(results)
     elif active_tab == 'alerts-tab':
         tab_content = create_alerts_tab(results)
+    elif active_tab == 'economic-tab':
+        tab_content = create_economic_tab(results)
+    elif active_tab == 'options-tab':
+        tab_content = create_options_tab(results)
+    elif active_tab == 'crypto-tab':
+        tab_content = create_crypto_tab(results)
     elif active_tab == 'export-tab':
         tab_content = create_export_tab(results)
     else:
@@ -180,7 +203,9 @@ def run_enhanced_analysis(symbol, sector, capital):
     
     # Portfolio Optimization
     returns = df['Close'].pct_change().dropna()
-    portfolio_results = portfolio_optimizer.generate_optimization_report(returns, [symbol])
+    # Convert to numpy array to avoid pandas Series issues
+    returns_array = returns.values
+    portfolio_results = portfolio_optimizer.generate_optimization_report(returns_array, [symbol])
     
     # Set up alerts
     setup_alerts(symbol, backtest_results, ml_results, sentiment_results)
@@ -557,6 +582,235 @@ def create_alerts_tab(results):
             html.Ul([html.Li(f"{alert_type}: {count}") for alert_type, count in summary['type_distribution'].items()])
         ], style={'marginTop': '20px', 'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px'})
     ])
+
+def create_economic_tab(results):
+    """Create economic calendar tab"""
+    try:
+        # Get economic calendar data
+        symbols = [results['symbol']]
+        calendar_data = economic_calendar.get_economic_calendar_data(symbols, 30)
+        
+        # Create economic events table
+        economic_events = calendar_data['economic_events'][:10]  # Show first 10
+        earnings_events = calendar_data['earnings_events'][:10]  # Show first 10
+        
+        economic_table = html.Table([
+            html.Thead([
+                html.Tr([
+                    html.Th('Date'), html.Th('Time'), html.Th('Event'), 
+                    html.Th('Impact'), html.Th('Forecast'), html.Th('Previous')
+                ])
+            ]),
+            html.Tbody([
+                html.Tr([
+                    html.Td(event['date']), html.Td(event['time']), 
+                    html.Td(event['event']), html.Td(event['impact'], 
+                    style={'color': 'red' if event['impact'] == 'High' else 'orange' if event['impact'] == 'Medium' else 'green'}),
+                    html.Td(event['forecast']), html.Td(event['previous'])
+                ]) for event in economic_events
+            ])
+        ], style={'width': '100%', 'border': '1px solid #ddd'})
+        
+        earnings_table = html.Table([
+            html.Thead([
+                html.Tr([
+                    html.Th('Date'), html.Th('Time'), html.Th('Symbol'), 
+                    html.Th('Impact'), html.Th('EPS Forecast'), html.Th('Revenue Forecast')
+                ])
+            ]),
+            html.Tbody([
+                html.Tr([
+                    html.Td(event['date']), html.Td(event['time']), 
+                    html.Td(event['symbol']), html.Td(event['impact'],
+                    style={'color': 'red' if event['impact'] == 'High' else 'orange' if event['impact'] == 'Medium' else 'green'}),
+                    html.Td(f"${event['eps_forecast']}"), html.Td(f"${event['revenue_forecast']}B")
+                ]) for event in earnings_events
+            ])
+        ], style={'width': '100%', 'border': '1px solid #ddd'})
+        
+        # Market impact analysis
+        impact_analysis = calendar_data['market_impact_analysis']
+        
+        return html.Div([
+            html.H3(f"📅 Economic Calendar & Earnings for {results['symbol']}"),
+            
+            # Market Impact Summary
+            html.Div([
+                html.H4("Market Impact Analysis"),
+                html.P(f"Total Events: {impact_analysis['total_events']}"),
+                html.P(f"High Impact: {impact_analysis['high_impact_count']}"),
+                html.P(f"Medium Impact: {impact_analysis['medium_impact_count']}"),
+                html.P(f"Low Impact: {impact_analysis['low_impact_count']}"),
+                html.P(f"Impact Score: {impact_analysis['impact_score']}"),
+                html.P(f"Market Sentiment: {impact_analysis['market_sentiment']}"),
+                html.H5("Recommendations:"),
+                html.Ul([html.Li(rec) for rec in impact_analysis['recommendations']])
+            ], style={'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px', 'marginBottom': '20px'}),
+            
+            # Economic Events
+            html.Div([
+                html.H4("Upcoming Economic Events"),
+                economic_table
+            ], style={'marginBottom': '20px'}),
+            
+            # Earnings Events
+            html.Div([
+                html.H4("Upcoming Earnings Events"),
+                earnings_table
+            ])
+        ])
+    except Exception as e:
+        return html.Div([
+            html.H3("📅 Economic Calendar"),
+            html.P(f"Error loading economic calendar: {str(e)}")
+        ])
+
+def create_options_tab(results):
+    """Create options analysis tab"""
+    try:
+        # Get options data
+        current_price = results['backtest']['final_value'] / 100000 * 150  # Approximate current price
+        options_data = options_analyzer.generate_options_report(results['symbol'], current_price, 30)
+        
+        # Create options chain table (first 10 rows)
+        options_chain = options_data['options_chain'][:10]
+        
+        options_table = html.Table([
+            html.Thead([
+                html.Tr([
+                    html.Th('Strike'), html.Th('Call Price'), html.Th('Put Price'),
+                    html.Th('Call Volume'), html.Th('Put Volume'), html.Th('Call Delta'), html.Th('Put Delta')
+                ])
+            ]),
+            html.Tbody([
+                html.Tr([
+                    html.Td(f"${option['strike']}"), html.Td(f"${option['call_price']}"), 
+                    html.Td(f"${option['put_price']}"), html.Td(option['call_volume']), 
+                    html.Td(option['put_volume']), html.Td(f"{option['call_delta']:.3f}"), 
+                    html.Td(f"{option['put_delta']:.3f}")
+                ]) for option in options_chain
+            ])
+        ], style={'width': '100%', 'border': '1px solid #ddd'})
+        
+        # Volatility analysis
+        vol_analysis = options_data['volatility_analysis']
+        pcr_analysis = options_data['put_call_analysis']
+        
+        return html.Div([
+            html.H3(f"📊 Options Analysis for {results['symbol']}"),
+            html.P(f"Current Price: ${current_price:.2f} | Days to Expiry: 30"),
+            
+            # Volatility Analysis
+            html.Div([
+                html.H4("Volatility Analysis"),
+                html.P(f"ITM Average IV: {vol_analysis['itm_avg_iv']:.2f}%"),
+                html.P(f"ATM Average IV: {vol_analysis['atm_avg_iv']:.2f}%"),
+                html.P(f"OTM Average IV: {vol_analysis['otm_avg_iv']:.2f}%"),
+                html.P(f"Volatility Skew: {vol_analysis['volatility_skew']:.2f}%"),
+                html.P(f"Skew Direction: {vol_analysis['skew_direction']}")
+            ], style={'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px', 'marginBottom': '20px'}),
+            
+            # Put/Call Analysis
+            html.Div([
+                html.H4("Put/Call Analysis"),
+                html.P(f"Volume Put/Call Ratio: {pcr_analysis['volume_put_call_ratio']:.3f}"),
+                html.P(f"OI Put/Call Ratio: {pcr_analysis['oi_put_call_ratio']:.3f}"),
+                html.P(f"Volume Sentiment: {pcr_analysis['volume_sentiment']}"),
+                html.P(f"OI Sentiment: {pcr_analysis['oi_sentiment']}"),
+                html.P(f"Max Pain Strike: ${options_data['max_pain_strike']:.2f}")
+            ], style={'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px', 'marginBottom': '20px'}),
+            
+            # Options Chain
+            html.Div([
+                html.H4("Options Chain (Sample)"),
+                options_table
+            ])
+        ])
+    except Exception as e:
+        return html.Div([
+            html.H3("📊 Options Analysis"),
+            html.P(f"Error loading options data: {str(e)}")
+        ])
+
+def create_crypto_tab(results):
+    """Create crypto market tab"""
+    try:
+        # Get crypto data for major cryptocurrencies
+        crypto_symbols = ['BTC', 'ETH', 'BNB', 'ADA', 'SOL']
+        crypto_data = {}
+        
+        for symbol in crypto_symbols:
+            crypto_data[symbol] = crypto_analyzer.generate_crypto_report(symbol, 30)
+        
+        # Create crypto overview table
+        crypto_table = html.Table([
+            html.Thead([
+                html.Tr([
+                    html.Th('Symbol'), html.Th('Price'), html.Th('24h Change'), 
+                    html.Th('7d Change'), html.Th('Market Cap'), html.Th('Volume')
+                ])
+            ]),
+            html.Tbody([
+                html.Tr([
+                    html.Td(symbol), html.Td(f"${data['metrics']['current_price']:,.2f}"),
+                    html.Td(f"{data['metrics']['price_change_24h']:+.2f}%", 
+                    style={'color': 'green' if data['metrics']['price_change_24h'] > 0 else 'red'}),
+                    html.Td(f"{data['metrics']['price_change_7d']:+.2f}%",
+                    style={'color': 'green' if data['metrics']['price_change_7d'] > 0 else 'red'}),
+                    html.Td(f"${data['metrics']['current_market_cap']:,.0f}"),
+                    html.Td(f"{data['metrics']['avg_volume_7d']:,.0f}")
+                ]) for symbol, data in crypto_data.items()
+            ])
+        ], style={'width': '100%', 'border': '1px solid #ddd'})
+        
+        # Market overview
+        market_overview = crypto_data['BTC']['market_overview']
+        fear_greed = crypto_data['BTC']['metrics']['fear_greed_index']
+        
+        return html.Div([
+            html.H3("₿ Cryptocurrency Market Overview"),
+            
+            # Market Overview
+            html.Div([
+                html.H4("Market Overview"),
+                html.P(f"Total Market Cap: ${market_overview['total_market_cap']:,.0f}"),
+                html.P(f"24h Volume: ${market_overview['total_volume_24h']:,.0f}"),
+                html.P(f"BTC Dominance: {market_overview['btc_dominance']:.1f}%"),
+                html.P(f"ETH Dominance: {market_overview['eth_dominance']:.1f}%"),
+                html.P(f"Market Sentiment: {market_overview['market_sentiment']['sentiment']}"),
+                html.P(f"Active Cryptocurrencies: {market_overview['active_cryptocurrencies']:,}")
+            ], style={'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px', 'marginBottom': '20px'}),
+            
+            # Fear & Greed Index
+            html.Div([
+                html.H4("Fear & Greed Index"),
+                html.P(f"Index: {fear_greed['index']}/100"),
+                html.P(f"Sentiment: {fear_greed['sentiment']}"),
+                html.P(f"Description: {fear_greed['description']}")
+            ], style={'padding': '20px', 'backgroundColor': '#f8f9fa', 'borderRadius': '10px', 'marginBottom': '20px'}),
+            
+            # Top Gainers and Losers
+            html.Div([
+                html.H4("Top Gainers"),
+                html.Ul([html.Li(f"{gainer['symbol']}: {gainer['change']:+.2f}%") for gainer in market_overview['top_gainers']])
+            ], style={'display': 'inline-block', 'width': '48%', 'verticalAlign': 'top', 'marginRight': '2%'}),
+            
+            html.Div([
+                html.H4("Top Losers"),
+                html.Ul([html.Li(f"{loser['symbol']}: {loser['change']:+.2f}%") for loser in market_overview['top_losers']])
+            ], style={'display': 'inline-block', 'width': '48%', 'verticalAlign': 'top'}),
+            
+            # Crypto Table
+            html.Div([
+                html.H4("Major Cryptocurrencies"),
+                crypto_table
+            ], style={'marginTop': '20px'})
+        ])
+    except Exception as e:
+        return html.Div([
+            html.H3("₿ Crypto Market"),
+            html.P(f"Error loading crypto data: {str(e)}")
+        ])
 
 def create_export_tab(results):
     """Create export tab"""
