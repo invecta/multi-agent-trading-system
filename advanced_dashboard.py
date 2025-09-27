@@ -520,6 +520,8 @@ def generate_charts_tab(df, results, symbol):
     """Generate advanced charts tab"""
     
     # Price chart with indicators
+    from plotly.subplots import make_subplots
+    
     fig_price = make_subplots(
         rows=3, cols=1,
         shared_xaxes=True,
@@ -550,7 +552,8 @@ def generate_charts_tab(df, results, symbol):
         row=1, col=1
     )
     fig_price.add_trace(
-        go.Scatter(x=df.index, y=df['BB_Lower'], name='BB Lower', line=dict(color='gray', dash='dot'), fill='tonexty'),
+        go.Scatter(x=df.index, y=df['BB_Lower'], name='BB Lower', line=dict(color='gray', dash='dot'), 
+                  fill='tonexty', fillcolor='rgba(128,128,128,0.1)', showlegend=False),
         row=1, col=1
     )
     
