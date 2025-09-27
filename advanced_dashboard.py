@@ -526,7 +526,7 @@ def update_dashboard(n_clicks, symbol, sector, capital, active_tab):
      State('capital-input', 'value')]
 )
 def export_to_pdf(n_clicks, symbol, sector, capital):
-    if n_clicks > 0 and symbol and symbol in backtest_results:
+    if n_clicks and n_clicks > 0 and symbol and symbol in backtest_results:
         try:
             print(f"Generating PDF for {symbol}...")
             # Generate PDF
@@ -540,166 +540,181 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
             )
         except Exception as e:
             print(f"PDF export error: {e}")
+            import traceback
+            traceback.print_exc()
             return None
     
     return None
 
 def generate_pdf_report(symbol, sector, capital):
     """Generate comprehensive PDF report"""
-    buffer = io.BytesIO()
-    doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
-    
-    # Get data
-    data = backtest_results[symbol]
-    df = data['data']
-    results = data['results']
-    
-    # Styles
-    styles = getSampleStyleSheet()
-    title_style = ParagraphStyle(
-        'CustomTitle',
-        parent=styles['Heading1'],
-        fontSize=24,
-        spaceAfter=30,
-        alignment=1,  # Center alignment
-        textColor=colors.darkblue
-    )
-    
-    heading_style = ParagraphStyle(
-        'CustomHeading',
-        parent=styles['Heading2'],
-        fontSize=16,
-        spaceAfter=12,
-        textColor=colors.darkblue
-    )
-    
-    # Build PDF content
-    story = []
-    
-    # Title
-    story.append(Paragraph("Multi-Agent Trading System Report", title_style))
-    story.append(Spacer(1, 20))
-    
-    # Executive Summary
-    story.append(Paragraph("Executive Summary", heading_style))
-    summary_text = f"""
-    <b>Symbol:</b> {symbol}<br/>
-    <b>Sector:</b> {sector}<br/>
-    <b>Initial Capital:</b> ${capital:,.2f}<br/>
-    <b>Final Value:</b> ${results['final_value']:,.2f}<br/>
-    <b>Total Return:</b> {results['total_return']:.2%}<br/>
-    <b>Total Trades:</b> {len(results['trades'])}<br/>
-    <b>Win Rate:</b> {results['win_rate']:.2%}<br/>
-    <b>Sharpe Ratio:</b> {results['sharpe_ratio']:.2f}<br/>
-    <b>Max Drawdown:</b> {results['max_drawdown']:.2%}<br/>
-    <b>Volatility:</b> {results['volatility']:.2%}<br/>
-    <b>VaR (95%):</b> {results['var_95']:.2%}
-    """
-    story.append(Paragraph(summary_text, styles['Normal']))
-    story.append(Spacer(1, 20))
-    
-    # Performance Metrics Table
-    story.append(Paragraph("Performance Metrics", heading_style))
-    metrics_data = [
-        ['Metric', 'Value'],
-        ['Total Return', f"{results['total_return']:.2%}"],
-        ['Annualized Return', f"{results['total_return'] * 252/250:.2%}"],
-        ['Volatility', f"{results['volatility']:.2%}"],
-        ['Sharpe Ratio', f"{results['sharpe_ratio']:.2f}"],
-        ['Max Drawdown', f"{results['max_drawdown']:.2%}"],
-        ['VaR (95%)', f"{results['var_95']:.2%}"],
-        ['Win Rate', f"{results['win_rate']:.2%}"],
-        ['Total Trades', f"{len(results['trades'])}"],
-        ['Final Portfolio Value', f"${results['final_value']:,.2f}"]
-    ]
-    
-    metrics_table = Table(metrics_data, colWidths=[2*inch, 1.5*inch])
-    metrics_table.setStyle(TableStyle([
-        ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
-        ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
-        ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
-        ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-        ('FONTSIZE', (0, 0), (-1, 0), 12),
-        ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
-        ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-        ('GRID', (0, 0), (-1, -1), 1, colors.black)
-    ]))
-    story.append(metrics_table)
-    story.append(Spacer(1, 20))
-    
-    # Trade History
-    if results['trades']:
-        story.append(Paragraph("Trade History", heading_style))
-        trades_data = [['Date', 'Type', 'Price', 'Shares', 'Value', 'Strategy']]
+    try:
+        buffer = io.BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=A4, rightMargin=72, leftMargin=72, topMargin=72, bottomMargin=18)
         
-        for trade in results['trades']:
-            trades_data.append([
-                trade['Date'].strftime('%Y-%m-%d'),
-                trade['Type'],
-                f"${trade['Price']:.2f}",
-                f"{trade['Shares']:,}",
-                f"${trade['Value']:,.2f}",
-                trade['Strategy']
-            ])
+        # Get data
+        data = backtest_results[symbol]
+        df = data['data']
+        results = data['results']
+    
+        # Styles
+        styles = getSampleStyleSheet()
+        title_style = ParagraphStyle(
+            'CustomTitle',
+            parent=styles['Heading1'],
+            fontSize=24,
+            spaceAfter=30,
+            alignment=1,  # Center alignment
+            textColor=colors.darkblue
+        )
         
-        trades_table = Table(trades_data, colWidths=[1*inch, 0.5*inch, 0.8*inch, 0.8*inch, 1*inch, 1.5*inch])
-        trades_table.setStyle(TableStyle([
+        heading_style = ParagraphStyle(
+            'CustomHeading',
+            parent=styles['Heading2'],
+            fontSize=16,
+            spaceAfter=12,
+            textColor=colors.darkblue
+        )
+        
+        # Build PDF content
+        story = []
+    
+        # Title
+        story.append(Paragraph("Multi-Agent Trading System Report", title_style))
+        story.append(Spacer(1, 20))
+        
+        # Executive Summary
+        story.append(Paragraph("Executive Summary", heading_style))
+        summary_text = f"""
+        <b>Symbol:</b> {symbol}<br/>
+        <b>Sector:</b> {sector}<br/>
+        <b>Initial Capital:</b> ${capital:,.2f}<br/>
+        <b>Final Value:</b> ${results['final_value']:,.2f}<br/>
+        <b>Total Return:</b> {results['total_return']:.2%}<br/>
+        <b>Total Trades:</b> {len(results['trades'])}<br/>
+        <b>Win Rate:</b> {results['win_rate']:.2%}<br/>
+        <b>Sharpe Ratio:</b> {results['sharpe_ratio']:.2f}<br/>
+        <b>Max Drawdown:</b> {results['max_drawdown']:.2%}<br/>
+        <b>Volatility:</b> {results['volatility']:.2%}<br/>
+        <b>VaR (95%):</b> {results['var_95']:.2%}
+        """
+        story.append(Paragraph(summary_text, styles['Normal']))
+        story.append(Spacer(1, 20))
+    
+        # Performance Metrics Table
+        story.append(Paragraph("Performance Metrics", heading_style))
+        metrics_data = [
+            ['Metric', 'Value'],
+            ['Total Return', f"{results['total_return']:.2%}"],
+            ['Annualized Return', f"{results['total_return'] * 252/250:.2%}"],
+            ['Volatility', f"{results['volatility']:.2%}"],
+            ['Sharpe Ratio', f"{results['sharpe_ratio']:.2f}"],
+            ['Max Drawdown', f"{results['max_drawdown']:.2%}"],
+            ['VaR (95%)', f"{results['var_95']:.2%}"],
+            ['Win Rate', f"{results['win_rate']:.2%}"],
+            ['Total Trades', f"{len(results['trades'])}"],
+            ['Final Portfolio Value', f"${results['final_value']:,.2f}"]
+        ]
+        
+        metrics_table = Table(metrics_data, colWidths=[2*inch, 1.5*inch])
+        metrics_table.setStyle(TableStyle([
             ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
             ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
             ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
             ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
-            ('FONTSIZE', (0, 0), (-1, 0), 10),
+            ('FONTSIZE', (0, 0), (-1, 0), 12),
             ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
             ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
-            ('GRID', (0, 0), (-1, -1), 1, colors.black),
-            ('FONTSIZE', (0, 1), (-1, -1), 8)
+            ('GRID', (0, 0), (-1, -1), 1, colors.black)
         ]))
-        story.append(trades_table)
+        story.append(metrics_table)
         story.append(Spacer(1, 20))
     
-    # Risk Analysis
-    story.append(Paragraph("Risk Analysis", heading_style))
-    risk_text = f"""
-    <b>Value at Risk (95%):</b> {results['var_95']:.2%} - This means there's a 5% chance of losing more than this amount in a single day.<br/>
-    <b>Maximum Drawdown:</b> {results['max_drawdown']:.2%} - The largest peak-to-trough decline in portfolio value.<br/>
-    <b>Volatility:</b> {results['volatility']:.2%} - Annualized standard deviation of returns, measuring price fluctuations.<br/>
-    <b>Sharpe Ratio:</b> {results['sharpe_ratio']:.2f} - Risk-adjusted return measure (higher is better).<br/>
-    <b>Win Rate:</b> {results['win_rate']:.2%} - Percentage of profitable trades.
-    """
-    story.append(Paragraph(risk_text, styles['Normal']))
-    story.append(Spacer(1, 20))
+        # Trade History
+        if results['trades']:
+            story.append(Paragraph("Trade History", heading_style))
+            trades_data = [['Date', 'Type', 'Price', 'Shares', 'Value', 'Strategy']]
+            
+            for trade in results['trades']:
+                trades_data.append([
+                    trade['Date'].strftime('%Y-%m-%d'),
+                    trade['Type'],
+                    f"${trade['Price']:.2f}",
+                    f"{trade['Shares']:,}",
+                    f"${trade['Value']:,.2f}",
+                    trade['Strategy']
+                ])
+            
+            trades_table = Table(trades_data, colWidths=[1*inch, 0.5*inch, 0.8*inch, 0.8*inch, 1*inch, 1.5*inch])
+            trades_table.setStyle(TableStyle([
+                ('BACKGROUND', (0, 0), (-1, 0), colors.grey),
+                ('TEXTCOLOR', (0, 0), (-1, 0), colors.whitesmoke),
+                ('ALIGN', (0, 0), (-1, -1), 'CENTER'),
+                ('FONTNAME', (0, 0), (-1, 0), 'Helvetica-Bold'),
+                ('FONTSIZE', (0, 0), (-1, 0), 10),
+                ('BOTTOMPADDING', (0, 0), (-1, 0), 12),
+                ('BACKGROUND', (0, 1), (-1, -1), colors.beige),
+                ('GRID', (0, 0), (-1, -1), 1, colors.black),
+                ('FONTSIZE', (0, 1), (-1, -1), 8)
+            ]))
+            story.append(trades_table)
+            story.append(Spacer(1, 20))
     
-    # Technical Analysis Summary
-    story.append(Paragraph("Technical Analysis Summary", heading_style))
+        # Risk Analysis
+        story.append(Paragraph("Risk Analysis", heading_style))
+        risk_text = f"""
+        <b>Value at Risk (95%):</b> {results['var_95']:.2%} - This means there's a 5% chance of losing more than this amount in a single day.<br/>
+        <b>Maximum Drawdown:</b> {results['max_drawdown']:.2%} - The largest peak-to-trough decline in portfolio value.<br/>
+        <b>Volatility:</b> {results['volatility']:.2%} - Annualized standard deviation of returns, measuring price fluctuations.<br/>
+        <b>Sharpe Ratio:</b> {results['sharpe_ratio']:.2f} - Risk-adjusted return measure (higher is better).<br/>
+        <b>Win Rate:</b> {results['win_rate']:.2%} - Percentage of profitable trades.
+        """
+        story.append(Paragraph(risk_text, styles['Normal']))
+        story.append(Spacer(1, 20))
+        
+        # Technical Analysis Summary
+        story.append(Paragraph("Technical Analysis Summary", heading_style))
+        
+        # Calculate some technical summary stats
+        avg_rsi = df['RSI'].mean()
+        avg_volume_ratio = df['Volume_Ratio'].mean()
+        signal_count = len(df[df['Signal'] != 0])
+        
+        tech_text = f"""
+        <b>Average RSI:</b> {avg_rsi:.1f} (30-70 range indicates normal market conditions)<br/>
+        <b>Average Volume Ratio:</b> {avg_volume_ratio:.2f} (1.0 = average volume)<br/>
+        <b>Total Signals Generated:</b> {signal_count}<br/>
+        <b>Analysis Period:</b> {len(df)} trading days<br/>
+        <b>Price Range:</b> ${df['Close'].min():.2f} - ${df['Close'].max():.2f}
+        """
+        story.append(Paragraph(tech_text, styles['Normal']))
+        story.append(Spacer(1, 20))
+        
+        # Footer
+        story.append(Spacer(1, 30))
+        footer_text = f"""
+        <i>Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}<br/>
+        Multi-Agent Trading System - Advanced Analytics Dashboard<br/>
+        This report contains simulated trading data for educational and portfolio demonstration purposes.</i>
+        """
+        story.append(Paragraph(footer_text, styles['Normal']))
     
-    # Calculate some technical summary stats
-    avg_rsi = df['RSI'].mean()
-    avg_volume_ratio = df['Volume_Ratio'].mean()
-    signal_count = len(df[df['Signal'] != 0])
+        # Build PDF
+        doc.build(story)
+        buffer.seek(0)
+        return buffer.getvalue()
     
-    tech_text = f"""
-    <b>Average RSI:</b> {avg_rsi:.1f} (30-70 range indicates normal market conditions)<br/>
-    <b>Average Volume Ratio:</b> {avg_volume_ratio:.2f} (1.0 = average volume)<br/>
-    <b>Total Signals Generated:</b> {signal_count}<br/>
-    <b>Analysis Period:</b> {len(df)} trading days<br/>
-    <b>Price Range:</b> ${df['Close'].min():.2f} - ${df['Close'].max():.2f}
-    """
-    story.append(Paragraph(tech_text, styles['Normal']))
-    story.append(Spacer(1, 20))
-    
-    # Footer
-    story.append(Spacer(1, 30))
-    footer_text = f"""
-    <i>Report generated on {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}<br/>
-    Multi-Agent Trading System - Advanced Analytics Dashboard<br/>
-    This report contains simulated trading data for educational and portfolio demonstration purposes.</i>
-    """
-    story.append(Paragraph(footer_text, styles['Normal']))
-    
-    # Build PDF
-    doc.build(story)
-    buffer.seek(0)
-    return buffer.getvalue()
+    except Exception as e:
+        print(f"PDF generation error: {e}")
+        import traceback
+        traceback.print_exc()
+        # Return a simple error PDF
+        buffer = io.BytesIO()
+        doc = SimpleDocTemplate(buffer, pagesize=A4)
+        story = [Paragraph("Error generating PDF report", getSampleStyleSheet()['Heading1'])]
+        doc.build(story)
+        buffer.seek(0)
+        return buffer.getvalue()
 
 def generate_tab_content(active_tab, data):
     """Generate content for each tab"""
