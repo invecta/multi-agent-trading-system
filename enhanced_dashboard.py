@@ -267,7 +267,7 @@ def run_enhanced_analysis(symbol, sector, capital, time_period=365, timeframe='1
     df = generate_enhanced_market_data(symbol, sector, time_period, timeframe)
     
     # Run backtest
-    backtest_results = run_enhanced_backtest(df, capital)
+    backtest_results = run_enhanced_backtest(df, capital, timeframe)
     
     # ML Forecasting
     ml_results = ml_forecaster.run_complete_forecast(df, symbol)
@@ -347,21 +347,52 @@ def generate_enhanced_market_data(symbol, sector, time_period=365, timeframe='1d
     
     return df
 
-def run_enhanced_backtest(df, capital):
+def run_enhanced_backtest(df, capital, timeframe='1d'):
     """Run enhanced backtest with multiple strategies"""
     initial_capital = capital
     current_capital = initial_capital
     position = 0
     trades = []
     
-    # Calculate technical indicators
-    df['SMA_20'] = df['Close'].rolling(window=20).mean()
-    df['SMA_50'] = df['Close'].rolling(window=50).mean()
-    df['RSI'] = calculate_rsi(df['Close'])
+    # Adjust indicator windows based on timeframe
+    timeframe_multiplier = {
+        '1m': 0.1,    # Very short windows for 1-minute data
+        '5m': 0.2,    # Short windows for 5-minute data
+        '15m': 0.3,   # Medium-short windows for 15-minute data
+        '1h': 0.5,    # Medium windows for hourly data
+        '4h': 0.7,    # Medium-long windows for 4-hour data
+        '1d': 1.0,    # Standard windows for daily data
+        '1w': 2.0     # Longer windows for weekly data
+    }
+    
+    multiplier = timeframe_multiplier.get(timeframe, 1.0)
+    
+    # Calculate technical indicators with timeframe-adjusted windows
+    sma_short = max(5, int(20 * multiplier))
+    sma_long = max(10, int(50 * multiplier))
+    rsi_period = max(5, int(14 * multiplier))
+    
+    df['SMA_20'] = df['Close'].rolling(window=sma_short).mean()
+    df['SMA_50'] = df['Close'].rolling(window=sma_long).mean()
+    df['RSI'] = calculate_rsi(df['Close'], period=rsi_period)
     df['MACD'] = calculate_macd(df['Close'])
     
+    # Adjust signal frequency based on timeframe
+    signal_frequency = {
+        '1m': 0.8,    # More frequent signals for intraday
+        '5m': 0.7,
+        '15m': 0.6,
+        '1h': 0.5,
+        '4h': 0.4,
+        '1d': 0.3,    # Standard frequency for daily
+        '1w': 0.2     # Less frequent for weekly
+    }
+    
+    freq_multiplier = signal_frequency.get(timeframe, 0.3)
+    
     # Generate signals
-    for i in range(50, len(df)):
+    start_idx = max(sma_long, 20)
+    for i in range(start_idx, len(df)):
         current_price = df['Close'].iloc[i]
         sma_20 = df['SMA_20'].iloc[i]
         sma_50 = df['SMA_50'].iloc[i]
@@ -385,8 +416,11 @@ def run_enhanced_backtest(df, capital):
         if df['Volume'].iloc[i] > avg_volume * 1.5:
             signal_strength += 0.1
         
-        # Execute trades
-        if signal_strength > 0.3 and position == 0:
+        # Execute trades with timeframe-adjusted thresholds
+        buy_threshold = 0.3 * freq_multiplier
+        sell_threshold = -0.3 * freq_multiplier
+        
+        if signal_strength > buy_threshold and position == 0:
             # Buy signal
             shares = int(current_capital * 0.95 / current_price)
             if shares > 0:
@@ -398,10 +432,10 @@ def run_enhanced_backtest(df, capital):
                     'Price': current_price,
                     'Shares': shares,
                     'Value': shares * current_price,
-                    'Strategy': 'Enhanced Multi-Strategy'
+                    'Strategy': f'Enhanced Multi-Strategy ({timeframe})'
                 })
         
-        elif signal_strength < -0.3 and position > 0:
+        elif signal_strength < sell_threshold and position > 0:
             # Sell signal
             current_capital += position * current_price
             trades.append({
@@ -410,7 +444,7 @@ def run_enhanced_backtest(df, capital):
                 'Price': current_price,
                 'Shares': position,
                 'Value': position * current_price,
-                'Strategy': 'Enhanced Multi-Strategy'
+                'Strategy': f'Enhanced Multi-Strategy ({timeframe})'
             })
             position = 0
     
