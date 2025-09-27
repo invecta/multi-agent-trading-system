@@ -520,8 +520,6 @@ def generate_charts_tab(df, results, symbol):
     """Generate advanced charts tab"""
     
     # Price chart with indicators
-    from plotly.subplots import make_subplots
-    
     fig_price = make_subplots(
         rows=3, cols=1,
         shared_xaxes=True,
@@ -604,8 +602,7 @@ def generate_charts_tab(df, results, symbol):
         go.Bar(x=df.index, y=df['Volume'], name='Volume', marker_color='lightblue')
     )
     fig_volume.add_trace(
-        go.Scatter(x=df.index, y=df['Volume_SMA'], name='Volume SMA', line=dict(color='red')),
-        secondary_y=False
+        go.Scatter(x=df.index, y=df['Volume_SMA'], name='Volume SMA', line=dict(color='red'))
     )
     fig_volume.update_layout(title_text=f"Volume Analysis - {symbol}", height=400)
     
