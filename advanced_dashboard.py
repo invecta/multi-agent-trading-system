@@ -538,11 +538,8 @@ def export_to_pdf(n_clicks, symbol, sector, capital):
             print(f"Content length: {len(pdf_content) if pdf_content else 0}")
             print(f"Content preview: {pdf_content[:100] if pdf_content else 'None'}...")
             
-            # Return the base64 content with filename for dcc.Download
-            return dict(
-                content=pdf_content,
-                filename=f"{symbol}_trading_report.pdf"
-            )
+            # Return the base64 content as a data URL for dcc.Download
+            return f"data:application/pdf;base64,{pdf_content}"
         except Exception as e:
             print(f"PDF export error: {e}")
             import traceback
