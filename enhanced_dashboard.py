@@ -52,8 +52,45 @@ app.layout = html.Div([
     html.Div([
         html.Div([
             html.Label("Symbol:", style={'fontWeight': 'bold'}),
-            dcc.Input(id='symbol-input', value='AAPL', type='text', 
-                     style={'width': '100px', 'marginRight': '20px'})
+            dcc.Dropdown(
+                id='symbol-input',
+                options=[
+                    {'label': 'AAPL - Apple Inc.', 'value': 'AAPL'},
+                    {'label': 'MSFT - Microsoft Corporation', 'value': 'MSFT'},
+                    {'label': 'GOOGL - Alphabet Inc.', 'value': 'GOOGL'},
+                    {'label': 'AMZN - Amazon.com Inc.', 'value': 'AMZN'},
+                    {'label': 'TSLA - Tesla Inc.', 'value': 'TSLA'},
+                    {'label': 'META - Meta Platforms Inc.', 'value': 'META'},
+                    {'label': 'NVDA - NVIDIA Corporation', 'value': 'NVDA'},
+                    {'label': 'NFLX - Netflix Inc.', 'value': 'NFLX'},
+                    {'label': 'AMD - Advanced Micro Devices', 'value': 'AMD'},
+                    {'label': 'INTC - Intel Corporation', 'value': 'INTC'},
+                    {'label': 'JPM - JPMorgan Chase & Co.', 'value': 'JPM'},
+                    {'label': 'BAC - Bank of America Corp.', 'value': 'BAC'},
+                    {'label': 'WMT - Walmart Inc.', 'value': 'WMT'},
+                    {'label': 'JNJ - Johnson & Johnson', 'value': 'JNJ'},
+                    {'label': 'PG - Procter & Gamble Co.', 'value': 'PG'},
+                    {'label': 'KO - The Coca-Cola Company', 'value': 'KO'},
+                    {'label': 'PFE - Pfizer Inc.', 'value': 'PFE'},
+                    {'label': 'DIS - The Walt Disney Company', 'value': 'DIS'},
+                    {'label': 'V - Visa Inc.', 'value': 'V'},
+                    {'label': 'MA - Mastercard Inc.', 'value': 'MA'},
+                    {'label': 'CRM - Salesforce Inc.', 'value': 'CRM'},
+                    {'label': 'ADBE - Adobe Inc.', 'value': 'ADBE'},
+                    {'label': 'PYPL - PayPal Holdings Inc.', 'value': 'PYPL'},
+                    {'label': 'UBER - Uber Technologies Inc.', 'value': 'UBER'},
+                    {'label': 'SPOT - Spotify Technology S.A.', 'value': 'SPOT'},
+                    {'label': 'ZM - Zoom Video Communications', 'value': 'ZM'},
+                    {'label': 'SQ - Block Inc.', 'value': 'SQ'},
+                    {'label': 'ROKU - Roku Inc.', 'value': 'ROKU'},
+                    {'label': 'SHOP - Shopify Inc.', 'value': 'SHOP'},
+                    {'label': 'SNOW - Snowflake Inc.', 'value': 'SNOW'}
+                ],
+                value='AAPL',
+                style={'width': '200px', 'marginRight': '20px'},
+                searchable=True,
+                clearable=False
+            )
         ], style={'display': 'inline-block', 'marginRight': '20px'}),
         
         html.Div([
