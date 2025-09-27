@@ -1,0 +1,17 @@
+# Environment Configuration File
+# Copy this file to .env and add your API keys
+
+# Alpha Vantage API Key (optional - for additional market data)
+# Get your free API key at: https://www.alphavantage.co/support/#api-key
+ALPHA_VANTAGE_API_KEY=demo
+
+# Database Configuration
+DATABASE_URL=sqlite:///financial_data.db
+
+# Dashboard Configuration
+DASHBOARD_PORT=8050
+DASHBOARD_HOST=127.0.0.1
+
+# Logging Configuration
+LOG_LEVEL=INFO
+LOG_FILE=financial_analysis.log

@@ -1,0 +1,984 @@
+\n--- Page 1 ---\nFundamentalsPage  of 1195 2025.03GOLDBACHFUNDAMENTALS WHAT EVERY ICT TRADER… STILL WANTS TO DEMYSTIFYBY HOPIPLAKA
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 2 ---\n0. PROLOGUE  “IF ONL Y YOU WOULD KNOW THE MAGNIFICENCE OF THE 3, 6, AND 9, YOU WOULD HAVE A KEY TO THE UNIVERSE. ”  NIKOLA TESLA 
+FundamentalsPage  of 2195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 3 ---\nDear reader, Thank you for downloading this book on Goldbach trading. We hope that you will ﬁnd value in the information and insights contained within these pages. The book originated as my view on what a famous mentor on the internet was trying to communicate, but it’s good to mention this is my view - and my view only. The book maps price action seen in diﬀerent trading assets (such as currencies, metals, indices, …) using mathematical concepts. By no means this book claims to solve enigma, imp, or any other buzz word you ﬁnd ﬂying around on the internet. Like ict says, we can explore the wonderful world of Goldbach and Power of Three, but any match to ict concepts is pure coincidence. 
+FundamentalsPage  of 3195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 4 ---\nThe fundamental book you’re reading now will focus on just the basics: 
+Explain the power of three (PO3) and why it’s an important number to determine dealing ranges 
+Explain what Goldbach is, and why they are important levels inside dealing ranges Both the PO3 number and the Goldbach levels inside them make up your price levels. As you read through this book, we hope that you will come to understand and appreciate the signiﬁcance of power of three numbers, and learn how to use them to your advantage, using PO3 dealing ranges.  We believe that using power of three in your trade arsenal will be a valuable tool for you. We will also delve into what we call the Goldbach levels, how it relates to interesting areas where trades will form, and why the number 6 plays a crucial role here. Last but not least, we will unlock the secrets of the Goldbach look back period, where the number 9 will play a prominent role. We will discuss the look back partitions base on the number 9, which is more of a broader or longer term if you will view on the market. FundamentalsPage  of 4195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 5 ---\nWhen you read the previous page, you might think by yourself. Wait a minute, 3, 6, 9? Where did I see these before?  These are what we call the numbers that make up the Tesla Vortex.  Not the car manufacturer, but Nikola Tesla, the inventor. We will be using these numbers throughout the book, and also a tweaked version of it.  
+FundamentalsPage  of 5195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 6 ---\nWe will use for the PRICE part:  3 for PO3 6 for the Goldbach Price area levels. And for the TIME part: 9 as seen in look back period. Combine these together, and you have your time and price  
+FundamentalsPage  of 6195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 7 ---\nThis book sometimes relies on terminology that was originated by Michael J Huddleston, aka The Inner Circle Trader, aka ICT.   At the end of the book you will ﬁnd references to his Twitter and YouTube accounts, you deﬁnitely need to check these out, certainly if you don’t know what an order block or fair value gap is. Although we use some terminology of him, the price delivery using Power of the number three dealing ranges and Goldbach levels are unique to this book, and it’s good to emphasise that there is no relation here to his work. We hope that you will ﬁnd the information and examples provided in this book to be useful and inspiring, and that you will apply what you learn to your own trading career. Once again, thank you for downloading this book. We hope that you will ﬁnd it to be a valuable resource, and that you will join us in exploring the many wonders Goldbach can oﬀer the trading community. 
+FundamentalsPage  of 7195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 8 ---\n0.  2PROLOGUE  2PRICE  151.  16Power of three numbers  16Introduction to PO3  17Calculating Powers Of Three  192.  21GOLDBACH levels  21What is Goldbach  22The Logo  29Middle of Goldbach blocks  313.  35DEALING RANGES  35What IS A DEALING RANGE  36expansion and contraction  38PO3 DEALING RANGE  39Optimal PO3 Dealing Range  40How to determine  40PO3 TOO LOW  41PO3 TOO HIGH  42FundamentalsPage  of 8195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 9 ---\nOPTIMAL PO3  43Goldbach DEALING RANGE  44Intended DEALING RANGE  46Concept  46The birth of an intended dR  47EXAMPLES  51Trading dealing ranges  53Goldbach dealing range  54FIxED Optimal dealing range  55Examples  58Dynamic Optimal Dealing Range  61Examples  62Normal PO3 stop runs  63STDV PO3 stop runs  67PO3 liquidity  69Getting to know PO3 Dealing Ranges  71Automate  72What you learned in this chapter  73Cheat sheets  74Calculating optimal PO3 size  74Calculating Dealing range  75FundamentalsPage  of 9195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 10 ---\nWhen to do range expansion  76How to use Goldbach  77Long term or position trader  78OSOK trader or short term trader  79Day trader  80scalper  81What you learned in this chapter  82Cheat sheets  83Goldbach levels  83TIME  843.  85LOOK BACK Partitions  85Introduction  86HIPPO  90Goldbach Time in Look back Partitions  94Examples  97January 8th  98Look for number 18  98February 7th  100Look for number 27  100March 6th  102FundamentalsPage  of 10195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 11 ---\nLook for number 36  102April 5th  104Look for number 45  104May 4th  106Look for number 54  106JUNE 3rd  108Look for number 63  108JULY 2nd  110Look for number 72  110AUGUST 1st  112Look for number 81  112SEPTEMBER 9th  114Look for number 90 - 99  114OCTOBER 8th  116Look for number 108  116NOVEMBER 7th  118Look for number 117  118DECEMBER 6th  120Look for number 126  120What you learned in this chapter  122Cheat sheets  123FundamentalsPage  of 11195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 12 ---\nHippo  123Determine look back period  1244.  125AMD cycle  125Introduction  126Fractal  133How to use AMD  135Distortion of time  136Candle counting  137What you learned in this chapter  138Cheat sheets  139AMD cycles  139TIME AND PRICE  1405.  141Goldbach Algorithms  1416.  152PUTTING EVERYTHING TOGETHER  152The MMxM, OTE and algo  153Goldbach Time  158What you learned in this chapter  162TRADE PLANS  164FundamentalsPage  of 12195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 13 ---\nLOOK BACK TRADE PLAN  165A monthly play for hundreds of pips  165HIPPO POT A MUS  166A trade plan for HIPPO's  166OSOK Trade plan  167Catch 50 to 75 pips once a week  167MY PERSONAL TRADE PLAN  16824 pips per week  168The hidden OTE trade plan  173Use OTE in between 2 Goldbach levels  173GB - The OB Trade Plan  174Use the Order block and exit at breaker  174GB - The breaker Trade Plan  175Use the breaker and exit at high/low  175GB: The stop run Trade Plan  176Use the dealing range stop run and aim for the breaker  176GB: The equilibrium Trade Plan  177Use the mitigation block anD equilibrium  177GB: The FVG Trade Plan  178Use the FVG and propulsion block  178FundamentalsPage  of 13195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 14 ---\nGB: The Einstein Trade Plan  179Use the OB, LV and FVG  179GB: Trade plan Overview  181Visualisation of the GB trade plans  181MISCELLANEOUS  182PO3 DR Shifting  183THE END  185Risk Management  186Acronyms  187In Closure  188Become an aﬃliate, ﬁght Fraudulent copies  190Aﬃliation  190Purchasing Power Parity  191JOINING Telegram  192DISCLAIMER 193
+FundamentalsPage  of 14195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 15 ---\nPRICE 
+FundamentalsPage  of 15195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 16 ---\n1. POWER OF THREE NUMBERS  “THREE GREAT FORCES RULE THE WORLD: STUPIDITY, FEAR AND GREED." ALBERT EINSTEIN 
+FundamentalsPage  of 16195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 17 ---\nINTRODUCTION TO PO3 The power of three numbers is a concept that has fascinated people for centuries. These numbers, often referred to as "triplet numbers," are said to hold a special power and signiﬁcance, and have been revered by many cultures throughout history. But what are these mysterious numbers, and how can we use them to unlock the secrets of the universe? We will learn how to calculate and understand these special numbers. First, let's start with a brief history of the power of three. The concept of triplet numbers can be traced back to ancient civilisations, where they were often associated with spiritual or religious signiﬁcance. In many cultures, three was seen as a perfect number, representing balance and harmony. The power of three was also prevalent in the mythology of many ancient cultures. In Greek mythology, the number three was associated with the goddess of wisdom, Athena, and the god of war, Ares. In Hindu mythology, the number three was considered sacred and represented the three worlds of creation, preservation, and destruction. But the power of three is not just limited to ancient history and mythology. In modern times, the concept of triplet numbers continues to be revered and studied by people all over the world. From mathematics and science to art and literature, the power of three can be found in many diﬀerent ﬁelds. FundamentalsPage  of 17195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 18 ---\nOur focus will be on ﬁnance, where we are talking about accumulation, manipulation, distribution. 1Now that we've learned a bit about the history and mythology surrounding the power of three, let's delve into how to calculate and understand these special numbers. 
+ AMD cycle is a concept introduced by ICT1FundamentalsPage  of 18195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 19 ---\nCALCULATING POWERS OF THREE In mathematics, a power of three is a number of the form 3n where n is an integer – that is, the result of exponentiation with number three as the base and integer n as the exponent. You can also calculate the result multiplying the number 3 x times.  3 x 3 = 9The result, 9, is the power of three for the integer 2, or written as 32  We can continue this process for any number we choose. For example, the powers of three for the integer 5 would be: 3 x 3 x 3 x 3 x 3 = 243In excel, a powers of the number three is calculated using the following formula: power(3, integer)Depending on your asset, the powers of three result you get from your calculation is either expressed in pips or in points.  For example, a ﬁxed dealing range for foreign exchange asset (fx) EURUSD might be 243 pips (35), while a Nasdaq futures symbol is expressed in points, for example 81 (34) points. FundamentalsPage  of 19195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 20 ---\nFollowing are the PO3 numbers your will need to remember going forward. You will see how these numbers are being used to determine PO3 dealing ranges (more on this later in the book), and also can be used to identify stop runs or intermediary moves inside larger ranges. NumberRange313329332734813524336729372187386561391968331059049311177147312531441
+FundamentalsPage  of 20195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 21 ---\n2. GOLDBACH LEVELS  “NOW IF 6 TURNED OUT TO BE 9 I DON'T MIND, I DON'T MIND” JIMI HENDRIX 
+FundamentalsPage  of 21195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 22 ---\nWHAT IS GOLDBACH Goldbach's conjecture is one of the oldest and best-known unsolved problems in number theory and all of mathematics. It states that every even natural number greater than 2 is the sum of two prime numbers. 2So how does Goldbach come into play in our day to day trading? We go with the premise that price will be inside a pre deﬁned dealing range. This dealing range will be 100%. The number 100 is just the percentage of a range. A full range is 100%, hence the number 100. A Goldbach partition are 2 primes that when added them together give the result of 100. For example, 1 Goldbach partition is the number 3 and it’s counterpart number 97. 3 + 97 = 100. An even number can have more than 1 Goldbach partition. For the even number 100 we can determine 7 Goldbach partitions. We can use a goldbach calculator to ﬁnd all pairs for a given number for us.  Source: wikipedia2FundamentalsPage  of 22195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 23 ---\nBelow is a screenshot for all 2 primes that added together form the number 100 
+FundamentalsPage  of 23195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 24 ---\nWhen we represent the Goldbach partitions inside a table format, we end up with following table: 
+You can see that for each partition, the discount number and the premium number add up to the number 100.  These partitions also explain market symmetry. The low number together with the high number (for example 11 and 89) are symmetrical opposed to each other. Because we go with the assumption that a dealing range is expressed in percentage (%), each step from 1 prime number to the next prime number, for example a move from a discount prime number 11 to the next prime number 17 is also expressed in percentage. Apart from the second partition - which jumps with 8 percent (from 3 > 11 = 8, as is the move from 97 -> 89) - you will see that most partitions are 6 percent apart from each other, where the 5th and 6th partition will jump 12 steps at once. The partitions that are 12 percent will be divided in 2 as well, so they form 2 partitions of 6 percent too. The middle of this PartitionDiscountPremium1010023973118941783529716415974753
+FundamentalsPage  of 24195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 25 ---\n12% block, divided in 2 will also a an interesting level, and because they are no price number per se, I call the non Goldbach levels. But even these non Goldbach numbers have interesting characteristics. The non Goldbach numbers are 23-77 and 35-65. Now 23, is a prime number itself. 35, 65 and 77 are not. But they are semi primes.  35 can be expressed as 5 x 7, both primes 65 can be expressed as 5 x 13, both primes 77 can be expressed as 7 x 11, both primes. So although they are not part of the Goldbach partitions, they provide interesting levels too in our trading range. An interesting fact is that, when you stack two 100% ranges on top of each other, you will see that the partition 1 of the current dealing range - which is 3 percent (from 0 > 3 or from 100 -> 97) - combined together with partition 1 of the next dealing range (be it a full 100% range below or above the current range) - which is also 3 percent - will also create a “block” of 6 percent. So now we already have number 3 for the power of three ranges and make up our dealing ranges, and number 6 which separates the Goldbach partitions. This is the real rejection block. 
+FundamentalsPage  of 25195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 26 ---\nIn the beginning in the book I referred to ICT as an inﬂuence that triggered the creation of this book. If you study his work, you will notice that the Goldbach partitions have a remarkable coincidence with his PD areas. 
+We now identiﬁed the Goldbach levels we calculated for the number 100. The 7 pairs make up the premium and discount levels.  You will also see that the levels are 6% apart from each other, apart from the top and bottom.  Goldbach numberPD area0HIGH3REJECTION BLOCK11ORDER BLOCK17FAIR VALUE GAP29LIQUIDITY VOID41BREAKER47MITIGATION BLOCK53MITIGATION BLOCK59BREAKER71LIQUIDITY VOID83FAIR VALUE GAP89ORDER BLOCK97REJECTION BLOCK100LOW
+FundamentalsPage  of 26195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 27 ---\nRejection block is only 3% apart from the high/low, and the order block is 8% apart from the rejection block onwards.  You will also notice that the array where the liquidity void is (the 29/71 Goldbach partition), the levels are 12% apart. This is the nature of a liquidity void, as this is where there is most of the time a large one direction move, which is what we expect due to the 12%. To map the levels to ICT’s concept, like rejection block, order block, we take the value of the level just below it until the current value.  So for a rejection block, we take 0 -> 3 or 100 -> 97, for an order block we take 97 -> 89 or 3 -> 11 and so on. 
+FundamentalsPage  of 27195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 28 ---\nWe will use these Goldbach levels as the “institutional levels”. In order to plot the institutional level, we will use a standard ﬁb tool, but the levels will not be the standard ﬁb levels, but rather the Goldbach levels. Below you can ﬁnd the values to put in your ﬁb tool. The 35/65 and 23/77 pairs are non Goldbach values, and I don’t put them on the chart most of the time. 
+FundamentalsPage  of 28195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 29 ---\nTHE LOGO ICT hinted in a tweet that his logo is: 
+a sequence 
+A set of numbers that unlocks it all The set of numbers are Goldbach. In the image you can see the premium (black) circle, the discount (white) circle and the inner (back) circle.  The Goldbach numbers align with all of ICT pd areas.  Have a look at the top. It’s what he calls ERD or basically the rejection block and order block of the next range.  The ERD (orange line) is the FAIR value of the next range.  When price moves “outside the range”, it’s allowed to run to this fair value.  
+FundamentalsPage  of 29195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 30 ---\nIt’s a PO3 stop run, or a turtle soup entry.  
+FundamentalsPage  of 30195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 31 ---\nMIDDLE OF GOLDBACH BLOCKS A Goldbach block is the area in between 2 consecutive Goldbach levels. For example the area in between level 11 and level 17 is a Goldbach block. As a refresher, each Goldbach block is typically 6% of a range, the second block is 8% (from 3 -> 11 or 97 -> 89). And we have the 12% blocks, which are basically 2 6% blocks separated by the non Goldbach level. But each Goldbach block can be divided in 2 separate areas too (a discount and premium area) as well, and those levels will be sensitive support and resistance areas too. In the next screenshot you will see how the Goldbach levels (full lines), the non Goldbach levels (dashed lines) and the middle block levels (dotted lines) act as support and resistance. 
+FundamentalsPage  of 31195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 32 ---\nFurther evidence ICT is using Goldbach can be found using following methodology. You will hear him speak about inversion a lot of times. Like an inverse fair value gap, an inverse (failed) order block will become a mitigation block or a breaker, and so on. Now where does this come from you say? As we’re using Goldbach, we’re also going to inverse the numbers, and skip the extremes of the range, so skip 0 and 100. But we will take the non Goldbach numbers into account. 
+FundamentalsPage  of 32195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 33 ---\nBelow of the table with the inverted Goldbach numbers: 
+Now you see we have a few new numbers: 14, 32, 38, 56, 74, 79, 92, 95, 98. The avid reader will already see a pattern here.  We have Goldbach numbers 11 and 17. What ﬁts in the middle here? 14, the inverse number. Goldbach numberInverse NumberIn set?33Y1111Y1771Y2332N2992N3553Y4114N4774N5335Y5995N6556N7117Y7777Y8338N8998N9779N
+FundamentalsPage  of 33195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 34 ---\n29 and 35 (non Goldbach)? -> 32 35 and 41? -> 38 There are just a few exceptions when we reach the extreme of the range. The number in between and 77 and 83 should be 80, but we found 79. Also the higher we go the more exotic the numbers become. We have the standard 97, but you will see also 92, 95 and 98. When you study ranges long enough, let’s say a long (upside movement) range, you will see erratic price action at the range extreme. Some people call it search and destroy, or account killers. The inverse Goldbach numbers explain this behaviour. 
+FundamentalsPage  of 34195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 35 ---\n3. DEALING RANGES  “HOME ON THE RANGE” BREWSTER HIGLEY 
+FundamentalsPage  of 35195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 36 ---\nWHAT IS A DEALING RANGE A dealing range is a price range which we will use to trade within. This price range will be 100%, and this is where we will create Goldbach levels inside.  Inside this range, price will typically do a number of things: 
+Consolidate: price will stay ﬂat, it will not move much higher or lower 
+Move away: when price breaks out of the consolidation, it will expand away, either higher or lower, typically towards the high or low of the dealing range 
+Retrace: typically price doesn’t move one sided way only. When price tries to reach the dealing range high or low, it will do so in a zigzag way. Let’s say price want to reach the dealing range high. It will expand by a certain percentage (let’s say 10%), and than retrace a little bit (let’s say 3%), to continue its path up towards the dealing range high 
+Reverse: when price reaches the dealing range high or low, it typically reverses to go back inside the range again. Typically price will stay inside a certain dealing range for a period of time. When it reaches the high or low of the dealing range, it will potentially do a stop run (run an old high or low, and go back into the established range. When it doesn’t do this, it might go to a next dealing range, be it the dealing range above or below. FundamentalsPage  of 36195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 37 ---\nIn the next pages we will learn about 3 diﬀerent types of dealing ranges: 
+Fixed intended dealing range 
+PO3 dealing range 
+Goldbach dealing range But ﬁrst we need to learn about range expansion and contraction. 
+FundamentalsPage  of 37195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 38 ---\nEXPANSION AND CONTRACTION As you learn in the ﬁrst part, the PO3 number will play an important role in dealing ranges. Expansion and contraction is where our PO3 numbers come into play.  Expansion is when we go from a lower PO3 number to the next higher PO3 number.  For instance, we expand from PO3 number 27 towards PO3 number 81. On the other hand, when we do a contraction, we will move from a higher PO3 number towards a lower PO3 number. For instance, we contract from the PO3 number 729 towards PO3 number 243. 
+FundamentalsPage  of 38195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 39 ---\nPO3 DEALING RANGE A PO3 dealing range is utilising the PO3 numbers combined with the Goldbach levels inside them. Typically a PO3 dealing range is large enough to ﬁt all the Goldbach levels inside, and provide still enough room to trade those Goldbach levels as support and resistance. You want to see 2 or 3 reactions on the Goldbach levels for a given day. If you see more reactions on diﬀerent lines, your PO3 number is set to low. You want to do a PO3 expansion towards a larger PO3 number. On the other hand, when you only see 1 or maybe no reactions on the Goldbach levels, your PO3 number is set too large, and you want to do a range contraction towards a lowed PO3 number. To setup a PO3 dealing range, use a large enough PO3 number, deﬁne a ﬁb tool with the prime numbers deﬁned earlier in the book (the Goldbach partitions). 
+FundamentalsPage  of 39195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 40 ---\nOPTIMAL PO3 DEALING RANGE HOW TO DETERMINE Like explained above, you want to typically see only a handful of reactions on a given day at the Goldbach levels.  Remember, these Goldbach levels are the institutional levels, and deﬁne your support and resistance levels, or your supply and demand zones if you will. I would suggest to open a 1 Hour chart, and play with the PO3 dealing ranges (a PO3 number with Goldbach levels inside).  
+FundamentalsPage  of 40195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 41 ---\nPO3 TOO LOW On the Nasdaq chart, we choose the PO3 number 729 with Goldbach levels inside.  As you can see, there are multiple hits for a given day. Although the levels provide nice reactions - you can see price stops for a brief moment at a Goldbach levels, or even reverses at the levels - these are “too many lines”. For most people this will lead to analysis paralysis.  Will price reverse here, or will it continue. This happens too many time per day. 
+You will need to do an expansion towards a higher number. This can be 1 PO3 number higher, or maybe 2 or even 3 PO3 numbers. FundamentalsPage  of 41195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 42 ---\nPO3 TOO HIGH In this chart, you clearly can see that there are hardly any reactions for most days. Only 1 session we touched a level, and that’s basically it. We will need to do a PO3 contraction towards a lower PO3 number. This can be 1 PO3 number lower, or even multiple PO3 numbers lower.  
+FundamentalsPage  of 42195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 43 ---\nOPTIMAL PO3 This is what an optimal PO3 dealing range looks like. 
+  You can see 2 to 3 reactions per day max, and this is what you typically are looking for.  It’s good to note I do monitor the PO3-1 and the PO3+1 levels as well on a diﬀerent chart. The PO3-1 number is a PO3 number lower (contraction) than your optimal PO3 number The PO3+1 is a PO3 number higher (expansion) than the optimal PO3 number. In our example the ODR (optimal PO3 dealing range) is 2187.  The PO3-1 will be 729, the PO3+1 will be the 6561.  You will see that sometimes a level on the PO3-1 or PO3+1 is being respected, while it just fell short on the ODR level. This will come with experience. You might want to plot the ODR and PO3+1 (in a diﬀerent color) on a chart, and monitor the PO3-1 on chart next to it. FundamentalsPage  of 43195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 44 ---\nGOLDBACH DEALING RANGE  A Goldbach dealing range is actually a fractional dealing range, utilising the Goldbach levels inside a normal PO3 dealing range. The PO3 number of the PO3 dealing range should be large enough, else you end up again with “too many lines”. We will draw a new Goldbach ﬁb (the one you use inside the normal PO3 dealing range), but now in between 2 Goldbach levels of the main PO3 dealing range. Below’s chart is Bitcoin with a 177147 PO3 dealing range turned on. You can see current price action is sitting in between the 53 and 59 levels of the main 177147 PO3 dealing range. 
+FundamentalsPage  of 44195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 45 ---\nWhat we now do, is draw a Goldbach ﬁb in between the 53 and 59 level, and this will end up with more Goldbach levels.  
+I like to use this technique to scalp on a lower timeframe. You can see that the fractal Goldbach levels (and the middle of the Goldbach blocks) are being respected equally well. 
+FundamentalsPage  of 45195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 46 ---\nINTENDED DEALING RANGE CONCEPT This is a concept I use with new assets like Bitcoin for instance. Every asset has an intended dealing range. A range that will be used for years or even decades.  For mature assets, like currencies for instance, this intended dealing ranges was already determined years or decades ago. For new assets like bitcoin, they are still creating the intended dealing ranges, and there will be clues on what the ﬁnal intended dealing range will be. When the intended dealing ranges is established, it will trade inside this ranges for decades, and an expansion towards a higher intended dealing range is a very rare occurrence. Price will do range expansions over multiple years to ﬁnally end to the intended dealing range. Price will move from one PO3 number, trade inside this range, and ﬁnally break out the range, do a PO3 expansion, and will trade inside the larger range. It will do this a number of times, until the ﬁnal PO3 number is established. FundamentalsPage  of 46195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 47 ---\nTHE BIRTH OF AN INTENDED DR We will look at Bitcoin on how this process comes to fruition. Here you see the birth of Bitcoin. It was trading inside the 243 PO3 dealing range. It rejected the 243 range high (brieﬂy went over it, but the bodies closed inside the range). 
+The next chart shows how price moved outside the 243 PO3 dealing range, so range expansion dictates the next range is 729. You can see it trade to to 729 high, to reject and move back to the middle of the range. Only to brutally reject the middle and do another range expansion towards 2187. 
+FundamentalsPage  of 47195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 48 ---\nYou will look for clues on what range they are going to create. First they will consolidate in the second Goldbach block (from 3 -> 11, the blue shaded area).  Next they will do a expansion away from this block, and leave some kind of gap inside the third Goldbach block (the green shaded area from 11 -> 17). Price will continue upwards until they hit Goldbach block 5 or 6 (max the middle), and price will return towards Goldbach block 2 or 3. From there you will see a rapid expansion, potentially towards the PO3 dealing range high. Below screenshot is showcasing the 177147 PO3 dealing range.  
+FundamentalsPage  of 48195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 49 ---\nIt’s always good to wonder if the current PO3 dealing range (here 177147) is the intended dealing range, or if they will do another range expansion to the next PO3 number, 531441 in this case. As you can see, they are creating a large consolidation inside the second Goldbach block, and creating a gap inside the third Goldbach block, so it is likely the intended range will be 
+531441. This technique doesn’t work only for the newer assets (like crypto for instance), but also for stocks for example. 
+FundamentalsPage  of 49195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 50 ---\nWhen you move from 1 PO3 number to the next one, it’s always good to keep an eye on another range as well. This range can be deﬁned as  (PO3+ next PO3)/2 So for example, when we move from the 81 towards the 243 range, we calculate the hidden range as: (81+243)/2 = 324/2 = 162 This accounts for 2 stacked 81 ranges. In below example we have Bitcoin. This moved from the 59049 range, so the next range is 177147.  But it’s always good to keep an eye on the (59049+177147)/2 = 118098 as well. 
+FundamentalsPage  of 50195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 51 ---\nEXAMPLES Below is an example of GBPUSD, since the price it prints (1970). 
+We use the PO3 number 3 here, so the intended dealing range goes from 0.0 towards 3.0 Inside this IDR, we draw a Goldbach ﬁb and you can see how all major reaction points and swings since the beginning originated at the Goldbach levels. 
+FundamentalsPage  of 51195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 52 ---\nBelow is the chart for Microsoft stock. 
+You can see they are driving price towards the 729 high.  We created a block (down candle) in the second zone, and a gap in the third zone. We paused a little bit in the middle zone, and did some retrace to zone 5, where it found support. 
+FundamentalsPage  of 52195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 53 ---\nTRADING DEALING RANGES When the intended dealing range (IDR) is established, we want to trade inside this range. You have 2 ways to trade inside the IDR: 
+Use the Goldbach Dealing Range (GDR) 
+Use the Optimal Dealing Range (ODR) 
+FundamentalsPage  of 53195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 54 ---\nGOLDBACH DEALING RANGE Here you are going to use the Intended Dealing Range. This range is very large in size typically, and the Goldbach levels inside will be wide apart. In between the Goldbach levels of the IDR, we will use the fractal Goldbach Dealing Range.  This means were are going to draw another Goldbach ﬁb in between 2 Goldbach levels of the main (IDR) range. For example, below is the Microsoft stock again (with an IDR of 729). 
+We draw a Goldbach ﬁb in between 2 Goldbach levels, in the example here we used the 59 and 53 level. 
+FundamentalsPage  of 54195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 55 ---\nFIXED OPTIMAL DEALING RANGE There are 2 variations you can use this.  The ﬁrst one is the original ODR, and is calculating the current range from base 0. So the start of price.  This is using ﬁxed partitions (they will be on the same place all the time.  Another variation, and this is the one I mainly use, is with a dynamic anchoring point. This point changes every day. To use the ﬁxed ODR, we need to ﬁnd a way to know where we are inside the IDR. Now, we will use PO3 partitions starting from base 0, so start at the 0 level.  This can be 0 for crypto, stocks, … or 0.0 for forex. In order to calculate the dealing range partition we’re currently in for our asset – be it fx, indices, crypto, … – we need to have following variables: 
+current price 
+the most optimal power of three number. Read the part on how to calculate the optimal PO3 dealing range, previously discussed in the book We’re going to draw a ﬁxed range, using 2 lines, which will delineate our optimal PO3 dealing range.   For the current price, we’re just going to open a chart, and take the price that’s currently printing. Now, we’re going to calculate the current PO3 dealing range low and high. For this, we take the current price, and remove the decimal point, if there is one.  FundamentalsPage  of 55195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 56 ---\nWe are also only interested in the integer part for anything not forex related (metals, us indices, commodities, …) For forex we use the ﬁrst 5 numbers, and ignore the decimal point. AssetCurrent PricePrice to takeEURUSD1.2345912345SP5004032.84032Bitcoin23589.423589DXY124.45612445Gold1921.781921
+FundamentalsPage  of 56195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 57 ---\nNow that we have our base price to use, all we need is the power of three number we deﬁned as optimal (in the previous part).  Use the following formula to calculate the low of the current ﬁxed dealing range. dealing range low = floor(current price / optimal po3 number) * optimal po3 numberThe ﬂoor function is of importance here. It will take only the integer number, and disregard the fractional part.  If we don’t do this, we will end up with the same number as we started with.  Eg. 12345 divided by 243 = 50,802469135802469 We are only interested in the number before the decimal point, i.e. 50. 
+FundamentalsPage  of 57195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 58 ---\nEXAMPLES Using the ﬂoor function in for example excel, you take the current price, divide it by the power of three number, and you only take the integer part, ignoring the fractional part. current pricepo3 numberResultﬂoor ( current price / po3 number)Dealing range low1234524350,80246913580255050*243= 1215040328149,77777777777784949*81 = 396923589218710,7860082304527102187 * 10 = 21870
+FundamentalsPage  of 58195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 59 ---\nNow that we have deﬁned our dealing range low, we can calculate the dealing range high.  We just take the dealing range low and add the power of three number we used in our formula above to it.  So let’s say we are calculating the dealing range high for our EURUSD asset.  We determined above that the PO3 dealing range low for our 243 PO3 range was 12150. We add the 243 PO3 number to it, and we get a dealing range high of 12150+243 = 12393 dealing range high = dealing range low + po3 numberThe last step we need to do is to put back the decimal point, at the position it originally was, if the asset was forex related.  In our EURUSD example, the decimal point was after the ﬁrst position, so we get following dealing range low and high for our 243 PO3 range dealing range low  = 1.2150dealing range high = 1.2393
+FundamentalsPage  of 59195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 60 ---\n#friendofhopi inception made some stunning screenshots to highlight the stacking of ODR’s. 
+FundamentalsPage  of 60195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 61 ---\nDYNAMIC OPTIMAL DEALING RANGE Ever since I release the “Twin Tower Trade Plan”, which can be downloaded here (https://hopiplaka.gumroad.com/l/demystify_ict), you learn about the importance of time, more speciﬁcally 1 time reference point.  This time reference point is diﬀerent per asset, but it is based on the daily settlement of the asset. It is also know as the daily ﬁx price.  We will use this reference point to attach our Goldbach dealing range to it, and more speciﬁcally the middle of the Goldbach ﬁb.  Earlier you learned on how to get the most optimal PO3 number, and it will be pretty much easy to see which one to use, if you use this mechanism. 
+FundamentalsPage  of 61195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 62 ---\nEXAMPLES In this example we use the PO3 729 range, and attach it to the ﬁx price for NQ. This one is calculated the last 30 seconds before 16:00 ET. You can see how price consolidates during the overnight session, and later does the expansion, retrace, reversal pattern as explained by ict. You can see how the ﬁx price acts as a magnet to price, as well as the Goldbach levels (and the CE/MT in between the levels).  
+FundamentalsPage  of 62195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 63 ---\nNORMAL PO3 STOP RUNS Power of three stop runs can come into 2 shapes.  Either it’s a real stop run of the buy - or sell side liquidity.  You’ll typically see a stop run of the liquidity resting under an old low or above an old high of 3, 9, 27, 81, 243 pips, depending on the time frame. Or price stops at a certain level, most likely a dealing range high or low, and will create a wick of a PO3 size, so a wick of 3, 9, 27, 81, 243 long. If this is the case, you now have a valid rejection block, and the open or close of the rejection block can be used to enter a trade. Later in this book you can read some additional information about PO3 stop runs. Have a look for the external range delimiter section. I like to see PO3 stop runs within a PO3 dealing range of the smaller number, like 3, 9, 27.  Certainly when there’s a short term high or low just resting under a Goldbach level.  This is something I heavily use in my personal trade plan.. For PO3 stop runs outside of the current size optimal dealing range, I like to see a stop run of that PO3 - 2 level. So let’s say we’re using a PO3 729 dealing range, I like to see a PO3 - 2 = 81 stop run. FundamentalsPage  of 63195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 64 ---\nReason for this is that the stop run level aligns with the next or previous PO3 partition’s Order block level, where the fair value will start (GB level 11 and 89). Below is a 729 PO3 dealing range with the 81 stop run levels marked in orange. 
+Use following settings to mark the PO3 dealing range stop run levels. 
+FundamentalsPage  of 64195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 65 ---\n 
+Above you can see the 27 pip stop run on the sell side liquidity.  Price rejects, breaks an old short term high, forms an OTE to go long. 
+FundamentalsPage  of 65195 2025.03
+A 27 PO3 stop run
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 66 ---\nAbove you can see an up close (green) bar with a large wick. This wick comes in the form of a 27 PO3 size. This conﬁrms our rejection block, and the next candle can be used to enter a long position.  The trade closed the gap/traded into a breaker.  
+FundamentalsPage  of 66195 2025.03
+A wick of a PO3 number
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 67 ---\nSTDV PO3 STOP RUNS Another form of PO3 stop runs are less visible. They act as standard deviations form the ﬁx price we discussed in the dynamic PO3 range.  From the ﬁx price, we will add and subtract PO3 sized levels. They will act as support/resistance levels as well during the day. In the below screenshot we draw lines up and down from he ﬁx price. Every 27 handle we draw a new line. When you are a scalper you will ﬁnd that these levels react brilliantly during the day. 
+FundamentalsPage  of 67195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 68 ---\nYou can increase the PO3 size (81 in the following example) if you are more of an intraday trader,  
+Again, if you want to understand ﬁx prices, read my other book, which touches on this subject.  You can get it here: https://hopiplaka.gumroad.com/l/demystify_ict 
+FundamentalsPage  of 68195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 69 ---\nPO3 LIQUIDITY The Goldbach levels are basically areas of price where we will expect a reaction. Consider them your institutional levels, your support resistance, your supply/demand zones. Now, you will very often see that we run short of the Goldbach level, leaving liquidity.  I consider the Goldbach levels the “real” support and resistance levels, and expect price to at least hit them.  So when you see price stops a PO3 number (typically 3 or 9 pips/handles) short of a Goldbach level, expect we will see a PO3 stop run to clear this liquidity.  So we might have 3 pips liquidity short of a Goldbach level, and a 9 pip stop run into the Goldbach level to clear this liquidity. Liquidity comes in the form of: 
+gaps of PO3 size 
+Order blocks of PO3 size 
+Stops under a short term swing low or above a short term swing high. The swing will be PO3 pips/handles short of a Goldbach level 
+FundamentalsPage  of 69195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 70 ---\nHere you can see price created a short term low, short of the Goldbach level.  This is your PO3 liquidity. Price drove back up, to later drive down, with a 9 pip PO3 stop run, into the Goldbach level, clearing out the 3 pip PO3 liquidity. So the paradigm here is:  1: We want to see a Goldbach level 2: that is not traded to yet, and a short term low or high is created above or below the level, of a certain PO3 size 3: and this liquidity is later run using a PO3 stop run 
+FundamentalsPage  of 70195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 71 ---\nGETTING TO KNOW PO3 DEALING RANGES Before you continue with the next chapter, it is a good idea to get familiar with the PO3 dealing ranges.  One might want to create a chart with just a number of dealing range partitions on it, for a given number.  So only with the high and lows on it, and see how order blocks are getting created around these levels, and how gaps are created in the middle of the partitions.  
+Above is a screenshot of EU with a number of 81 PO3 dealing range partitions on it.  You can see the order blocks and gaps, and how they act as support and resistance. In the next part, we will deﬁne the PD areas inside these partitions, in order to not get lost, focus on this part ﬁrst. FundamentalsPage  of 71195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 72 ---\nAUTOMATE If you ﬁnd it diﬃcult to calculate the optimal power of three dealing range, and add the Goldbach levels to it, there are some #friendsofhopi members who created indicators for it. Promuckaj indicator: PO3-Goldbach levels: https://www.tradingview.com/v/c4ARhDtc/ Dmn’s indicator: https://www.tradingview.com/v/AxFWFClY/ If you like this, consider buying him a coﬀee: https://www.buymeacoﬀee.com/fxdmn Hoplaranges: Easy to draw multiple stacked ranges on top of each other. https://www.tradingview.com/v/HFg3FpTn/ Decodeman ADR/AWR: Easy to use ADR/AWR calculation https://www.tradingview.com/v/NvglLa1d/ Also check the #indicators channel pinnend messages for more goodies if you are a member of the #friendsofhopi discord server. 
+FundamentalsPage  of 72195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 73 ---\nWHAT YOU LEARNED IN THIS CHAPTER 
+What are Power of three numbers 
+How to calculate PO3 dealing ranges and calculate the most optimal ones to use for your trade plans 
+Understand PO3 partitions 
+What does it mean to stay in the range 
+What are PO3 stop runs and how they work in concert with PO3 liquidity 
+What is range expansion and contraction 
+How this will be the building block which we will reﬁne further I SEE T(HR)EE… EVERYWHERE 
+FundamentalsPage  of 73195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 74 ---\nCHEAT SHEETS CALCULATING OPTIMAL PO3 SIZE 
+Remember: “big boys”  trade with Daily and weekly chart in mind 
+Check the W, D or 4H chart for the last couple of weeks 
+If you are a position trader, use the D or W charts. For scalpers, day traders, use the 4H chart 
+Move the rectangles around, 
+Use a few PO3 sized rectangles: 81, 243, 729, … and see what PO3 size the most obvious swings are, where the most obvious reaction points are 
+Use this PO3 going forward 
+Do this every month to calibrate price with current action 
+FundamentalsPage  of 74195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 75 ---\nCALCULATING DEALING RANGE 
+Your PO3 number you’re going to use is calculated in previous cheat sheet 
+You determine the current price. Open a chart for your asset and just take the price that currently prints 
+Don’t make it complex by using 00:00 EST open price, Friday’s range, … Current price is enough 
+Determine your dealing range low using the formula deﬁned above in the book using the PO3 number and the current price 
+Now with the calculated dealing range low, add your PO3 number, this will be your dealing range high 
+Include a decimal point again if the formula said to remove it, at the exact same place 
+FundamentalsPage  of 75195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 76 ---\nWHEN TO DO RANGE EXPANSION 
+If price goes out of your dealing range 
+And does a PO3 stop run regularly, (eg you have a 243 dealing range, with a 27 PO3 stop run) 
+This can indicate 2 things. 
+Either your dealing range is too small, and you need to recalculate the most optimal dealing range 
+Or your dealing range is still in line with the optimal PO3 size, and price will move to the next partition 
+If price is consolidating, will see often PO3 stop runs, and price goes back into the range 
+This might indicate you are in the middle part of a larger PO3 range, eg a 243 PO3 dealing range, and you are in the middle 81 PO3 partition 
+FundamentalsPage  of 76195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 77 ---\nHOW TO USE GOLDBACH Ok, so now you learned about PO3 dealing ranges to identify a large enough range, and you learned how to draw the Goldbach levels inside this dealing range. Now, how to apply these? Well, that depends entirely on what type of trader you are. Are you interested in trading the levels from a wireframe perspective, than you follow the story of price. Each Goldbach level will tell you what to look for. Are you inside the OB range (3 -> 11 or 97 -> 89) you look for an order block to form.  In the breaker block zone? Look for a breaker to form. You either look at the left of the chart if price created the speciﬁc block in the past, or you wait for price to create one for you.  If you do not see the corresponding block to form in the zone you are in, you probably have not a valid block.  No order block in the OB zone? No trade using a nonexistent order block. Now, this story of price ﬂow is to be used with following trade style: FundamentalsPage  of 77195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 78 ---\nLONG TERM OR POSITION TRADER 
+You look for the look back partitions, you deﬁne your yearly AMD cycles, and you wait to trade from a block. 
+No PD area block, no trade. 
+You will have to use a large enough PO3 range (2187, 6561, …) 
+Use the look back trade plan at the end of the book 
+FundamentalsPage  of 78195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 79 ---\nOSOK TRADER OR SHORT TERM TRADER 
+You deﬁne a dealing range of adequate size (for instance 243, 729), and you follow the story of price. 
+This means you will probably need to wait a couple of hours or days before the setup forms. 
+Ideal setups form inside a manipulation cycle, either the main one, or a fractal one. You also want to see a PO3 stop run into a Goldbach level 
+Use the OSOK trade plan at the end of the book 
+FundamentalsPage  of 79195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 80 ---\nDAY TRADER 
+You do not attach a story of price to the Goldbach levels, but you just trade the levels as support and resistance. 
+The ﬂow can go from Goldbach level to Goldbach level, from Goldbach level to a non Goldbach level, or the other way around, but never from a non Goldbach level to a non Goldbach level, as there will always be the liquidity void level in between 2 non gb levels 
+For further reﬁnement, and to see what algorithm is in play, you can draw a new Goldbach ﬁb in between the 2 Goldbach levels (one can be a non gb) of interest. 
+Ideal setups form inside a manipulation cycle, either the main one, or a fractal one. You also want to see a PO3 stop run into a Goldbach level 
+You enter at a Goldbach level and exit at the next Goldbach level (one of which can be a non gb level) 
+You use the my personal trade plan at the end of the book 
+FundamentalsPage  of 80195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 81 ---\nSCALPER 
+You do not attach a story of price to the Goldbach levels, but you just trade the levels as support and resistance. 
+You enter at a Goldbach level and you exit at a previous swing 
+Step 1: Wait for price to hit a Goldbach level Step 2: Wait for price to break a short term high/low Step 3: Enter at a retrace at the Goldbach level. If it doesn’t touch, no trade Step 4: Exit at previous liquidity 
+Aim for 5 to 10 pips 
+FundamentalsPage  of 81195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 82 ---\nWHAT YOU LEARNED IN THIS CHAPTER 
+What is Goldbach 
+What are Goldbach partitions 
+How to map the Goldbach partitions to levels inside a dealing range 
+What is consequence encroachment and mean threshold and how do they relate to Goldbach 
+External range delimiters and where PO3 stop runs come into play I JUST GAVE YOU GOLD… BACH 
+FundamentalsPage  of 82195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 83 ---\nCHEAT SHEETS GOLDBACH LEVELS 
+Goldbach levels are partitions of 2 primes that added together form an even number 
+We use the number 100, as this is 100% of a range 
+There can be more than 1 Goldbach partition for an even natural number 
+We are looking for 7 Goldbach partitions, 1 for each price area.  
+They come in pairs, so a premium and discount number 
+This deﬁnes your market symmetry, balanced price, … 
+We use the standards Goldbach numbers and also 2 other sets (with a premium and discount), we call the non Goldbach numbers 
+“Order blocks” and gaps will form around the Goldbach numbers 
+Non gb numbers will see imbalances formed around them, and there is one above and one below the liquidity void level 
+Goldbach numbers are the basis for the 2 algorithms, which we determined using a tweaked Tesla Vortex, discussed in the Time and Price part of the book 
+FundamentalsPage  of 83195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 84 ---\nTIME 
+FundamentalsPage  of 84195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 85 ---\n3. LOOK BACK PARTITIONS  “FROM THE CALM MORNING, THE END WILL COME WHEN OF THE DANCING HORSE THE NUMBER OF CIRCLES WILL BE NINE.” NOSTRADAMUS 
+FundamentalsPage  of 85195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 86 ---\nINTRODUCTION The look back partition is where the number 9 comes into play.  We just use a sequence of the number 9 to deﬁne our partitions that make up the look back anchor points, but we ignore the ﬁrst number 9. As to why we ignore the ﬁrst 9 (and another one later in the sequence), this will become clear in a moment. The sequence we will use is: 18-27-36-45-54-63-72-81-99-108-117-126 This sequence is to be used on the daily chart, and delineate the partitions.  We will break the numbers of the sequence in 2 parts: 
+the ﬁrst digit in case the complete number < 100, else we take the ﬁrst 2 digits. This will make up the month 
+The last digit. This will make up the day of that speciﬁc month 
+FundamentalsPage  of 86195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 87 ---\nWe will come up with following table 
+The days of the speciﬁc month will make up our anchor points, so it’s best to open a daily chart, and draw 12 lines for the year, given the speciﬁc day for the month. Should a day fall on a weekend, you use the following trading day, typically Monday following the weekend.  If for example you need to draw the vertical line for May the 4th, but this day falls on a Saturday, you would draw a vertical line for Monday the 6th for that speciﬁc year.  NumberMonthDay18January827February736March645April554May463June372July281August199September9108October8117November7126December6
+FundamentalsPage  of 87195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 88 ---\nYou’ll now understand why we don’t use the numbers 09 and 90, as there is no Month 0 with a day 9, and there is no day 0 in the 9th month. Now we have deﬁned the partitions, marking up the look back partitions, it’s time to put them in action.  At the start of the new partition, we look for a clue based on the speciﬁc number of that partition.  For example, if we started the partition for the month of October, we will use the number 108. With this number (108 in this case), we will look for a stop run of 108 pips in any of the previous 3 partitions (the 20-40-60 look back).   What is also possible is that you don’t need to look for a stop run, but that you’ll ﬁnd a FVG of this amount of pips The last possibility is that there’s an order block in close proximity, with this size (108 for October). At the start of the new look back partition, you typically look for the ﬁrst few trading days of the new partition to hit either the liquidity, the fair value gap or the order block. Later in the book you will learn about Goldbach Time for a trading day, but we’re going to use something similar here. We expect price to aggressively trade away (reverse) from this point, and we expect a PO3 stop run on the opposite direction.  This PO3 stop run can be either a real liquidity stop run, or when you see a PO3 size wick, it’s possible this wick is used as a target.  FundamentalsPage  of 88195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 89 ---\nWhen the PO3 stop run occurred, you’ll typically see that price goes back into the trading range deﬁned for the current partition. 
+FundamentalsPage  of 89195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 90 ---\nHIPPO You’ll ﬁnd references to HIPPO in the following examples.  This is an “invention” of mine, to demonstrate that if you understand the Goldbach price levels, you can create any trading system around it, give a concept a name of your liking.  That’s why I came up with the HIPPO: H: HIDDEN I : INTERBANK P: PRICE P: POINT O: OBJECTIVE Basically, a HIPPO is a “hidden” order block, where you take the wicks of 2 consecutive bars.  You do not take any 2 bars, but the bars should create a fair value gap. 
+FundamentalsPage  of 90195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 91 ---\n 
+Above you can see 2 green candles. The second candle didn’t ﬁll in the ﬁrst gap, and the next candle (the red indecision candle) also formed a gap.  When we attach the top of the wick of the ﬁrst candle to the bottom of the wick of the second candle, you can see a “hidden” order block forming.  You can also see that this HIPPO oﬀered support later on (and also closed the top FVG. 
+FundamentalsPage  of 91195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 92 ---\nWhen studying HIPPO’s you will often ﬁnd that they are created: 
+around CE levels. This will give a good indication a CE level will hold in the future, or it will be re-used later on 
+Around the non Goldbach levels. Remember, non Goldbach levels are created to “split” the liquidity void zone into 6% blocks.  So there will be a non Goldbach level above, and one below the liquidity void level (71/29). Typically you will also see HIPPO’s form around these levels. An even more interesting observation you will make is that these (potentially) 2 HIPPO’s will be the trigger for a break away gap and a measuring gap. This is also the area where imbalances will occur. 
+FundamentalsPage  of 92195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 93 ---\nHIPPO’s are just like order blocks, they can be reclaimed in the future, or they can act as a reverse HIPPO, just like when an order block becomes a mitigation block, when it is traded through. In below example you can see a HIPPO, which was ﬁrst traded to, to create the high.  But later, when price was traded down, and went straight through the HIPPO (both fair value gaps were breached), price retraced back up, into the HIPPO sensitive point, which is where the close of the ﬁrst candle matches the open of the next candle that make up the HIPPO.   
+FundamentalsPage  of 93195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 94 ---\nGOLDBACH TIME IN LOOK BACK PARTITIONS Later in the book you will learn about Goldbach Time for a given trading day, but we’re going to use something similar here. You learned that you are looking for clues that price will be supported be the look back partition number. And that this should happen the ﬁrst couple of days after the partition starts. We understand the partitions are build using the number 9. Now, where does Goldbach come into play here? We will be looking for the number 11, a Goldbach number.  We want to look for the day in a given month that - when we add the day number and the month number together - we get the number 11.  For instance, January is month 1, we need to add 10 to get 11, so although the look back partition for January starts on January 8th, we expect the clue to hit on January 10th. When we count the look back day as Day 1, this will be the third bar (Goldbach number 3) when the look back partition starts. We expect the stop run to occur when we reach day 11, or day 17. Also both Goldbach numbers. FundamentalsPage  of 94195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 95 ---\nOne way to identify the key level is to use following technique: You take the open price of last month’s look back day. So for instance, on March 6th, you take the open price of February 7th. Now, we will draw a new Goldbach ﬁb based on the opening price, and we will add 10% and subtract 10% from this opening price. This will give you a range high and low, and these will provide critical levels which can be used for the look back period. 
+In the above screenshot, prices are “cast forwarded” by 1 month. So we will use last month’s price action for the current look back month.  Tomorrow’s news, today so to speak. FundamentalsPage  of 95195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 96 ---\nUsing Goldbach time, as a reminder, we will look 3 days after the look back window open for a high or low to form. This 3rd day should be a Goldbach number ideally, or a CE level.  So in below example, a low was formed at March 11th, so 3+11 = 14 = CE level. 
+11 to 17 days later you look for an opposite swing, preferably with a stop run on liquidity. 
+FundamentalsPage  of 96195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 97 ---\nEXAMPLES All examples are for the year 2022 and 2023. The charts are printed in portrait mode, but to facilitate printing and make annotations, there’s a separate document in the discord forum. Have a look at the #bookofhopi channel. 
+FundamentalsPage  of 97195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 98 ---\nJANUARY 8TH LOOK FOR NUMBER 18 In January, which is the ﬁrst month of the year, we should start at the 8th.  This is however a weekend day, so we will take the ﬁrst Monday following this day, so we arrive at January the 10th.  We are still looking for either gaps or stop runs of 18 pips just when the new partition starts. 4 trading days into the new partition, we can see a 18 pip gap residing 2 partitions ago (40 day look back) When we hit this level, price breaks down, and it does a 81 PO3 stop run, triggering the reversal in price.  
+FundamentalsPage  of 98195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 99 ---\nThe 18 pip wick was touched on January 10th, which is 11 Goldbach time. The high came in after 17 days. 
+FundamentalsPage  of 99195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 100 ---\nFEBRUARY 7TH LOOK FOR NUMBER 27 February, the second month of the year, we will start at the 7th. We are looking for a 27 pip stop run or a gap. On the 4th trading day, we see we hit the 27 pip stop run of the previous partition. Price breaks down, and does a 243 PO3 stop run, closing the current partition, and be ready for the March partition.  
+FundamentalsPage  of 100195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 101 ---\nThe volume imbalance was hit on February 9th, or again 09+02 = 11 GBT.  11 days later, the low was in. 
+FundamentalsPage  of 101195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 102 ---\nMARCH 6TH LOOK FOR NUMBER 36 March, the 3rd month of the year, we look to start at the 6th. Immediately out of the gate, we took out the previous partitions low with 36 pips.  The draw on liquidity was the bearish order block of 81 pips , but before we reached there, we ﬁrst left a 36 pip gap. The order block was later traded to just before the partition closed.  
+FundamentalsPage  of 102195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 103 ---\nStops were run on March 8th, of GBT 11. Both a high was made on day 11 and day 17. 
+FundamentalsPage  of 103195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 104 ---\nAPRIL 5TH LOOK FOR NUMBER 45 In the 4th month, we are looking for 45 pips, starting at the 5th of the month. Price left at the start of the partition, creating a 45 pip gap, which was tested multiple times.  Should you have look for a 45 pip sell side stop run, you could see a nice +100pip reaction from it, but ultimately it failed. After the failed swing, you can witness a 243 PO3 stop run  
+ FundamentalsPage  of 104195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 105 ---\nWick was used, 1 day too late for the GBT 11 entry point.  Highs were made 11 and 17 days later. 
+FundamentalsPage  of 105195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 106 ---\nMAY 4TH LOOK FOR NUMBER 54 May, the 5th month where we look for 54 pip stop runs or gaps, is interesting. We can see a nice gap of 54 pips but what’s interesting is there is a HIPPO to it, which is used as the reaction point.  You can also witness the 54 pip gap below the HIPPO, so the HIPPO is made out of 2 54 pip gaps.  When the HIPPO triggered the sell oﬀ, we did a 81 PO3 stop run, where price reversed and headed to another 54 pip gap in the previous partition.  
+FundamentalsPage  of 106195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 107 ---\nBit of a special one, you can take Friday or Monday due to the weekend, as the GBT 11 was on the weekend.  But you can see how they used to block to drive price down.  The low came in 17 days later. 
+FundamentalsPage  of 107195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 108 ---\nJUNE 3RD LOOK FOR NUMBER 63 Here, on the 6th month, price traded into a 63 pip order block created in the previous partition.  The rejection block was used to drive price down,  Should you not see this order block, and were looking for the 63 pip sell side stop run, you will have a failed swing (and potential loss).  Price sold oﬀ into a PO3 rejection block (the wicks are 27 PO3 number), and price reversed.  It reversed into the HIPPO which was created at the top of the failed 63 swing.  
+FundamentalsPage  of 108195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 109 ---\n ERD was respected and rejected. Bit of a late delivery, but you can still see the stop run and the 11 and 17 days later in play. 
+FundamentalsPage  of 109195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 110 ---\nJUL Y 2ND LOOK FOR NUMBER 72 The partition for the 7th month should start on the 2nd, but as this was a weekend, we use the following trading day, which was Monday 4th 2022. If you missed to see the 72 pip order block which was created at the end of the previous partition, you will face a loss when the 72 stop run block was ran through. A HIPPO was created at the bottom of the 72 pip stop run, and we saw a 243 PO3 stop run straight from the HIPPO. Price ran back into the HIPPO after the 243 PO3 stop run on the sell side occurred.  
+FundamentalsPage  of 110195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 111 ---\n Gap was used at GBT 11 to drive price higher. 11 days later price made the high, and reversed. 
+FundamentalsPage  of 111195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 112 ---\nAUGUST 1ST LOOK FOR NUMBER 81 August, the 8th month was a beautiful setup.  We did the 81 pip stop run of the buy side liquidity of a swing created in the previous partition. Price sold oﬀ, and we did a 81 PO3 stop run of the sell side liquidity of the previous partition.  
+FundamentalsPage  of 112195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 113 ---\nYou can see Summer months eﬀect in play. Price was consolidating, and you could use either premium block, or the discount (combined) blocks.  17 days later gave the low, but you can really see the choppy price action. 
+FundamentalsPage  of 113195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 114 ---\nSEPTEMBER 9TH LOOK FOR NUMBER 90 - 99 Now, the 9th month is something special. We should take day 0, but obviously there is no day 0, so we add 9 again, and arrive at 99.  Here we saw a nice 99 pip stop run of a swing created in the previous partition, and price sold oﬀ.  By now, you know the drill. You look for a PO3 stop run, which came in as a 243 PO3 stop run. Price returned back into a bearish order block. 
+FundamentalsPage  of 114195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 115 ---\nBreaker block was used to drive price down. 11/17 days later gave the lows. 
+FundamentalsPage  of 115195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 116 ---\nOCTOBER 8TH LOOK FOR NUMBER 108 October, the 10th month we are looking for a 108 clue.  This one is a bit special, because we used a redelivered rebalance gap.  Price was oﬀered to the buy side, and we did a 81 PO3 stop run. Price went back to the top of the 108 block.  
+FundamentalsPage  of 116195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 117 ---\nMean threshold of the block was used to drive price higher. 17 days later was the high of the month. 
+FundamentalsPage  of 117195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 118 ---\nNOVEMBER 7TH LOOK FOR NUMBER 117 Here, on the 11th month we used a 117 pip gap.  You could see price do an impulsive move just before we start November’s partition, creating the gap.  We just fell short of a 243 PO3 stop run of the 60 day look back ( 3 partitions ago ).  
+FundamentalsPage  of 118195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 119 ---\nMitigation block was used, GBT 11 drove price higher.  11 days later, the high was in place. 
+FundamentalsPage  of 119195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 120 ---\nDECEMBER 6TH LOOK FOR NUMBER 126 The last month of the year is a bit special, as this is a consolidation proﬁle most of the time. We could see a nice 126 pip stop run on the highs of the previous partition (20 day look back).  The PO3 stop run was under the current partition low, which is a hallmark for the consolidation proﬁle. Also note that the partition for December runs into the ﬁrst trading days of the next year  
+FundamentalsPage  of 120195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 121 ---\nThe large gap was used, at GBT 11, to drive price higher. High was made 11 days later. 
+FundamentalsPage  of 121195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 122 ---\nWHAT YOU LEARNED IN THIS CHAPTER 
+What is a HIPPO 
+How to deﬁne the look back partitions using the number 9 
+Map the look back partitions to the correct days and months 
+How to look for clues that triggers range expansion using the number 9, from the start of a new look back partitions, by using Goldbach Time 11 number 
+How to anticipate reversals using PO3 stop runs, typically 11 or 17 days after GBT 11 
+FundamentalsPage  of 122195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 123 ---\nCHEAT SHEETS HIPPO 
+A 2 bar pattern with 2 gaps 
+We attach the wicks of the 2 candles together, to reveal a “hidden” order block 
+Ideal HIPPO’s should have a same size gap, preferably a PO3 number on both sides 
+They are very strong support and resistance levels 
+They typically happen inside the Liquidity void zone, or in the Smart money reversal of a MMxM 
+FundamentalsPage  of 123195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 124 ---\nDETERMINE LOOK BACK PERIOD 
+Calculate the year range by starting at the number 18 
+Add 9 each time until you reach 126 
+Number 90 will be skipped 
+These number represent 2 things 
+1: The Month + day a look back partition starts 
+2: The number you will need to use for this look back partition 
+This is a longer term view, i.e. a month, and we can look back multiple months (preferable maximum 3) 
+You can use this technique for position trades 
+It will deﬁne your bias for the current month 
+Step 1: You deﬁne your start and end of the partition, eg. March 6th 
+If this days falls on a weekend, take next Monday 
+You can use AMD cycles in this range 
+Step 2: you know the number for the month, you deﬁned this on the ﬁrst bullet points 
+Using this number, you will look for clues, in the beginning of the partition (or the A cycle) 
+Clues are: gaps, order blocks, wicks, liquidity runs, HIPPO’s  of this number 
+This will be your trade entry point 
+Step 3: We look for an opposite PO3 stop run. So not using the number of the month, but a 3, 9, 27, 81, … stop run 
+This can happen either in the look back partition M cycle, or the fractal M cycle of the main D cycle 
+FundamentalsPage  of 124195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 125 ---\n4. AMD CYCLE  9-6-9, THE NUMBER OF THE BEAST IRON MAIDEN (TWEAKED) 
+FundamentalsPage  of 125195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 126 ---\nINTRODUCTION When you look at a trading day or year, you can witness some patterns.  You an see that price is delivered in 3 part, which can be represented as a small circle with a bigger circle to the left and right of it. 
+This represents your Accumulation, Manipulation and Distribution cycle 
+FundamentalsPage  of 126195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 127 ---\nWhen we take our beloved PO3 numbers, and consider 1 trading year, we exactly end up with what ICT always hinted:  
+There are roughly 52 trading weeks in a year, with 5 trading days per week (forget about crypto here).  This accounts for 260 trading days per year.  But we are interested in PO3 numbers, so this gives us 260 - 243 = 1717 days is pretty much the amount of trading days of December, and we learned from the tweet that December “resets” the trading range.  This will give us for the yearly AMD range: Accumulation: January to April (the left big circle) Manipulation: April to May (the inner - smaller - circle) Distribution: May to November (the right big circle) Now, when you look closely, you can see that each circle is made up out of 3 other AMD circles.  FundamentalsPage  of 127195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 128 ---\nSo each of the 3 circles which make up the AMD phase, has their own AMD cycle in it. Read more about this in the Fractal chapter. We can do the same like we did above to layout the yearly expectations, but now for a given day. Below is information for forex (and crypto) related settlement. This is using concepts from the CLS settlement window, and the timings are in CET, as this is the timeframe CLS operates in.  For indices, I’m currently monitoring 18:45-18:45 EST, but this book will be updated with the correct information in due time. We are using the CLS timings for this, so a true day goes from 20:00-20:00 CET, which is 19:00-19:00 BST or 14:00-14:00 EST  
+You can see there that we have an accumulation phase during the Asian session, the London session breaks out of the Asian consolidation and retraces back into the FundamentalsPage  of 128195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 129 ---\nconsolidation during the manipulation phase (and forms the Judas), and price is being distributed during New York.  
+FundamentalsPage  of 129195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 130 ---\n The main manipulation session matches the London Open session, and runs from 05:00 CET - 11:00 CET, which is 23:00 EST-05:00 EST. You will notice this is a 6 hour window.  The asian session and the New York session are the accumulation phase and distribution phase respectively, and are 9 hours long, again a reference to the 3 (sessions) and 6 and 9 (hours). So to summarise: Accumulation (or A): Asian Range Manipulation (or M): London Open Distribution:  This is typically divided into 2 separate cycles:  D1: New York  D2: London Close FundamentalsPage  of 130195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 131 ---\nNow, I told you that we can break each phase into smaller AMD phases, as price is fractal.  So if we look for instance at the manipulation phase of the above screenshot, we can ﬁne tune it using the smaller AMD cycle  
+You can see the accumulation phase, this is violated (market structure shift) and retraced back into (to form an OTE).  After the retrace into the consolidation of the accumulation phase, we expand into a pool of interest (liquidity, fvg, …) At this moment, we will reverse price. You will see that the reversal will typically be in the middle of the distribution cycle. 
+FundamentalsPage  of 131195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 132 ---\nNow if you think: 'This looks pretty familiar, but I can't put my ﬁnger on it'...  
+Combine this with what we explained with the symmetry of Goldbach partitions, or the mirroring, and you’ll have a nice layout of price. 
+FundamentalsPage  of 132195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 133 ---\nFRACTAL  We can use a fractal AMD inside the main AMD cycle, using following numbers.  In tradingview you can use the ﬁb time zone tool. The 0.81 is the middle of the distribution cycle and you’ll see a retracement or reversal happening there very often 
+FundamentalsPage  of 133195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 134 ---\nPrice is fractal, so like described in the previous part, every cycle can be divided in their own AMD cycle, and this can again be ﬁne tuned into AMD cycles.  So per main cycle (A, M, D) you would potentially end up with 9 sub cycles. 
+FundamentalsPage  of 134195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 135 ---\nHOW TO USE AMD I like to remap the 3 main phases of the AMD cycle into the following words: A: Accumulation = Analyse M: Manipulate = Mark D = Distribute = Deliver or Deal with it So in analyse phase, I like to see what the market is up to. This is your typical Asian range, and we’re looking what they’re up to. Next, in the Mark phase, this is where I want to enter the market. This is where my focus is, and I want to enter here typically. This is the London Open session.  As explained, I want to get in at the middle of the manipulation phase, but I’m ﬂexible. We will learn about distortion of time in the next part, so no big deal if we do a stop run into a Goldbach level by the end of the manipulation cycle. The last phase is the delivering cycle, where we need to deal with the position we took during the manipulation cycle. Like you know, this is typically delivered in 2 phases, and we are cautious for potential reversals here, in line with either a reversal day, or a London close day to get back into the range. FundamentalsPage  of 135195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 136 ---\nDISTORTION OF TIME My favourite setups occur during the Manipulation cycle. This can either be the main M cycle (London Open), or one of the fractal AMD cycles.  I want to see the PO3 stop run happen in the middle of the M cycle. This should hit (or just pass) a Goldbach level (so a run into the institutional level). All of this with a PO3 size run, like we learned.  If this run however fails to run into a Goldbach level, but this happens either in the beginning, or towards the end of the M cycle, I consider this as distortion of time.  
+FundamentalsPage  of 136195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 137 ---\nCANDLE COUNTING 7- 13-21  
+One of the new ideas in town is candle counting. Now why does this work, you ask? When we take a time range, and we use the daily chart here, and we draw an AMD cycle in between the look back partition (you can see 2 partitions here), you will see that the AMD cycles generally align with the: 7 for the end of the A cycle 13 for the end of the M cycle 21 for the end of the D cycle FundamentalsPage  of 137195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 138 ---\nWHAT YOU LEARNED IN THIS CHAPTER 
+How to really interpret the circles in the logo 
+Map the circles to the Accumulation, manipulation, distribution phases 
+How the AMD cycles are fractal 
+How to lay out the yearly AMD cycle 
+How to use the Logo and AMD cycles for a given day, using CLS timings 
+Map the AMD cycle to market maker models 
+Why does candle counting work, but you need to have the proper anchor point 
+FundamentalsPage  of 138195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 139 ---\nCHEAT SHEETS AMD CYCLES 
+We have 3 main cycles inside a year, or a month 
+For the year we take the PO3 number, so a year consists out of 243 trading days (roughly 52 weeks * 5 trading days) 
+The remainder of the total trading days - 243 = December yearly range reset 
+To use it for the day, we start at 20:00-20:00 CET, or 14:00-14:00 EST 
+Also for the day there are 3 main sessions A = Asian Range M = London Open D = New York 
+The D cycle can be divided in 2 cycles, D1 and D2 We are wary for reversals in D2, or in D1 if the M cycle was large 
+Each main AMD cycle can be divided into a fractal AMD cycle, and once more (so 3 fractals) 
+Preferably we look for a M cycle to create a high or low for the day, and this exactly in the middle 
+We want to see in this M cycle, a PO3 stop run into a Goldbach level 
+This can be either in the ﬁrst 1/3 or the last 1/3 of the M cycle, this will be considered distortion of time 
+In the fractal M cycle, look either for PO3 stop runs in line with the daily order ﬂow 
+Or look for reversals, mainly in the D2 cycle, or after a large main M cycle FundamentalsPage  of 139195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 140 ---\nTIME AND PRICE 
+FundamentalsPage  of 140195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 141 ---\n5. GOLDBACH ALGORITHMS  HARDEST TIME TO LIE TO SOMEBODY IS WHEN THEY’RE EXPECTED TO BE LIED TO ALAN TURING 
+FundamentalsPage  of 141195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 142 ---\nFirst a word of warning: The algorithms are the advanced part of the book. If you don’t get a ﬁrm grasp of how PO3 dealing ranges work, how to use the Goldbach levels inside these, and witnessed the reaction points during the M cycle, it’s is too early to start using the algorithms. Now that the warning is out of the way, let’s talk about the 2 algorithms that we can see when we use a modiﬁed Tesla Vortex.  We understand Goldbach levels now, but how do we get to the 2 Goldbach algorithms you wonder?  Well, we are going to use a Tesla Vortex, but we base the calculation of our modular multiplication on the numbers we discovered here in this book. We understand that price action delivers using PO3 numbers (the number 3), and Goldbach levels.  We also identiﬁed the 14 diﬀerent Goldbach levels, which are the lines that make up the 7 Goldbach partitions of the number 100 (our full dealing range in percentages) So we will feed this in our vortex calculator: Modulus: 14Multiplier: 3
+FundamentalsPage  of 142195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 143 ---\n Now this is very interesting. We have 2 sets of data, one that starts with the number 1, and another one that starts with the number 2. And interesting, one of the price patterns that you can ﬁnd on the internet is the MMxM.  MMxM: is either a Market Maker Buy Model or a Market Maker Sell Model FundamentalsPage  of 143195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 144 ---\nSo we have 2 sets of data: Blue path: 1 -> 3 -> 9 -> 13-> 11 -> 5 Orange path: 2 -> 6 -> 4 -> 12 -> 8 -> 10 If we map this to our Goldbach values we found, where 1 = 0 = high, 2 = rejection block, 3 = order block, … We get following 2 mapped Goldbach algorithms 
+FundamentalsPage  of 144195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 145 ---\nMarket Maker x Models  
+FundamentalsPage  of 145195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 146 ---\nTrending models  
+FundamentalsPage  of 146195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 147 ---\nWhen we put it in text, we get the following ﬂow ALGO 1HIGH/LOWORDER BLOCKOPPOSITE BREAKEROPPOSITE REJECTION BLOCKOPPOSITE FAIR VALUELIQUIDITY VOIDALGO 2REJECTION BLOCKBREAKERFAIR VALUEOPPOSITE ORDER BLOCKOPPOSITE MITIGATION BLOCKOPPOSITE LIQUIDITY VOID
+FundamentalsPage  of 147195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 148 ---\nNow we understand how we need to create the dealing ranges (using the PO3 numbers), and we understand the levels inside these dealing ranges (using Goldbach), and we understand that price is oﬀered by any of the 2 algorithms, we can get to work.  In the below screenshot, we identiﬁed for the EURUSD chart, the current 729 PO3 partition.  This partition runs from 1.0206 towards 1.0935, or the 14th 729 partition from base 0.0  14*729=10206 (dealing range low)10206 + 729 = 10935 (dealing range high)-> add decimal point for EURUSDWhen we put the range low and range high in our calculator, and we specify this is a 729 range, we can calculate the path using the Goldbach levels. 
+Using algo 2 for a bullish scenario, you can see that price is respecting the levels outlined by our algo. FundamentalsPage  of 148195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 149 ---\nYou can see in the screenshot that an order block was created, a fair value accompanied by it, price returned into the OB+FVG, price expanded away above equilibrium, price retraced back and was mitigated around equilibrium. We consolidated a little while, and price was aggressively expanded into the predeﬁned level to form the high of the algo, which is the premium fair value gap. To get a cleaner chart, you can ﬁlter out all the Goldbach levels that are not needed for the ﬂow of the speciﬁc algorithm. While we’re generally not calling tops and bottoms, using the po3 dealing ranges, Goldbach levels and the algorithm ﬂow, together with conﬂuences of what you’re about to learn with the look back partitions, it might reaﬃrm a change in direction  
+FundamentalsPage  of 149195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 150 ---\nSometimes when we are at the start (high or low) of a dealing range, it’s not clear what algo is forming.  A top tip here is to look at the past price action, to see where price comes from.  You look at the levels an algo makes up, and see if there was reaction from any of the levels to look for clues what algo will form.  
+Take for instance above screenshot. At ﬁrst, it’s unclear if algorithm 1 or algorithm 2 is in play. The clue here is to wait and see what algorithm will form.  You can later see that an algorithm 2 was forming, as price moved from the rejection zone to create a rejection block. From there on, you see the rejection being respected, and a retrace into the fair value zone, where you enter. Always take something oﬀ at the equilibrium. If an algorithm fails, it will probably be at the equilibrium. Nothing wrong with taking a good chunks out of the markets, and re-evaluate. There might be a diﬀerent algorithm running on a higher or lower timeframe. FundamentalsPage  of 150195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 151 ---\nFriendofhopi fx2020 was so kind to create visualisations of the Algo’s. ALGO 1 
+ ALGO 2 
+FundamentalsPage  of 151195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 152 ---\n6. PUTTING EVERYTHING TOGETHER  LOVE WILL TEAR US APART JOY DIVISION 
+FundamentalsPage  of 152195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 153 ---\nTHE MMXM, OTE AND ALGO Well, that was a long read, congratulations for reading until here. It sure contains a wealth of information. You might even feel overwhelmed by it.  So, how do we put this into practice? Well, I have you covered. We’re going to use my personal trading model, which is actually a MMxM.   For those of you who didn’t know, I started to use the MMxM description back in the old days on the forum, but it’s widely used now. MMxM stands for: 
+MMSM: Market maker Sell Model 
+MMBM: Market maker Buy Model What we are going to use here are: 
+2 Goldbach levels, preferably from a larger PO3 range, like 243 for instance 
+A PO3 stop run into a Goldbach level, this during one of the manipulation cycles, either the main one, or a fractal one 
+A breakdown from this Goldbach level, creating 2 PO3 sized gaps that make up the HIPPO 
+An understanding of consequent encroachment and what role it plays in the “market structure break” 
+How to map out the MMxM using the algorithm 1 FundamentalsPage  of 153195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 154 ---\n Above is the anatomy of a Market maker sell model, for EURUSD, January 26th 2023. The Goldbach levels you see here are based on the 243 PO3 dealing range. You can see the OTE play out here. We can break this down into following ﬂow: 
+stop run into a gb level 
+break down, creating 2 PO3 3 pip gaps with a HIPPO 
+Market structure shift at CE in between the gb levels, we didn't need to look for it ourself, the gb + CE did this for us 
+touch of the gb level - start of the MMSM 
+accumulate at the OB + FVG discount level 
+SMR in the FVG premium level 
+2 phases of distribution, at the gaps deﬁned by the HIPPO 
+aggressive sell oﬀ to target sell side liquidity, to complete MMSM What I like to see is that the PO3 stop run (of 3 pips in this example) occurs during a manipulation phase. This can either FundamentalsPage  of 154195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 155 ---\nbe the main M phase (London Kill Zone), or a fractal M phase (in the New York kill zone for instance). We want to see an aggressive sell oﬀ, and break the consequent encroachment that exists between 2 levels, preferable between the fair value gap Goldbach level (17/83)m and the liquidity void level (29/71) A HIPPO will form at the start of this sell oﬀ, and it will create 2 PO3 sized gaps around it.  The bottom (or top for a MMBM) will be the trigger to look for your MMxM, and is the initial consolidation of the model. This will be your baseline that triggers the algorithm, and from the algorithm teachings earlier in the book we understand that algorithm 1 need to start at the high or low Goldbach level, which is 0 and 100.  The next level of algorithm 1 will be the order block level (11/89), and typically you will see an order block form in between these levels.  We will move to the (premium in case of a MMSM) breaker level (41/59), and the algorithm will typically seek to want to come back to the discount liquidity void level (71/29) Price next expands to the rejection block, where the smart money reversal occurs, and the right side begins. You will than see 2 levels of distributions, around the 2 PO3 sized gaps that formed the HIPPO. The second distribution will trigger an aggressive sell oﬀ, to complete the MMxM. FundamentalsPage  of 155195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 156 ---\nOne can draw another Goldbach ﬁb in between the 2 main Goldbach levels, for further reﬁnement What this means is, we have identiﬁed the 2 main Goldbach levels and we take a standard Fibonacci tool, but with the Goldbach levels instead of the regular levels.  Now, this will reveal the wireframe we use to map the algorithm 1, and also explains the green box where it says “FAIR VALUE = OTE” in the previous screenshot. One will note that these ranges are no PO3 sized ranges, but rather 6% (standard Goldbach distance) or 8%( for the order block) of a PO3 dealing range.  
+FundamentalsPage  of 156195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 157 ---\nWhen we look into detail using only the Goldbach levels that are in play with the type of algorithm, this is what you will see 
+FundamentalsPage  of 157195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 158 ---\nGOLDBACH TIME At ﬁrst, when you look at the charts, you will see what appears to be random swing points.  But did you know there’s a rhythm here too?  Enter Goldbach time. When you closely look at the swing point, and examine the time it occurs, we can see an interesting phenomenon.  If you add the minutes to the hour of a swing high or low, you will see that they occur at a Goldbach number. So you’re interested in all the numbers that make up the Goldbach partitions: 3,11,17,29,41,47,53,59,71,83,89 and 97 + non gb numbers 35,65,23,77 For example: A swing low occurs at 09:02. When we add 02 to 09, we get 11, which is a Goldbach number, or a Goldbach Time. When the next swing low occurs at 10:07, which is 07 + 10 = 17, this is also a Goldbach Time. It’s good to note that we are a little bit ﬂexible here. We might be oﬀ with 1 minute.  When you see a swing form - which is a 3 bar pattern - it can occur that the left OR right candle of the swing is at the Goldbach Time number. You will also often see that - when the swing rejects a Goldbach Price level - price will create an OTE. This OTE will also be formed at a Goldbach Time number. This will also help you in determine the daily bias. If swing highs occur, but not at a Goldbach time, but the swing lows occur at Goldbach times, it’s probably an up day.  FundamentalsPage  of 158195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 159 ---\nWe can assume the highs will be run. You will need to use the timings for the times the asset settles in.  I like to trade forex, forex is settled using CLS, which runs in CET time.  US Indices are settled using EST time. Apply Daylight Savings Time (DST) when needed. Also it’s good to know we use the time in HH24 format, so it’s not 1PM but rather 13. 
+FundamentalsPage  of 159195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 160 ---\nNow that we have the Goldbach Price levels, the Goldbach Time levels, and understand how to use these to determine the bias, we can combine everything together. 
+In the image you can see that Swing highs occur at Goldbach Price levels. The swing lows do not occur at Goldbach Time levels, so our bias for the day is short.  We can also see that - although we create swing highs at the Goldbach Time levels - they do not occur at a Goldbach Price level. What does this mean? Well, this means we will probably see a deeper retracement, until we hit a Goldbach Price level at a Goldbach Time level. Good to note is also that - just like in Goldbach Price - we also have the concept of a Mean Threshold.  So if you see price touch a Mean Threshold level, it might very well be at a Goldbach Time Mean Threshold. In the above example you can see price touched a MT of the OB at 10:10 = 20, or the MT between 17 and 23.  FundamentalsPage  of 160195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 161 ---\nAnd this is your real grid, where Goldbach Time meets Goldbach Price. We can see a strong rejection from the Goldbach Price level at the Goldbach Time level. Now, this can also help us in identifying potential order ﬂow reversals.  In the example we are short, as all swing highs were created at a Goldbach Time, while the swing lows were not. But if you suddenly see swing highs are out-of-sync with Goldbach Time, and swing lows are respecting Goldbach Times, it’s very likely bias was changed, and you should be very nimble with shorts.  
+This will also help you in identifying the potential Judas swing for the day or session. FundamentalsPage  of 161195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 162 ---\nWHAT YOU LEARNED IN THIS CHAPTER 
+How OTE, MMxM and algorithm go hand in hand together 
+How to easily spot smart money reversals and the 5 stages of a MMxM 
+What is Goldbach Time and how can it help us to determine the daily bias IPDA I  PERSONALL Y  DEVELOPED  (THE)  ALGORITHM 
+FundamentalsPage  of 162195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 163 ---\nNow that you have learned how to deﬁne price using PO3 dealing ranges and Goldbach levels, and combine these with the AMD time cycle, you can focus on this algorithm.  There’s always a setup around the corner.. When you put your education focus on studying this setup, inside the manipulation phase, I’m conﬁdent that everything will click one day. That’s when you have graduated, and you will leave the nest of the #birdofhopi. Ready to spread the love..  All this hard work will pay oﬀ, and it’s time to make your loved ones proud. You can do it, I’m conﬁdent you will one day be the trader you want to be 
+FundamentalsPage  of 163195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 164 ---\nTRADE PLANS 
+FundamentalsPage  of 164195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 165 ---\nLOOK BACK TRADE PLAN A MONTHL Y PLAY FOR HUNDREDS OF PIPS  
+Use your current look back period 
+Identify the number in play 
+Inside the fractal Manipulation cycle of your main Accumulation cycle 
+You look for clues of the current look back partition number, be it: size of gaps, wicks, order blocks, liquidity runs 
+You enter the trade with a 30 pip stop loss, to have breathing room for a PO3 stop run (of 27 pips) 
+You exit at the opposite side of the trade, inside the main manipulation cycle, after a PO3 stop run, or when the manipulation cycle closes FundamentalsPage  of 165195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 166 ---\nHIPPO POT A MUS A TRADE PLAN FOR HIPPO'S 
+This trade plan deﬁnes how you trade HIPPO’s It consists out of following parts: 
+HIPPO: First you need to identify a HIPPO. Refer to the speciﬁc chapter to know what an HIPPO is 
+POT: Potential trade. You look for a swing high or swing low that is just trading above or below the HIPPO. This will put you on alert 
+A: Activate. When price take the liquidity under or above the short term high or low, and enters the HIPPO, we will enter our trade 
+MUS: Must hold. The fair value gap under or above the HIPPO Depending if you’re long or short) must hold. This is a perfect place to put a stop loss. But be mindful here, price might wick through during news events 
+Take Proﬁt: You take portions oﬀ at Goldbach levels FundamentalsPage  of 166195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 167 ---\nOSOK TRADE PLAN CATCH 50 TO 75 PIPS ONCE A WEEK 
+You want to catch the weekly range expansion 
+You draw an AMD cycle for the week, using market open to market close time window 
+You wait for the accumulation phase to be established 
+During the manipulation phase, you look for a PO3 stop run of the accumulation phase and retrace either into the accumulation phase, or expand away from it rapidly 
+Now you wait for a short term low or high to break 
+We want to see a retracement to form an OTE, at a Goldbach level (can be a non gb level) 
+You take proﬁt at 20 pips, 50 pips, and let the remainder go for 75 pips. Use Goldbach levels for logical take proﬁt areas FundamentalsPage  of 167195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 168 ---\nMY PERSONAL TRADE PLAN 24 PIPS PER WEEK 
+STEP 1 Inside a M cycle, either the M or a fractal M cycle (the image incorrectly say accumulation phase) 
+STEP 2 I look for a PO3 stop run (PO3 sized swing) under short term low or high (PO3 liquidity) INTO a Goldbach level (can be non GB level as well), where a HIPPO can reside Think of this as the unfulﬁlled range as discussed in the book 
+STEP 3 To enter the position with a 10 pip stop level 
+STEP 4 To target 24 pips into an opposite Goldbach level 
+I mainly trade this plan with the “large” zones, so the LV and BR zones, which contains the non Goldbach levels. FundamentalsPage  of 168195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 169 ---\nThe protocol for this model - which happens mostly on Tuesday, Wednesday and Thursday is the following, and based all on PO3 numbers. You will need to calculate the optimal PO3 number here (check the previous paragraph in the book, or use the auto function of dmn’s indicator). Let’s say we use 243 in this example. We are going to have the following numbers in mind: PO3: which is 243, and matches the average weekly range. PO3 - 1: which is 81, and matches the average daily range. PO3 - 2: which is 27, and matches the stop run we are looking for. PO3 - 3/4: which is 9 and 3, which is the liquidity we look for. As a reminder, this can be a block or gap formed around Goldbach levels, or liquidity in the form of stop under/above a short term low or high. Now, to put this plan in place, we’re going to use the PO3 or PO3-1 number to set the dealing range and Goldbach levels inside. This means we use either the average weekly or daily  range, mapped to PO3 numbers. I like the weekly range levels, and will target the daily range levels, so this means I like to take a good chunk from the PO3-1 range, or 24 pips in this plan. Next, you will look for a PO3-3 consolidation. This happens for forex during the night (CLS, so in CE(s)T time), or for US indices, during the night in US (18:00 EST/EDT). Next phase is to look for a fake move outside this consolidation. This will mostly be a PO3-3/4 number, so 3 or 9 pips in this case.  This fake move will be rejected immediately, and price will purge through the PO3-3 consolidation. FundamentalsPage  of 169195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 170 ---\nIt will retrace brieﬂy, and touch the consolidation again. When we see this pattern happening, we are going to hone our anticipation skills, and look for the PO3-2 stop run (27 pips) to occur, and clear the PO3 liquidity. The last phase is to enter the trade.  Either you’re going to trust the Goldbach levels, and enter right at the stop run level. Or you’re going to wait for conﬁrmation. Price will reject the Goldbach levels, and retrace. It will do this once more, and this is where you enter. So to conclude, we can summarise this: We’re going to take a trade based on the average weekly range PO3 number (243), to take a portion out of the average daily range PO3 number (81). We are looking for a PO3 consolidation (9), and look for clues for a good PO3 stop run (27). This stop run targets PO3 liquidity (3 or 9 gap, block, stops). We enter at the touch of the Goldbach level, or after a conﬁrmation. 
+FundamentalsPage  of 170195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 171 ---\nYou learned in the Goldbach chapter that the daily candles’ wicks and bodies are also Goldbach number in most cases. We can use this to our advantage to see if the stop run and Goldbach level we anticipate to hold, matches with a Goldbach daily projection.  We measure from the asset open time (check the chapter for the times), draw a price projection, and this should form a Goldbach number (in percentages), and it should closely align with the PO3 stop run level, and PO3 liquidity. In this case, the price projection was 0.17%, and aligned with the low we identiﬁed by the stop run and liquidity.  
+FundamentalsPage  of 171195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 172 ---\nWhen you’re not in the “in Goldbach we trust” camp, but want more conﬁrmation, you can draw a new Goldbach ﬁb (manually), and make sure to align 3 references points: A wick, and block and a gap. When price rejects the Goldbach level, and retrace, you will see that the Goldbach level it rejected, and the wick it creates during a retracement can be aligned to the 0/100 and 3/97 Goldbach levels.  You should see a block form in between the 3-11/97/89 levels and a gap in between the 11-17/89-83 level. This will reinforce our trade idea. This new (non PO3 sized) range, will give you reference points for where you can take partials of your trade. The trade is expected to the other side in ideal circumstances. 
+FundamentalsPage  of 172195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 173 ---\nTHE HIDDEN OTE TRADE PLAN USE OTE IN BETWEEN 2 GOLDBACH LEVELS 
+You want price to move away from a Goldbach level 
+You want to see it to breach the CE or MT level, and possibly the next Goldbach (can be a non GB level) too 
+You want to see price to retrace below (for longs = discount) /above (for shorts = premium) the CE/MT level 
+You enter at the OTE zone (62/70.5/79 ﬁb levels) 
+You target the opposite liquidity, or next untouched Goldbach level 
+I mainly trade this plan with the “large” zones, so the LV and BR zones, which contains the non Goldbach levels. These levels will be the CE we want to see break 
+FundamentalsPage  of 173195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 174 ---\nGB - THE OB TRADE PLAN USE THE ORDER BLOCK AND EXIT AT BREAKER 
+Use following gb levels: 3-11-41 and 97-89-59 
+You want to see price create an order block in between the 3-11 or 97-89 level, or close to it 
+You want to see a short term low or high created, which is raided when it expands away from the order block 
+Price will retrace back to the order block, or very close to it. This is where you enter. 
+Your take proﬁt should be at the breaker level (41 or 59) 
+This will gave you 24 pips in a 81 PO3 dealing range 
+FundamentalsPage  of 174195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 175 ---\nGB - THE BREAKER TRADE PLAN USE THE BREAKER AND EXIT AT HIGH/LOW 
+Use the breaker levels (59/71 or 41/29) and the high/low levels (0/100) 
+You want to see a breaker form in between the 59/71 or 41/29  
+After the breaker was created, and it expands away, you want to see a short term high or low been trade through 
+You enter back when price retraces to the 71/29 level 
+You exit at the high/low level (100/0) 
+This trade will give you 24 pips in a 81 pip DR 
+FundamentalsPage  of 175195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 176 ---\nGB: THE STOP RUN TRADE PLAN USE THE DEALING RANGE STOP RUN AND AIM FOR THE BREAKER 
+Gb levels needed: 59/71/100/111 or 41/29/0/-0.111 
+You want to see price come oﬀ from the high/low or just miss this level, so failed to touch the HL 
+You want to see a breaker to be formed in the breaker zone (59-71 or 29-41) 
+Price will expand away from the breaker to target buy side liquidity (short) or sell side liquidity (long), It should stop at, or close to, the PO3 dealing range stop run level 
+Price will then reject, and raid a short term low or high 
+When price retraces back, it should stop at the partition extreme (high/low), this is where you enter. Stop should be below/above the PO3 stop run level 
+Your take proﬁt is at the liquidity void level (71/29) for 24 pips in a 81 pips DR 
+You monitor if the breaker will become a “real” breaker  FundamentalsPage  of 176195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 177 ---\nGB: THE EQUILIBRIUM TRADE PLAN USE THE MITIGATION BLOCK AND EQUILIBRIUM 
+Price is hovering around the equilibrium levels (47/53) 
+There are clear buy and sell stops between the equilibrium and mitigation block levels (47/53) 
+When price hit one of the mitigation levels (47/53) you enter 
+You exit at the opposite mitigation level for 14 pips in a 81 pip DR 
+FundamentalsPage  of 177195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 178 ---\nGB: THE FVG TRADE PLAN USE THE FVG AND PROPULSION BLOCK 
+Gb levels: 0/100, 11/89 (Order block), 17/83 (fvg), 41/59 (Breaker) 
+Price will create an order block (can include the fvg zone as well), into the High/Low 
+Price will move away, out of the order block and fvg zone, and returns back into the fvg zone 
+It will create a propulsion block inside the fvg zone (but can go as high as the mean threshold of the order block zone). 
+When price breaks the propulsion block (buy/sell on stop), it will aggressively reprice lower/higher, into the breaker zone 
+It will leave a liquidity void, which will later be traded too FundamentalsPage  of 178195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 179 ---\nGB: THE EINSTEIN TRADE PLAN USE THE OB, L V AND FVG Ever wondered why you see following names being used on the internet to identify middle of things? 
+Equilibrium: middle of a range 
+Mean Threshold: middle of an order block 
+Consequent Encroachment: middle of a gap When you put the bold letters together you get: E = M (Times) C (Exponentiation) Or e=mc2 Or energy = mass times speed of light times 2 We want to see energetic moves, starting from the the consolidation. You want to see speed, creating FVG. If we consider the speed of light - namely 299 792 458 - group this large number into 3 times 3 digits, we get following numbers. These numbers can be divided by our PO3 number 27 (and we round them down), to get the levels we’re interested in. 299 / 27 = 11 = Order block level 792 / 27 = 29 = liquidity void level 458 / 27 = 17 = fair value level FundamentalsPage  of 179195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 180 ---\nSo to use this plan you want to see: 
+Ideally an order block form inside the order block zone 
+From the OB level (11/89), you want price to expand away, and create a break away gap. 
+Price should reverse at the liquidity void level (29/71) 
+And retrace into the FVG level (17/83). 
+The mean consequent encroachment (middle) of the FVG block should hold here. 
+Target - as this is speed of light exponentiation should be the mitigation block level (47/53). Reason for this is the distance between 11->29 = 18 long. We double this from level 29, and we arrive at 47. 
+FundamentalsPage  of 180195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 181 ---\nGB: TRADE PLAN OVERVIEW VISUALISATION OF THE GB TRADE PLANS #friendofhopi AT was so kind to provide a nice visualisation of all the Goldbach trade plans 
+FundamentalsPage  of 181195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 182 ---\nMISCELLANEOUS 
+FundamentalsPage  of 182195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 183 ---\nPO3 DR SHIFTING Sometimes it’s useful to do half shifting of a PO3 dealing range. Certainly when you compare 2 assets with the same PO3 DR, where 1 asset appears to be at the top/bottom of the range, while the other is in de the middle of the same size PO3 range.  When you 1/2 shift the “lagging” asset, things get aligned between the 2 assets, and you will see (Goldbach) SMT much clearer this way. Here is the image with the non shifted PO3 DR on it. As you can see price is hovering around the middle of the range.  At the same time, EURUSD was at the top of its dealing range. 
+ FundamentalsPage  of 183195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 184 ---\nNow we shifted the DR with 1/2 (dmn’s indicator can do this for you automatically) , and you can see how price came oﬀ from the low of the dealing range and is seeking higher prices. 
+FundamentalsPage  of 184195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 185 ---\nTHE END 
+FundamentalsPage  of 185195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 186 ---\nRISK MANAGEMENT  Most aspiring traders want to be all over the place, trading every asset possible, with all trading plans provided here in the book.  However, and certainly in trading, less is more.  Using asymmetric compounding you only need to have 3 winning trades to pass a standard prop trading channel.  If we use my personal trade plan, which has a 10 pip stop loss and a 24 pip take proﬁt, so a 2.4 RR, it only requires a risk of a quarter of a percent - yes 0.25% - of your initial balance to pass the challenge. Let’s assume a balance of 5000 USD Trade 1: We risk 12.5 USD (0.25% of the initial balance) to make 30 USD Trade 2: We risk again 12.5 USD (0.25% of the initial balance) but we will add the 30 USD we earned, so our risk will be 42.5 USD, to make 102 USD Trade 3: Now we will be risk free, and only use the money we made with trade 1 and trade 2, or 30 + 102 USD = 132 USD This trade will return 316.8 USD on successful completion. So we made - if we have 3 consecutive winning trades - 30 + 102 + 316.8 = 448.8, or 8.9%. Most prop ﬁrms have a requirement for phase 1 of 8%, so we should be good.  FundamentalsPage  of 186195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 187 ---\nACRONYMS TermExplanationICTInnercircletraderAMDAccumulation, manipulation, distributionPO3Power of threeHIPPOHidden interbank price point objectiveOTEOptimal trade entryMMxMMarket maker buy or sell modelIPDAInterbank pricing delivery algorithmGb levelsGoldbach levelsPD areaPremium and discount areas as deﬁned by ICT. Basically your Goldbach levels
+FundamentalsPage  of 187195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 188 ---\nIN CLOSURE  MONEY IS NUMBERS AND NUMBERS NEVER END. IF IT TAKES MONEY TO BE HAPPY, YOUR SEARCH FOR HAPPINESS WILL NEVER END.  BOB MARLEY 
+FundamentalsPage  of 188195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 189 ---\nEverybody need to start their journey at base 0 And it only takes 3 trades to put you on the path to proﬁtability After following my mentor for 11 years I came to understand I only know 17% of what my mentor knows 29 people helped me to ﬁll in the knowledge voids, you know who you are, I can’t thank you enough! At age 41 I ﬁgured out my mentor put out all of his knowledge up as a giant puzzle for us to solve But it was only when I was 47 I understood the importance of Goldbach numbers Now I turn 50, I want to pivot my knowledge and want to bring YOUR understanding to a premium level So you become the best version of yourself, and reach 100% of your capacity Numeri Veritatem Follow the #birdofhopi and spread the love for trading Hopiplaka 
+FundamentalsPage  of 189195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 190 ---\nBECOME AN AFFILIATE, FIGHT FRAUDULENT COPIES  AFFILIATION While I understand that this book will be copied and distributed over the internet, there are a few reasons not to do this.  Should you have obtained an illegal copy, understand that when you buy this book from our oﬃcial channel  , this will come with a number of beneﬁts: 
+this book evolves continuously, as a registered buyer you will receive new versions free of charge, accessible in the discord server 
+You will be invited to our discord server, where we do in-depth discussions, answer questions, have access to additional resources, … 
+You are eligible to request an aﬃliate link. In order to do this, go to the aﬃliate signup form on gumroad and apply for a position. Earning 30% commission on sales, when you successfully market 4 books, you have your original investment back. When someone presses your aﬃliate link, a cookie will be placed which is valid for 1 month. So even if they don’t decide to buy now, but later, you still get the commission, even if they buy through the oﬃcial channel. 
+And much more… FundamentalsPage  of 190195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 191 ---\nPURCHASING POWER PARITY We do understand that we cannot ask 1 price for all. What people earn in a day in one country, is someone else weekly or even monthly pay in another region. That’s why we enabled Purchasing Power Parity on the platform we use (Gumroad) to calibrate the prices to what is deemed fair in your region. Some regions get up to 90% oﬀ of the oﬃcial price, just to keep things fair. Some people paid 50% of the price of the original book on unoﬃcial sites, groups, … It might very well be that if you would have bought from our oﬃcial site, it would cost less than the amount you paid for a bootlegged version. 
+FundamentalsPage  of 191195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 192 ---\nJOINING TELEGRAM  You now can join the dedicated Goldbach telegram group where I will occasionally share more information or trade examples based on Goldbach. https://t.me/hopiplaka_goldbach If you have issues, hit me up at support@hopiplaka.com and I get you sorted.  
+FundamentalsPage  of 192195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 193 ---\nDISCLAIMER  This book is not trade advice. Trading in a live account is still the responsibility of the buyer of this book. We do not oﬀer trade signals, trade copying, not in this book, not in the discord group or on Twitter. There will also be no live trading oﬀered. This book if for education purposes only. All information in this book is hopiplaka’s interpretation of the teachings by Michael J Huddleston.  By no means we guarantee this book is “the truth”, “enigma”, “how ﬁnancial markets operate”, nor that it resembles any truth on what he teaches.  All references made to order blocks, fair value gaps, breakers, mitigation blocks, … are property of the innercircletrader, for detailed information you should visit innercircletrader twitter and YouTube channels.  Should you be interested in how I map teachings of ICT to the global ﬁnancial market, make sure to download my other work too (read the description for discount codes). https://hopiplaka.gumroad.com/l/demystify_ict  CFTC Risk Disclaimer FundamentalsPage  of 193195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 194 ---\nCOPYRIGHT © - HOPIPLAKA - 2012-2025 All rights reserved. No parts of this book may be copied, distributed, or published in any form without permission from the publisher. Access to telegram is personal, and by no means you’re allowed to copy (part of) the server over to other means. We have the right to terminate access to telegram and Gumroad should you do this, with no refund of the purchasing price, if any. For permissions, contact: support@hopiplaka.com. 
+FundamentalsPage  of 194195 2025.03
+Sold to
+benjamin.tunaru@gmail.com
+\n--- Page 195 ---\nTIMING PERSEVERANCE AND TEN YEARS OF TRYING WILL EVENTUALL Y MAKE YOU  LOOK LIKE AN OVERNIGHT SUCCESS BIZ STONE
+FundamentalsPage  of 195195 2025.03
+Sold to
+benjamin.tunaru@gmail.com

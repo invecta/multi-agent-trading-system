@@ -1,0 +1,93 @@
+{
+  "api_keys": {
+    "openai_api_key": "your_openai_api_key_here",
+    "alpaca_api_key": "your_alpaca_api_key_here",
+    "alpaca_secret_key": "your_alpaca_secret_key_here",
+    "alpaca_account_id": "your_alpaca_account_id_here",
+    "polygon_api_key": "your_polygon_api_key_here",
+    "newsapi_key": "your_newsapi_key_here",
+    "alpha_vantage_key": "your_alpha_vantage_key_here",
+    "pinecone_api_key": "your_pinecone_api_key_here"
+  },
+  "broker_config": {
+    "alpaca": {
+      "base_url": "https://paper-api.alpaca.markets/v2",
+      "websocket_url": "wss://paper-api.alpaca.markets/stream",
+      "sandbox": true,
+      "rate_limit": 100,
+      "timeout": 5.0,
+      "account_id": "your_account_id_here"
+    },
+    "demo": {
+      "enabled": true,
+      "simulate_execution": true
+    }
+  },
+  "trading_config": {
+    "symbols": ["EURUSD=X", "GBPUSD=X", "AAPL", "GOOGL", "BTC-USD", "ETH-USD"],
+    "timeframes": ["1m", "5m", "15m", "1h", "4h", "1d"],
+    "execution_mode": "paper",
+    "initial_capital": 100000.0,
+    "max_positions": 10,
+    "max_position_size": 0.05,
+    "max_portfolio_var": 0.02,
+    "max_drawdown": 0.10,
+    "stop_loss_percentage": 0.02,
+    "take_profit_percentage": 0.04,
+    "enable_alpaca": true,
+    "enable_demo": true
+  },
+  "market_data_config": {
+    "data_sources": ["polygon", "alpaca", "rest_api", "websocket"],
+    "update_frequency": 5.0,
+    "buffer_size": 1000,
+    "enable_orderbook": true,
+    "enable_tick_data": true,
+    "polygon": {
+      "base_url": "https://api.polygon.io",
+      "websocket_url": "wss://socket.polygon.io",
+      "rate_limit": 1000,
+      "timeout": 10.0,
+      "enable_real_time": true,
+      "enable_historical": true
+    }
+  },
+  "agent_config": {
+    "market_data_agent": {
+      "update_frequency": 5.0,
+      "buffer_size": 1000,
+      "enable_orderbook": true,
+      "enable_tick_data": true
+    },
+    "technical_analysis_agent": {
+      "strategies": ["trend_following", "mean_reversion", "momentum", "volatility", "statistical_arbitrage"],
+      "indicators": ["EMA", "ADX", "Ichimoku", "Bollinger_Bands", "RSI", "MACD"],
+      "signal_threshold": 0.7
+    },
+    "sentiment_agent": {
+      "nlp_model": "huggingface/transformers",
+      "vector_database": "pinecone",
+      "sentiment_threshold": 0.6,
+      "news_sources": ["reuters", "bloomberg", "yahoo_finance"]
+    },
+    "risk_manager_agent": {
+      "var_confidence": 0.95,
+      "max_drawdown_limit": 0.10,
+      "position_size_limit": 0.05,
+      "portfolio_var_limit": 0.02
+    },
+    "portfolio_manager_agent": {
+      "rebalance_frequency": "daily",
+      "max_positions": 10,
+      "position_sizing_method": "kelly_criterion",
+      "execution_delay": 0.1
+    }
+  },
+  "workflow_config": {
+    "parallel_agents": ["technical_analysis", "fundamentals", "sentiment"],
+    "sequential_agents": ["risk_manager", "portfolio_manager"],
+    "orchestration_method": "openai_swarm",
+    "langchain_integration": true,
+    "async_execution": true
+  }
+}
