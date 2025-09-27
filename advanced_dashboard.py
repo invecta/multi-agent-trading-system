@@ -4,7 +4,7 @@ Enhanced with Professional Analytics, Risk Management, and Advanced Charting
 """
 
 import dash
-from dash import dcc, html, Input, Output, callback_context
+from dash import dcc, html, Input, Output, callback_context, State
 import plotly.graph_objs as go
 import plotly.express as px
 from plotly.subplots import make_subplots
@@ -432,7 +432,10 @@ app.layout = html.Div([
     html.Div(id='tab-content', style={'padding': '20px'}),
     
     # Hidden div for PDF download
-    html.Div(id='pdf-download', style={'display': 'none'})
+    html.Div(id='pdf-download', style={'display': 'none'}),
+    
+    # Download component
+    dcc.Download(id="download-pdf")
 ])
 
 # Callbacks
@@ -516,34 +519,30 @@ def update_dashboard(n_clicks, symbol, sector, capital, active_tab):
         ])
 
 @app.callback(
-    Output('pdf-download', 'children'),
+    Output("download-pdf", "data"),
     [Input('export-pdf-button', 'n_clicks')],
-    [Input('symbol-input', 'value'),
-     Input('sector-dropdown', 'value'),
-     Input('capital-input', 'value')]
+    [State('symbol-input', 'value'),
+     State('sector-dropdown', 'value'),
+     State('capital-input', 'value')]
 )
 def export_to_pdf(n_clicks, symbol, sector, capital):
     if n_clicks > 0 and symbol and symbol in backtest_results:
         try:
+            print(f"Generating PDF for {symbol}...")
             # Generate PDF
             pdf_content = generate_pdf_report(symbol, sector, capital)
             
-            # Encode PDF content
-            pdf_encoded = base64.b64encode(pdf_content).decode()
-            
-            # Return download link
-            return html.A(
-                "Download PDF Report",
-                id="pdf-download-link",
-                download=f"{symbol}_trading_report.pdf",
-                href=f"data:application/pdf;base64,{pdf_encoded}",
-                style={'display': 'none'}
+            # Return download data
+            return dict(
+                content=pdf_content,
+                filename=f"{symbol}_trading_report.pdf",
+                type="application/pdf"
             )
         except Exception as e:
             print(f"PDF export error: {e}")
-            return html.Div(f"PDF export error: {str(e)}")
+            return None
     
-    return html.Div()
+    return None
 
 def generate_pdf_report(symbol, sector, capital):
     """Generate comprehensive PDF report"""
