@@ -17,18 +17,11 @@ import base64
 import io
 import logging
 
-# Import all enhancement modules
-from real_time_data_integration import data_provider, market_aggregator, news_analyzer, alert_system
-from advanced_charting import charting_engine
-from portfolio_benchmarking import benchmark_engine
-from strategy_builder import strategy_builder, create_strategy_builder_layout
-from social_sentiment_analysis import sentiment_aggregator
-from advanced_risk_metrics import portfolio_risk_analyzer
-from multi_asset_support import multi_asset_analyzer, multi_asset_visualization
-from automated_reporting import report_generator, report_scheduler
-from mobile_pwa_support import mobile_dashboard
-from user_authentication import user_management_system
-from real_data_integration import get_real_data_manager
+# Import only available modules
+try:
+    from real_data_integration import get_real_data_manager
+except ImportError:
+    get_real_data_manager = None
 
 # Configure logging
 logging.basicConfig(level=logging.INFO)
@@ -1474,21 +1467,22 @@ def generate_enhanced_market_data(symbol, sector, time_period, timeframe, start_
         return cached_data[cache_key]
     
     # Get real data manager
-    real_data_manager = get_real_data_manager()
+    real_data_manager = get_real_data_manager() if get_real_data_manager else None
     
     # Try to get real data first
-    try:
-        real_data = real_data_manager.generate_enhanced_market_data(
-            symbol, sector, time_period, timeframe, start_date, end_date
-        )
-        
-        if real_data and real_data.get('real_data', False):
-            logger.info(f"Using real data for {symbol}")
-            # Cache the real data
-            cached_data[cache_key] = real_data
-            return real_data
-    except Exception as e:
-        logger.warning(f"Failed to get real data for {symbol}: {str(e)}")
+    if real_data_manager:
+        try:
+            real_data = real_data_manager.generate_enhanced_market_data(
+                symbol, sector, time_period, timeframe, start_date, end_date
+            )
+            
+            if real_data and real_data.get('real_data', False):
+                logger.info(f"Using real data for {symbol}")
+                # Cache the real data
+                cached_data[cache_key] = real_data
+                return real_data
+        except Exception as e:
+            logger.warning(f"Failed to get real data for {symbol}: {str(e)}")
     
     # Fallback to simulated data
     logger.info(f"Using simulated data for {symbol}")
@@ -2476,11 +2470,15 @@ def update_symbol_options(selected_sector):
     """Update symbol dropdown based on selected sector using real data"""
     
     # Get real data manager
-    real_data_manager = get_real_data_manager()
+    real_data_manager = get_real_data_manager() if get_real_data_manager else None
     
     # Get available symbols from real data
-    available_stocks = real_data_manager.get_available_symbols('stocks')
-    available_indices = real_data_manager.get_available_symbols('indices')
+    if real_data_manager:
+        available_stocks = real_data_manager.get_available_symbols('stocks')
+        available_indices = real_data_manager.get_available_symbols('indices')
+    else:
+        available_stocks = []
+        available_indices = []
     
     # Define symbols by sector with real data availability
     sector_symbols = {
@@ -2582,11 +2580,15 @@ def update_symbol_options_mobile(selected_sector):
     """Update mobile symbol dropdown based on selected sector using real data"""
     
     # Get real data manager
-    real_data_manager = get_real_data_manager()
+    real_data_manager = get_real_data_manager() if get_real_data_manager else None
     
     # Get available symbols from real data
-    available_stocks = real_data_manager.get_available_symbols('stocks')
-    available_indices = real_data_manager.get_available_symbols('indices')
+    if real_data_manager:
+        available_stocks = real_data_manager.get_available_symbols('stocks')
+        available_indices = real_data_manager.get_available_symbols('indices')
+    else:
+        available_stocks = []
+        available_indices = []
     
     # Define symbols by sector with real data availability
     sector_symbols = {
