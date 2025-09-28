@@ -1,0 +1,1 @@
+web: gunicorn alpaca_trading_app:app
