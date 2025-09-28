@@ -12,6 +12,7 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 try:
     from enhanced_dashboard_v2 import app
     server = app.server
+    print("Successfully imported enhanced_dashboard_v2")
 except ImportError as e:
     print(f"Error importing app: {e}")
     sys.exit(1)
@@ -21,11 +22,16 @@ if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8059))
     
     print(f"Starting server on port {port}")
+    print(f"Server object: {server}")
     
     # Run the app
-    app.run(
-        host="0.0.0.0",
-        port=port,
-        debug=False,
-        threaded=True
-    )
+    try:
+        app.run(
+            host="0.0.0.0",
+            port=port,
+            debug=False,
+            threaded=True
+        )
+    except Exception as e:
+        print(f"Error running app: {e}")
+        sys.exit(1)
