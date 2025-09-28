@@ -350,6 +350,24 @@ app.layout = html.Div([
     html.Div([
         dbc.Row([
             dbc.Col([
+                html.Label("Sector:"),
+                dcc.Dropdown(
+                    id='sector-dropdown',
+                    options=[
+                        {'label': 'Technology', 'value': 'Technology'},
+                        {'label': 'Healthcare', 'value': 'Healthcare'},
+                        {'label': 'Finance', 'value': 'Finance'},
+                        {'label': 'Energy', 'value': 'Energy'},
+                        {'label': 'Consumer', 'value': 'Consumer'},
+                        {'label': 'Indices', 'value': 'Indices'},
+                        {'label': 'Forex', 'value': 'Forex'},
+                    ],
+                    value='Technology',
+                    className="dropdown-container"
+                )
+            ], width=2),
+            
+            dbc.Col([
                 html.Label("Symbol:"),
                 dcc.Dropdown(
                     id='symbol-dropdown',
@@ -446,12 +464,13 @@ app.layout = html.Div([
      Output("tab-content", "children")],
     [Input("run-analysis-button", "n_clicks"),
      Input("main-tabs", "active_tab")],
-    [State("symbol-dropdown", "value"),
+    [State("sector-dropdown", "value"),
+     State("symbol-dropdown", "value"),
      State("time-period-dropdown", "value"),
      State("timeframe-dropdown", "value"),
      State("capital-input", "value")]
 )
-def update_dashboard(n_clicks, active_tab, symbol, time_period, timeframe, capital):
+def update_dashboard(n_clicks, active_tab, sector, symbol, time_period, timeframe, capital):
     """Main callback to update dashboard"""
     
     if not n_clicks:
