@@ -338,7 +338,7 @@ def create_portfolio_chart(portfolio_values, dates):
 
 # Layout
 app.layout = html.Div([
-    html.Style(custom_css),
+    # Custom CSS is handled by external stylesheet
     
     # Header
     html.Div([
