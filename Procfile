@@ -1,1 +1,1 @@
-web: python enhanced_dashboard_v2.py
+web: python app.py
