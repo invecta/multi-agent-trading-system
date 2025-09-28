@@ -27,16 +27,16 @@ app.layout = html.Div([
         html.H1("Multi-Agent Trading System", style={'textAlign': 'center', 'color': '#2c3e50'}),
         html.H3("Backtesting Dashboard", style={'textAlign': 'center', 'color': '#7f8c8d'})
     ], style={'marginBottom': '30px'}),
-    
-    # Control Panel
+            
+            # Control Panel
     html.Div([
         html.Div([
             html.H4("Backtest Controls", style={'color': '#2c3e50'}),
             
             html.Div([
                 html.Label("Symbol:", style={'fontWeight': 'bold'}),
-                dcc.Dropdown(
-                    id='symbol-dropdown',
+                                    dcc.Dropdown(
+                                        id='symbol-dropdown',
                     options=[{'label': s, 'value': s} for s in available_symbols],
                     value='AAPL',
                     style={'marginBottom': '20px'}
@@ -55,10 +55,10 @@ app.layout = html.Div([
             
             html.Div([
                 html.Label("End Date:", style={'fontWeight': 'bold'}),
-                dcc.DatePickerSingle(
+                                    dcc.DatePickerSingle(
                     id='end-date',
                     date=datetime(2024, 1, 1),
-                    display_format='YYYY-MM-DD',
+                                        display_format='YYYY-MM-DD',
                     style={'marginBottom': '20px'}
                 )
             ]),
@@ -160,26 +160,26 @@ backtest_results = {}
 # Callbacks
 @app.callback(
     [Output('performance-summary', 'children'),
-     Output('portfolio-chart', 'figure'),
-     Output('drawdown-chart', 'figure'),
+             Output('portfolio-chart', 'figure'),
+             Output('drawdown-chart', 'figure'),
      Output('risk-metrics-chart', 'figure'),
      Output('trade-history-table', 'children')],
     [Input('run-backtest-btn', 'n_clicks')],
-    [Input('symbol-dropdown', 'value'),
+            [Input('symbol-dropdown', 'value'),
      Input('start-date', 'date'),
      Input('end-date', 'date'),
      Input('initial-capital', 'value')]
 )
 def run_backtest(n_clicks, symbol, start_date, end_date, initial_capital):
     """Run backtest and update dashboard"""
-    if n_clicks is None:
+            if n_clicks is None:
         # Return empty figures on initial load
         empty_fig = go.Figure()
         empty_table = html.Div("Click 'Run Backtest' to see results", style={'textAlign': 'center', 'color': '#7f8c8d'})
         return "No backtest run yet", empty_fig, empty_fig, empty_fig, empty_table
     
     try:
-        # Run backtest
+                # Run backtest
         backtester = MultiAgentBacktester()
         
         # Convert dates
@@ -331,8 +331,8 @@ def run_backtest(n_clicks, symbol, start_date, end_date, initial_capital):
 def update_comparison(n_clicks, symbols):
     """Update comparison chart"""
     if n_clicks is None or not symbols:
-        return go.Figure()
-    
+            return go.Figure()
+        
     try:
         comparison_data = []
         
@@ -349,8 +349,8 @@ def update_comparison(n_clicks, symbols):
         
         if comparison_data:
             df = pd.DataFrame(comparison_data)
-            
-            fig = go.Figure()
+        
+        fig = go.Figure()
             fig.add_trace(go.Bar(
                 name='Total Return (%)',
                 x=df['Symbol'],
@@ -358,24 +358,24 @@ def update_comparison(n_clicks, symbols):
                 yaxis='y',
                 marker_color='#3498db'
             ))
-            fig.add_trace(go.Bar(
+        fig.add_trace(go.Bar(
                 name='Sharpe Ratio',
                 x=df['Symbol'],
                 y=df['Sharpe Ratio'],
                 yaxis='y2',
                 marker_color='#27ae60'
-            ))
-            
-            fig.update_layout(
+        ))
+        
+        fig.update_layout(
                 title="Multi-Symbol Performance Comparison",
                 xaxis_title="Symbol",
                 yaxis=dict(title="Total Return (%)", side="left"),
                 yaxis2=dict(title="Sharpe Ratio", side="right", overlaying="y"),
                 template="plotly_white",
-                height=400
-            )
-            
-            return fig
+            height=400
+        )
+        
+        return fig
         else:
             return go.Figure()
             

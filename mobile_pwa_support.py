@@ -216,7 +216,8 @@ class MobileResponsiveLayout:
                             {'label': 'Finance', 'value': 'Finance'},
                             {'label': 'Energy', 'value': 'Energy'},
                             {'label': 'Consumer', 'value': 'Consumer'},
-                            {'label': 'Indices', 'value': 'Indices'}
+                            {'label': 'Indices', 'value': 'Indices'},
+                            {'label': 'Forex', 'value': 'Forex'}
                         ],
                         value='Technology',
                         className="mb-2"

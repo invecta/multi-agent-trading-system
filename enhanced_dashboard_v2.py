@@ -456,14 +456,15 @@ def create_market_heatmap():
     """Create market heatmap showing sector/stock performance"""
     
     # Define sectors and stocks
-    sectors = ['Technology', 'Healthcare', 'Finance', 'Energy', 'Consumer', 'Indices']
+    sectors = ['Technology', 'Healthcare', 'Finance', 'Energy', 'Consumer', 'Indices', 'Forex']
     stocks = {
         'Technology': ['AAPL', 'MSFT', 'GOOGL', 'AMZN', 'META'],
         'Healthcare': ['JNJ', 'PFE', 'UNH', 'ABT', 'MRNA'],
         'Finance': ['JPM', 'BAC', 'WFC', 'GS', 'V'],
         'Energy': ['XOM', 'CVX', 'COP', 'EOG', 'SLB'],
         'Consumer': ['PG', 'KO', 'PEP', 'WMT', 'TSLA'],
-        'Indices': ['^GSPC', '^DJI', '^IXIC', '^RUT', '^VIX']
+        'Indices': ['^GSPC', '^DJI', '^IXIC', '^RUT', '^VIX'],
+        'Forex': ['EURUSD=X', 'GBPUSD=X', 'USDJPY=X', 'USDCHF=X', 'AUDUSD=X', 'USDCAD=X', 'NZDUSD=X']
     }
     
     # Generate performance data
@@ -735,21 +736,444 @@ def create_risk_metrics_chart():
     
     return fig
 
+def create_rsi_chart(results):
+    """Create RSI chart"""
+    try:
+        # Get price data from results
+        price_data = results.get('price_data', {})
+        
+        if price_data is not None and isinstance(price_data, dict) and 'prices' in price_data:
+            prices = pd.Series(price_data['prices'])
+            rsi_values = calculate_rsi(prices)
+            
+            # Create dates for x-axis
+            dates = pd.date_range(start='2024-01-01', periods=len(rsi_values), freq='D')
+            
+            fig = go.Figure()
+            
+            # Add RSI line
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=rsi_values,
+                mode='lines',
+                name='RSI',
+                line=dict(color='blue', width=2)
+            ))
+            
+            # Add overbought/oversold lines
+            fig.add_hline(y=70, line_dash="dash", line_color="red", annotation_text="Overbought (70)")
+            fig.add_hline(y=30, line_dash="dash", line_color="green", annotation_text="Oversold (30)")
+            
+            fig.update_layout(
+                title="RSI (Relative Strength Index)",
+                xaxis_title="Date",
+                yaxis_title="RSI",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+        else:
+            # Fallback with sample data
+            dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
+            rsi_sample = np.random.uniform(20, 80, 100)
+            
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=rsi_sample,
+                mode='lines',
+                name='RSI (Sample)',
+                line=dict(color='blue', width=2)
+            ))
+            
+            fig.add_hline(y=70, line_dash="dash", line_color="red", annotation_text="Overbought (70)")
+            fig.add_hline(y=30, line_dash="dash", line_color="green", annotation_text="Oversold (30)")
+            
+            fig.update_layout(
+                title="RSI (Relative Strength Index) - Sample Data",
+                xaxis_title="Date",
+                yaxis_title="RSI",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+            
+    except Exception as e:
+        print(f"Error creating RSI chart: {e}")
+        return go.Figure().add_annotation(text="Error loading RSI chart", showarrow=False)
+
+def create_macd_chart(results):
+    """Create MACD chart"""
+    try:
+        # Get price data from results
+        price_data = results.get('price_data', {})
+        
+        if price_data is not None and isinstance(price_data, dict) and 'prices' in price_data:
+            prices = pd.Series(price_data['prices'])
+            macd_line, signal_line, histogram = calculate_macd(prices)
+            
+            # Create dates for x-axis
+            dates = pd.date_range(start='2024-01-01', periods=len(macd_line), freq='D')
+            
+            fig = go.Figure()
+            
+            # Add MACD line
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=macd_line,
+                mode='lines',
+                name='MACD',
+                line=dict(color='blue', width=2)
+            ))
+            
+            # Add signal line
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=signal_line,
+                mode='lines',
+                name='Signal',
+                line=dict(color='red', width=2)
+            ))
+            
+            # Add histogram
+            fig.add_trace(go.Bar(
+                x=dates,
+                y=histogram,
+                name='Histogram',
+                marker_color=['green' if x >= 0 else 'red' for x in histogram],
+                opacity=0.6
+            ))
+            
+            fig.update_layout(
+                title="MACD (Moving Average Convergence Divergence)",
+                xaxis_title="Date",
+                yaxis_title="MACD",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+        else:
+            # Fallback with sample data
+            dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
+            macd_sample = np.random.uniform(-2, 2, 100)
+            signal_sample = np.random.uniform(-1.5, 1.5, 100)
+            histogram_sample = macd_sample - signal_sample
+            
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=macd_sample,
+                mode='lines',
+                name='MACD (Sample)',
+                line=dict(color='blue', width=2)
+            ))
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=signal_sample,
+                mode='lines',
+                name='Signal (Sample)',
+                line=dict(color='red', width=2)
+            ))
+            fig.add_trace(go.Bar(
+                x=dates,
+                y=histogram_sample,
+                name='Histogram (Sample)',
+                marker_color=['green' if x >= 0 else 'red' for x in histogram_sample],
+                opacity=0.6
+            ))
+            
+            fig.update_layout(
+                title="MACD (Moving Average Convergence Divergence) - Sample Data",
+                xaxis_title="Date",
+                yaxis_title="MACD",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+            
+    except Exception as e:
+        print(f"Error creating MACD chart: {e}")
+        return go.Figure().add_annotation(text="Error loading MACD chart", showarrow=False)
+
+def create_moving_averages_chart(results):
+    """Create Moving Averages chart"""
+    try:
+        # Get price data from results
+        price_data = results.get('price_data', {})
+        
+        if price_data is not None and isinstance(price_data, dict) and 'prices' in price_data:
+            prices = pd.Series(price_data['prices'])
+            
+            # Calculate moving averages
+            ma_20 = prices.rolling(window=20).mean()
+            ma_50 = prices.rolling(window=50).mean()
+            ma_200 = prices.rolling(window=200).mean()
+            
+            # Create dates for x-axis
+            dates = pd.date_range(start='2024-01-01', periods=len(prices), freq='D')
+            
+            fig = go.Figure()
+            
+            # Add price line
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=prices,
+                mode='lines',
+                name='Price',
+                line=dict(color='black', width=2)
+            ))
+            
+            # Add moving averages
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=ma_20,
+                mode='lines',
+                name='MA 20',
+                line=dict(color='blue', width=1)
+            ))
+            
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=ma_50,
+                mode='lines',
+                name='MA 50',
+                line=dict(color='orange', width=1)
+            ))
+            
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=ma_200,
+                mode='lines',
+                name='MA 200',
+                line=dict(color='red', width=1)
+            ))
+            
+            fig.update_layout(
+                title="Moving Averages",
+                xaxis_title="Date",
+                yaxis_title="Price",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+        else:
+            # Fallback with sample data
+            dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
+            price_sample = 100 + np.cumsum(np.random.randn(100) * 0.5)
+            ma_20_sample = pd.Series(price_sample).rolling(window=20).mean()
+            ma_50_sample = pd.Series(price_sample).rolling(window=50).mean()
+            
+            fig = go.Figure()
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=price_sample,
+                mode='lines',
+                name='Price (Sample)',
+                line=dict(color='black', width=2)
+            ))
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=ma_20_sample,
+                mode='lines',
+                name='MA 20 (Sample)',
+                line=dict(color='blue', width=1)
+            ))
+            fig.add_trace(go.Scatter(
+                x=dates,
+                y=ma_50_sample,
+                mode='lines',
+                name='MA 50 (Sample)',
+                line=dict(color='orange', width=1)
+            ))
+            
+            fig.update_layout(
+                title="Moving Averages - Sample Data",
+                xaxis_title="Date",
+                yaxis_title="Price",
+                height=400,
+                showlegend=True
+            )
+            
+            return fig
+            
+    except Exception as e:
+        print(f"Error creating Moving Averages chart: {e}")
+        return go.Figure().add_annotation(text="Error loading Moving Averages chart", showarrow=False)
+
+def create_volume_chart(results):
+    """Create Volume Analysis chart"""
+    try:
+        # Get price data from results
+        price_data = results.get('price_data', {})
+        
+        if price_data is not None and isinstance(price_data, dict) and 'prices' in price_data and 'volumes' in price_data:
+            prices = pd.Series(price_data['prices'])
+            volumes = pd.Series(price_data['volumes'])
+            
+            # Create dates for x-axis
+            dates = pd.date_range(start='2024-01-01', periods=len(prices), freq='D')
+            
+            # Create subplot with secondary y-axis
+            fig = make_subplots(
+                rows=2, cols=1,
+                shared_xaxes=True,
+                vertical_spacing=0.1,
+                subplot_titles=('Price', 'Volume'),
+                row_heights=[0.7, 0.3]
+            )
+            
+            # Add price line
+            fig.add_trace(
+                go.Scatter(
+                    x=dates,
+                    y=prices,
+                    mode='lines',
+                    name='Price',
+                    line=dict(color='blue', width=2)
+                ),
+                row=1, col=1
+            )
+            
+            # Add volume bars
+            fig.add_trace(
+                go.Bar(
+                    x=dates,
+                    y=volumes,
+                    name='Volume',
+                    marker_color='lightblue',
+                    opacity=0.7
+                ),
+                row=2, col=1
+            )
+            
+            fig.update_layout(
+                title="Price and Volume Analysis",
+                height=500,
+                showlegend=True
+            )
+            
+            return fig
+        else:
+            # Fallback with sample data
+            dates = pd.date_range(start='2024-01-01', periods=100, freq='D')
+            price_sample = 100 + np.cumsum(np.random.randn(100) * 0.5)
+            volume_sample = np.random.uniform(1000000, 5000000, 100)
+            
+            fig = make_subplots(
+                rows=2, cols=1,
+                shared_xaxes=True,
+                vertical_spacing=0.1,
+                subplot_titles=('Price (Sample)', 'Volume (Sample)'),
+                row_heights=[0.7, 0.3]
+            )
+            
+            fig.add_trace(
+                go.Scatter(
+                    x=dates,
+                    y=price_sample,
+                    mode='lines',
+                    name='Price (Sample)',
+                    line=dict(color='blue', width=2)
+                ),
+                row=1, col=1
+            )
+            
+            fig.add_trace(
+                go.Bar(
+                    x=dates,
+                    y=volume_sample,
+                    name='Volume (Sample)',
+                    marker_color='lightblue',
+                    opacity=0.7
+                ),
+                row=2, col=1
+            )
+            
+            fig.update_layout(
+                title="Price and Volume Analysis - Sample Data",
+                height=500,
+                showlegend=True
+            )
+            
+            return fig
+            
+    except Exception as e:
+        print(f"Error creating Volume chart: {e}")
+        return go.Figure().add_annotation(text="Error loading Volume chart", showarrow=False)
+
 def create_analysis_tab(results):
     """Create analysis tab content"""
     
     if not results:
         return html.Div("No data available. Run analysis first.")
     
-    # Technical analysis
-    technical_analysis = html.Div([
-        html.H4("Technical Analysis"),
-        html.Div([
-            html.P(f"RSI: {results.get('rsi', 0):.1f}"),
-            html.P(f"MACD: {results.get('macd', 0):.3f}"),
-            html.P(f"Moving Average Trend: {'Bullish' if results.get('ma_trend', 0) > 0 else 'Bearish'}"),
-            html.P(f"Volume Analysis: {results.get('volume_analysis', 'Normal')}")
-        ])
+    # Technical analysis summary cards
+    technical_summary = html.Div([
+        html.H4("Technical Analysis Summary"),
+        dbc.Row([
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardBody([
+                        html.H5("RSI", className="card-title"),
+                        html.P(f"{results.get('rsi', 0):.1f}", className="card-text"),
+                        html.Small("Oversold/Overbought", className="text-muted")
+                    ])
+                ])
+            ], width=3),
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardBody([
+                        html.H5("MACD", className="card-title"),
+                        html.P(f"{results.get('macd', 0):.3f}", className="card-text"),
+                        html.Small("Momentum Signal", className="text-muted")
+                    ])
+                ])
+            ], width=3),
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardBody([
+                        html.H5("MA Trend", className="card-title"),
+                        html.P(f"{'Bullish' if results.get('ma_trend', 0) > 0 else 'Bearish'}", className="card-text"),
+                        html.Small("Trend Direction", className="text-muted")
+                    ])
+                ])
+            ], width=3),
+            dbc.Col([
+                dbc.Card([
+                    dbc.CardBody([
+                        html.H5("Volume", className="card-title"),
+                        html.P(f"{results.get('volume_analysis', 'Normal')}", className="card-text"),
+                        html.Small("Volume Analysis", className="text-muted")
+                    ])
+                ])
+            ], width=3)
+        ], className="mb-4")
+    ])
+    
+    # Interactive Technical Analysis Charts
+    technical_charts = html.Div([
+        html.H4("Interactive Technical Analysis Charts"),
+        dbc.Row([
+            dbc.Col([
+                dcc.Graph(figure=create_rsi_chart(results))
+            ], width=6),
+            dbc.Col([
+                dcc.Graph(figure=create_macd_chart(results))
+            ], width=6)
+        ], className="mb-4"),
+        dbc.Row([
+            dbc.Col([
+                dcc.Graph(figure=create_moving_averages_chart(results))
+            ], width=6),
+            dbc.Col([
+                dcc.Graph(figure=create_volume_chart(results))
+            ], width=6)
+        ], className="mb-4")
     ])
     
     # Sentiment analysis
@@ -770,7 +1194,9 @@ def create_analysis_tab(results):
     ])
     
     return html.Div([
-        technical_analysis,
+        technical_summary,
+        html.Hr(),
+        technical_charts,
         html.Hr(),
         sentiment_analysis,
         html.Hr(),
@@ -976,6 +1402,16 @@ def run_enhanced_analysis(symbol, sector, capital, time_period, timeframe, start
         # Multi-asset Analysis
         multi_asset_results = run_multi_asset_analysis(symbol)
         
+        # Prepare price data for charts
+        price_data_for_charts = {
+            'prices': df['Close'].tolist() if 'Close' in df.columns else df.index.tolist(),
+            'volumes': df['Volume'].tolist() if 'Volume' in df.columns else [1000000] * len(df),
+            'opens': df['Open'].tolist() if 'Open' in df.columns else df['Close'].tolist() if 'Close' in df.columns else [100] * len(df),
+            'highs': df['High'].tolist() if 'High' in df.columns else df['Close'].tolist() if 'Close' in df.columns else [100] * len(df),
+            'lows': df['Low'].tolist() if 'Low' in df.columns else df['Close'].tolist() if 'Close' in df.columns else [100] * len(df),
+            'dates': df.index.strftime('%Y-%m-%d').tolist() if hasattr(df.index, 'strftime') else [f"2024-01-{i+1:02d}" for i in range(len(df))]
+        }
+        
         # Combine all results
         results = {
             'symbol': symbol,
@@ -983,7 +1419,7 @@ def run_enhanced_analysis(symbol, sector, capital, time_period, timeframe, start
             'capital': capital,
             'time_period': time_period,
             'timeframe': timeframe,
-            'price_data': df,
+            'price_data': price_data_for_charts,  # Use formatted data for charts
             'backtest_results': backtest_results,
             'ml_results': ml_results,
             'sentiment_results': sentiment_results,
@@ -1111,7 +1547,8 @@ def generate_enhanced_market_data(symbol, sector, time_period, timeframe, start_
     df['SMA_20'] = df['Close'].rolling(window=20, min_periods=1).mean()
     df['SMA_50'] = df['Close'].rolling(window=50, min_periods=1).mean()
     df['RSI'] = calculate_rsi(df['Close'])
-    df['MACD'] = calculate_macd(df['Close'])
+    macd_line, signal_line, histogram = calculate_macd(df['Close'])
+    df['MACD'] = macd_line
     
     # Cache the result
     cached_data[cache_key] = df
@@ -1146,7 +1583,8 @@ def run_enhanced_backtest(df, capital, timeframe):
     if 'RSI' not in df.columns:
         df['RSI'] = calculate_rsi(df['Close'], period=rsi_period)
     if 'MACD' not in df.columns:
-        df['MACD'] = calculate_macd(df['Close'])
+        macd_line, signal_line, histogram = calculate_macd(df['Close'])
+        df['MACD'] = macd_line
     
     # Adjust signal frequency based on timeframe
     signal_frequency = {
@@ -1882,9 +2320,10 @@ def calculate_macd(prices, fast=12, slow=26, signal=9):
     """Calculate MACD"""
     ema_fast = prices.ewm(span=fast).mean()
     ema_slow = prices.ewm(span=slow).mean()
-    macd = ema_fast - ema_slow
-    macd_signal = macd.ewm(span=signal).mean()
-    return macd - macd_signal
+    macd_line = ema_fast - ema_slow
+    macd_signal = macd_line.ewm(span=signal).mean()
+    histogram = macd_line - macd_signal
+    return macd_line, macd_signal, histogram
 
 # Create the app layout
 app.layout = create_enhanced_layout()
@@ -2104,6 +2543,18 @@ def update_symbol_options(selected_sector):
             {'label': '  ^GOLD - Gold Futures', 'value': '^GOLD', 'available': False},
             {'label': '  ^CRUDE - Crude Oil Futures', 'value': '^CRUDE'},
             {'label': '  ^NATGAS - Natural Gas Futures', 'value': '^NATGAS'}
+        ],
+        'Forex': [
+            {'label': '  EURUSD=X - Euro/US Dollar', 'value': 'EURUSD=X'},
+            {'label': '  GBPUSD=X - British Pound/US Dollar', 'value': 'GBPUSD=X'},
+            {'label': '  USDJPY=X - US Dollar/Japanese Yen', 'value': 'USDJPY=X'},
+            {'label': '  USDCHF=X - US Dollar/Swiss Franc', 'value': 'USDCHF=X'},
+            {'label': '  AUDUSD=X - Australian Dollar/US Dollar', 'value': 'AUDUSD=X'},
+            {'label': '  USDCAD=X - US Dollar/Canadian Dollar', 'value': 'USDCAD=X'},
+            {'label': '  NZDUSD=X - New Zealand Dollar/US Dollar', 'value': 'NZDUSD=X'},
+            {'label': '  EURGBP=X - Euro/British Pound', 'value': 'EURGBP=X'},
+            {'label': '  EURJPY=X - Euro/Japanese Yen', 'value': 'EURJPY=X'},
+            {'label': '  GBPJPY=X - British Pound/Japanese Yen', 'value': 'GBPJPY=X'}
         ]
     }
     
@@ -2198,6 +2649,18 @@ def update_symbol_options_mobile(selected_sector):
             {'label': '  ^GOLD - Gold Futures', 'value': '^GOLD', 'available': False},
             {'label': '  ^CRUDE - Crude Oil Futures', 'value': '^CRUDE'},
             {'label': '  ^NATGAS - Natural Gas Futures', 'value': '^NATGAS'}
+        ],
+        'Forex': [
+            {'label': '  EURUSD=X - Euro/US Dollar', 'value': 'EURUSD=X'},
+            {'label': '  GBPUSD=X - British Pound/US Dollar', 'value': 'GBPUSD=X'},
+            {'label': '  USDJPY=X - US Dollar/Japanese Yen', 'value': 'USDJPY=X'},
+            {'label': '  USDCHF=X - US Dollar/Swiss Franc', 'value': 'USDCHF=X'},
+            {'label': '  AUDUSD=X - Australian Dollar/US Dollar', 'value': 'AUDUSD=X'},
+            {'label': '  USDCAD=X - US Dollar/Canadian Dollar', 'value': 'USDCAD=X'},
+            {'label': '  NZDUSD=X - New Zealand Dollar/US Dollar', 'value': 'NZDUSD=X'},
+            {'label': '  EURGBP=X - Euro/British Pound', 'value': 'EURGBP=X'},
+            {'label': '  EURJPY=X - Euro/Japanese Yen', 'value': 'EURJPY=X'},
+            {'label': '  GBPJPY=X - British Pound/Japanese Yen', 'value': 'GBPJPY=X'}
         ]
     }
     
@@ -2430,6 +2893,119 @@ def update_dashboard(n_clicks, n_clicks_mobile, active_tab, symbol, sector, capi
             del chart_cache[oldest_key]
     
     return status, content, export_style
+
+# Add report generation callbacks
+@app.callback(
+    Output("scheduled-reports-content", "children"),
+    [Input("daily-report-btn", "n_clicks"),
+     Input("weekly-report-btn", "n_clicks"),
+     Input("monthly-report-btn", "n_clicks")]
+)
+def generate_reports(daily_clicks, weekly_clicks, monthly_clicks):
+    """Generate different types of reports and save to files"""
+    
+    ctx = callback_context
+    if not ctx.triggered:
+        return "No reports generated yet. Click a report button to generate."
+    
+    button_id = ctx.triggered[0]['prop_id'].split('.')[0]
+    timestamp = pd.Timestamp.now().strftime('%Y-%m-%d_%H-%M-%S')
+    
+    # Get current analysis results
+    global backtest_results
+    if not backtest_results:
+        return html.Div([
+            html.H5("No Data Available"),
+            html.P("Please run an analysis first before generating reports.")
+        ])
+    
+    try:
+        if button_id == "daily-report-btn" and daily_clicks:
+            # Generate and save daily report
+            pdf_filename = f"reports/daily_report_{timestamp}.pdf"
+            csv_filename = f"reports/daily_report_{timestamp}.csv"
+            
+            # Generate PDF
+            pdf_content = generate_pdf_report(backtest_results, "DAILY", "Daily", 100000, "1d", "1d")
+            if pdf_content:
+                with open(pdf_filename, 'wb') as f:
+                    import base64
+                    f.write(base64.b64decode(pdf_content))
+            
+            # Generate CSV
+            csv_content = generate_csv_report(backtest_results, "DAILY", "Daily", 100000, "1d", "1d")
+            if csv_content:
+                with open(csv_filename, 'w', encoding='utf-8') as f:
+                    f.write(csv_content)
+            
+            return html.Div([
+                html.H5("Daily Report Generated"),
+                html.P("Daily trading analysis report has been generated and saved."),
+                html.P(f"Generated at: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}"),
+                html.P(f"PDF saved: {pdf_filename}"),
+                html.P(f"CSV saved: {csv_filename}")
+            ])
+            
+        elif button_id == "weekly-report-btn" and weekly_clicks:
+            # Generate and save weekly report
+            pdf_filename = f"reports/weekly_report_{timestamp}.pdf"
+            csv_filename = f"reports/weekly_report_{timestamp}.csv"
+            
+            # Generate PDF
+            pdf_content = generate_pdf_report(backtest_results, "WEEKLY", "Weekly", 100000, "1w", "1d")
+            if pdf_content:
+                with open(pdf_filename, 'wb') as f:
+                    import base64
+                    f.write(base64.b64decode(pdf_content))
+            
+            # Generate CSV
+            csv_content = generate_csv_report(backtest_results, "WEEKLY", "Weekly", 100000, "1w", "1d")
+            if csv_content:
+                with open(csv_filename, 'w', encoding='utf-8') as f:
+                    f.write(csv_content)
+            
+            return html.Div([
+                html.H5("Weekly Report Generated"),
+                html.P("Weekly trading analysis report has been generated and saved."),
+                html.P(f"Generated at: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}"),
+                html.P(f"PDF saved: {pdf_filename}"),
+                html.P(f"CSV saved: {csv_filename}")
+            ])
+            
+        elif button_id == "monthly-report-btn" and monthly_clicks:
+            # Generate and save monthly report
+            pdf_filename = f"reports/monthly_report_{timestamp}.pdf"
+            csv_filename = f"reports/monthly_report_{timestamp}.csv"
+            
+            # Generate PDF
+            pdf_content = generate_pdf_report(backtest_results, "MONTHLY", "Monthly", 100000, "1m", "1d")
+            if pdf_content:
+                with open(pdf_filename, 'wb') as f:
+                    import base64
+                    f.write(base64.b64decode(pdf_content))
+            
+            # Generate CSV
+            csv_content = generate_csv_report(backtest_results, "MONTHLY", "Monthly", 100000, "1m", "1d")
+            if csv_content:
+                with open(csv_filename, 'w', encoding='utf-8') as f:
+                    f.write(csv_content)
+            
+            return html.Div([
+                html.H5("Monthly Report Generated"),
+                html.P("Monthly trading analysis report has been generated and saved."),
+                html.P(f"Generated at: {pd.Timestamp.now().strftime('%Y-%m-%d %H:%M:%S')}"),
+                html.P(f"PDF saved: {pdf_filename}"),
+                html.P(f"CSV saved: {csv_filename}")
+            ])
+    
+    except Exception as e:
+        return html.Div([
+            html.H5("Error Generating Report"),
+            html.P(f"Error: {str(e)}"),
+            html.P("Please try again or check the console for details.")
+        ])
+    
+    return "No reports generated yet. Click a report button to generate."
 
 # Add mobile callbacks
 mobile_dashboard.create_mobile_callbacks(app)
