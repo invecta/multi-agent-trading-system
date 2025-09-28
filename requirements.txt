@@ -36,6 +36,9 @@ pytz>=2022.1
 # PDF and Report Generation
 reportlab>=3.6.0
 
+# Production Server
+gunicorn>=20.1.0
+
 # Optional: Advanced Features
 # kafka-python>=2.0.0  # For real-time streaming
 # redis>=4.0.0         # For caching
