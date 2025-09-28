@@ -717,13 +717,51 @@ def create_reports_tab(results):
 def export_to_pdf(n_clicks):
     """Export dashboard to PDF"""
     if n_clicks:
-        # Create a simple PDF report
-        report_content = "Advanced Portfolio Analytics Dashboard Report\n\n"
-        report_content += "Generated on: " + datetime.now().strftime("%Y-%m-%d %H:%M:%S") + "\n\n"
-        report_content += "This is a sample PDF export functionality.\n"
-        report_content += "In a full implementation, this would generate a comprehensive PDF report."
-        
-        return {"content": report_content, "filename": "dashboard_report.pdf"}
+        try:
+            from reportlab.lib.pagesizes import letter
+            from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+            from reportlab.lib.styles import getSampleStyleSheet
+            from reportlab.lib.units import inch
+            import io
+            import base64
+            
+            # Create PDF in memory
+            buffer = io.BytesIO()
+            doc = SimpleDocTemplate(buffer, pagesize=letter)
+            styles = getSampleStyleSheet()
+            story = []
+            
+            # Add content
+            title = Paragraph("Advanced Portfolio Analytics Dashboard Report", styles['Title'])
+            story.append(title)
+            story.append(Spacer(1, 12))
+            
+            date_text = f"Generated on: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+            date_para = Paragraph(date_text, styles['Normal'])
+            story.append(date_para)
+            story.append(Spacer(1, 12))
+            
+            content = Paragraph("This is a comprehensive PDF report from the Advanced Portfolio Analytics Dashboard.", styles['Normal'])
+            story.append(content)
+            story.append(Spacer(1, 12))
+            
+            features = Paragraph("Features include: Real-time data analysis, Risk management tools, Interactive charts, Portfolio optimization, and Automated reporting.", styles['Normal'])
+            story.append(features)
+            
+            # Build PDF
+            doc.build(story)
+            buffer.seek(0)
+            
+            # Encode to base64
+            pdf_data = base64.b64encode(buffer.getvalue()).decode()
+            
+            return dcc.send_bytes(buffer.getvalue(), "dashboard_report.pdf")
+            
+        except ImportError:
+            # Fallback if reportlab not available
+            return {"content": "PDF export requires reportlab library", "filename": "error.txt"}
+        except Exception as e:
+            return {"content": f"Error generating PDF: {str(e)}", "filename": "error.txt"}
 
 @app.callback(
     Output("download-csv", "data"),
