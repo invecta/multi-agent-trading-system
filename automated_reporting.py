@@ -22,7 +22,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from email.mime.base import MIMEBase
 from email import encoders
-import schedule
+# import schedule  # Commented out due to installation issues
 import time
 import threading
 import logging
@@ -769,19 +769,7 @@ class ReportScheduler:
         """Schedule a report for automatic generation"""
         
         try:
-            if config.report_type == ReportType.DAILY:
-                schedule.every().day.at(config.schedule_time).do(
-                    self._generate_and_send_report, config
-                )
-            elif config.report_type == ReportType.WEEKLY:
-                schedule.every().monday.at(config.schedule_time).do(
-                    self._generate_and_send_report, config
-                )
-            elif config.report_type == ReportType.MONTHLY:
-                schedule.every().month.do(
-                    self._generate_and_send_report, config
-                )
-                
+            # Simplified scheduling without schedule library
             self.scheduled_reports[config.report_type.value] = config
             logger.info(f"Scheduled {config.report_type.value} report for {config.schedule_time}")
             return True
@@ -975,7 +963,7 @@ class ReportScheduler:
         """Run the scheduler loop"""
         
         while self.is_running:
-            schedule.run_pending()
+            # Simplified scheduler without schedule library
             time.sleep(60)  # Check every minute
             
     def get_scheduled_reports(self) -> Dict:

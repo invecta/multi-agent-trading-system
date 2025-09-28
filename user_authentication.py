@@ -16,7 +16,7 @@ from enum import Enum
 import logging
 import sqlite3
 from contextlib import contextmanager
-import jwt
+# import jwt  # Commented out due to installation issues
 from functools import wraps
 
 # Configure logging

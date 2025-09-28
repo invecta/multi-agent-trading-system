@@ -11,7 +11,7 @@ import plotly.express as px
 from typing import Dict, List, Optional, Any
 import json
 import os
-from datetime import datetime
+from datetime import datetime, timedelta
 
 class MobileResponsiveLayout:
     """Mobile-responsive layout components"""
@@ -89,11 +89,56 @@ class MobileResponsiveLayout:
                     dcc.Dropdown(
                         id='symbol-dropdown',
                         options=[
-                            {'label': 'AAPL - Apple Inc.', 'value': 'AAPL'},
-                            {'label': 'MSFT - Microsoft Corporation', 'value': 'MSFT'},
-                            {'label': 'GOOGL - Alphabet Inc.', 'value': 'GOOGL'},
-                            {'label': 'AMZN - Amazon.com Inc.', 'value': 'AMZN'},
-                            {'label': 'TSLA - Tesla Inc.', 'value': 'TSLA'}
+                            # Technology Sector
+                            {'label': 'Technology', 'value': 'TECH_HEADER', 'disabled': True},
+                            {'label': '  AAPL - Apple Inc.', 'value': 'AAPL'},
+                            {'label': '  MSFT - Microsoft Corporation', 'value': 'MSFT'},
+                            {'label': '  GOOGL - Alphabet Inc.', 'value': 'GOOGL'},
+                            {'label': '  AMZN - Amazon.com Inc.', 'value': 'AMZN'},
+                            {'label': '  META - Meta Platforms Inc.', 'value': 'META'},
+                            {'label': '  NVDA - NVIDIA Corporation', 'value': 'NVDA'},
+                            {'label': '  NFLX - Netflix Inc.', 'value': 'NFLX'},
+                            {'label': '  PYPL - PayPal Holdings Inc.', 'value': 'PYPL'},
+                            {'label': '  CRM - Salesforce Inc.', 'value': 'CRM'},
+                            {'label': '  ADBE - Adobe Inc.', 'value': 'ADBE'},
+                            {'label': '  INTC - Intel Corporation', 'value': 'INTC'},
+                            {'label': '  CSCO - Cisco Systems Inc.', 'value': 'CSCO'},
+                            {'label': '  ORCL - Oracle Corporation', 'value': 'ORCL'},
+                            {'label': '  IBM - IBM Corporation', 'value': 'IBM'},
+                            {'label': '  SNOW - Snowflake Inc.', 'value': 'SNOW'},
+                            
+                            # Healthcare Sector
+                            {'label': 'Healthcare', 'value': 'HEALTH_HEADER', 'disabled': True},
+                            {'label': '  JNJ - Johnson & Johnson', 'value': 'JNJ'},
+                            {'label': '  PFE - Pfizer Inc.', 'value': 'PFE'},
+                            {'label': '  MRNA - Moderna Inc.', 'value': 'MRNA'},
+                            {'label': '  UNH - UnitedHealth Group', 'value': 'UNH'},
+                            {'label': '  ABT - Abbott Laboratories', 'value': 'ABT'},
+                            
+                            # Consumer Sector
+                            {'label': 'Consumer', 'value': 'CONSUMER_HEADER', 'disabled': True},
+                            {'label': '  PG - Procter & Gamble', 'value': 'PG'},
+                            {'label': '  KO - Coca-Cola Company', 'value': 'KO'},
+                            {'label': '  PEP - PepsiCo Inc.', 'value': 'PEP'},
+                            {'label': '  WMT - Walmart Inc.', 'value': 'WMT'},
+                            {'label': '  TSLA - Tesla Inc.', 'value': 'TSLA'},
+                            
+                            # Finance Sector
+                            {'label': 'Finance', 'value': 'FINANCE_HEADER', 'disabled': True},
+                            {'label': '  JPM - JPMorgan Chase & Co.', 'value': 'JPM'},
+                            {'label': '  BAC - Bank of America Corp.', 'value': 'BAC'},
+                            {'label': '  WFC - Wells Fargo & Co.', 'value': 'WFC'},
+                            {'label': '  GS - Goldman Sachs Group Inc.', 'value': 'GS'},
+                            {'label': '  BRK-B - Berkshire Hathaway Inc.', 'value': 'BRK-B'},
+                            {'label': '  V - Visa Inc.', 'value': 'V'},
+                            {'label': '  MA - Mastercard Inc.', 'value': 'MA'},
+                            
+                            # Energy Sector
+                            {'label': 'Energy', 'value': 'ENERGY_HEADER', 'disabled': True},
+                            {'label': '  XOM - Exxon Mobil Corp.', 'value': 'XOM'},
+                            {'label': '  CVX - Chevron Corporation', 'value': 'CVX'},
+                            {'label': '  COP - ConocoPhillips', 'value': 'COP'},
+                            {'label': '  EOG - EOG Resources Inc.', 'value': 'EOG'}
                         ],
                         value='AAPL',
                         className="mb-2"
@@ -109,12 +154,39 @@ class MobileResponsiveLayout:
                             {'label': '3 Months', 'value': 90},
                             {'label': '6 Months', 'value': 180},
                             {'label': '1 Year', 'value': 365},
-                            {'label': '2 Years', 'value': 730}
+                            {'label': '2 Years', 'value': 730},
+                            {'label': 'Custom Date Range', 'value': 'custom'}
                         ],
                         value=365,
                         className="mb-2"
                     )
                 ], className="col-md-3"),
+                
+                html.Div([
+                    html.Label("Date Range:", className="form-label"),
+                    html.Div([
+                        html.Div([
+                            html.Label("From:", className="form-label-small"),
+                            dcc.DatePickerSingle(
+                                id='start-date-picker',
+                                date=datetime.now() - timedelta(days=365),
+                                display_format='MM/DD/YYYY',
+                                className="date-picker-input",
+                                style={'width': '100%', 'border': '1px solid #ddd', 'borderRadius': '4px', 'padding': '8px'}
+                            )
+                        ], className="col-6"),
+                        html.Div([
+                            html.Label("To:", className="form-label-small"),
+                            dcc.DatePickerSingle(
+                                id='end-date-picker',
+                                date=datetime.now(),
+                                display_format='MM/DD/YYYY',
+                                className="date-picker-input",
+                                style={'width': '100%', 'border': '1px solid #ddd', 'borderRadius': '4px', 'padding': '8px'}
+                            )
+                        ], className="col-6")
+                    ], className="row", style={'margin': '0'})
+                ], className="col-md-6", id="date-range-container", style={'display': 'none'}),
                 
                 html.Div([
                     html.Label("Timeframe:", className="form-label"),
@@ -130,6 +202,23 @@ class MobileResponsiveLayout:
                             {'label': '1 Week', 'value': '1w'}
                         ],
                         value='1d',
+                        className="mb-2"
+                    )
+                ], className="col-md-3"),
+                
+                html.Div([
+                    html.Label("Sector:", className="form-label"),
+                    dcc.Dropdown(
+                        id='sector-dropdown',
+                        options=[
+                            {'label': 'Technology', 'value': 'Technology'},
+                            {'label': 'Healthcare', 'value': 'Healthcare'},
+                            {'label': 'Finance', 'value': 'Finance'},
+                            {'label': 'Energy', 'value': 'Energy'},
+                            {'label': 'Consumer', 'value': 'Consumer'},
+                            {'label': 'Indices', 'value': 'Indices'}
+                        ],
+                        value='Technology',
                         className="mb-2"
                     )
                 ], className="col-md-3"),
@@ -153,11 +242,56 @@ class MobileResponsiveLayout:
                     dcc.Dropdown(
                         id='symbol-dropdown-mobile',
                         options=[
-                            {'label': 'AAPL - Apple Inc.', 'value': 'AAPL'},
-                            {'label': 'MSFT - Microsoft Corporation', 'value': 'MSFT'},
-                            {'label': 'GOOGL - Alphabet Inc.', 'value': 'GOOGL'},
-                            {'label': 'AMZN - Amazon.com Inc.', 'value': 'AMZN'},
-                            {'label': 'TSLA - Tesla Inc.', 'value': 'TSLA'}
+                            # Technology Sector
+                            {'label': 'Technology', 'value': 'TECH_HEADER', 'disabled': True},
+                            {'label': '  AAPL - Apple Inc.', 'value': 'AAPL'},
+                            {'label': '  MSFT - Microsoft Corporation', 'value': 'MSFT'},
+                            {'label': '  GOOGL - Alphabet Inc.', 'value': 'GOOGL'},
+                            {'label': '  AMZN - Amazon.com Inc.', 'value': 'AMZN'},
+                            {'label': '  META - Meta Platforms Inc.', 'value': 'META'},
+                            {'label': '  NVDA - NVIDIA Corporation', 'value': 'NVDA'},
+                            {'label': '  NFLX - Netflix Inc.', 'value': 'NFLX'},
+                            {'label': '  PYPL - PayPal Holdings Inc.', 'value': 'PYPL'},
+                            {'label': '  CRM - Salesforce Inc.', 'value': 'CRM'},
+                            {'label': '  ADBE - Adobe Inc.', 'value': 'ADBE'},
+                            {'label': '  INTC - Intel Corporation', 'value': 'INTC'},
+                            {'label': '  CSCO - Cisco Systems Inc.', 'value': 'CSCO'},
+                            {'label': '  ORCL - Oracle Corporation', 'value': 'ORCL'},
+                            {'label': '  IBM - IBM Corporation', 'value': 'IBM'},
+                            {'label': '  SNOW - Snowflake Inc.', 'value': 'SNOW'},
+                            
+                            # Healthcare Sector
+                            {'label': 'Healthcare', 'value': 'HEALTH_HEADER', 'disabled': True},
+                            {'label': '  JNJ - Johnson & Johnson', 'value': 'JNJ'},
+                            {'label': '  PFE - Pfizer Inc.', 'value': 'PFE'},
+                            {'label': '  MRNA - Moderna Inc.', 'value': 'MRNA'},
+                            {'label': '  UNH - UnitedHealth Group', 'value': 'UNH'},
+                            {'label': '  ABT - Abbott Laboratories', 'value': 'ABT'},
+                            
+                            # Consumer Sector
+                            {'label': 'Consumer', 'value': 'CONSUMER_HEADER', 'disabled': True},
+                            {'label': '  PG - Procter & Gamble', 'value': 'PG'},
+                            {'label': '  KO - Coca-Cola Company', 'value': 'KO'},
+                            {'label': '  PEP - PepsiCo Inc.', 'value': 'PEP'},
+                            {'label': '  WMT - Walmart Inc.', 'value': 'WMT'},
+                            {'label': '  TSLA - Tesla Inc.', 'value': 'TSLA'},
+                            
+                            # Finance Sector
+                            {'label': 'Finance', 'value': 'FINANCE_HEADER', 'disabled': True},
+                            {'label': '  JPM - JPMorgan Chase & Co.', 'value': 'JPM'},
+                            {'label': '  BAC - Bank of America Corp.', 'value': 'BAC'},
+                            {'label': '  WFC - Wells Fargo & Co.', 'value': 'WFC'},
+                            {'label': '  GS - Goldman Sachs Group Inc.', 'value': 'GS'},
+                            {'label': '  BRK-B - Berkshire Hathaway Inc.', 'value': 'BRK-B'},
+                            {'label': '  V - Visa Inc.', 'value': 'V'},
+                            {'label': '  MA - Mastercard Inc.', 'value': 'MA'},
+                            
+                            # Energy Sector
+                            {'label': 'Energy', 'value': 'ENERGY_HEADER', 'disabled': True},
+                            {'label': '  XOM - Exxon Mobil Corp.', 'value': 'XOM'},
+                            {'label': '  CVX - Chevron Corporation', 'value': 'CVX'},
+                            {'label': '  COP - ConocoPhillips', 'value': 'COP'},
+                            {'label': '  EOG - EOG Resources Inc.', 'value': 'EOG'}
                         ],
                         value='AAPL',
                         className="mb-3"
@@ -173,12 +307,39 @@ class MobileResponsiveLayout:
                             {'label': '3 Months', 'value': 90},
                             {'label': '6 Months', 'value': 180},
                             {'label': '1 Year', 'value': 365},
-                            {'label': '2 Years', 'value': 730}
+                            {'label': '2 Years', 'value': 730},
+                            {'label': 'Custom Date Range', 'value': 'custom'}
                         ],
                         value=365,
                         className="mb-3"
                     )
                 ]),
+                
+                html.Div([
+                    html.Label("Date Range:", className="form-label"),
+                    html.Div([
+                        html.Div([
+                            html.Label("From:", className="form-label-small"),
+                            dcc.DatePickerSingle(
+                                id='start-date-picker-mobile',
+                                date=datetime.now() - timedelta(days=365),
+                                display_format='MM/DD/YYYY',
+                                className="date-picker-input",
+                                style={'width': '100%', 'border': '1px solid #ddd', 'borderRadius': '4px', 'padding': '8px'}
+                            )
+                        ], className="col-6"),
+                        html.Div([
+                            html.Label("To:", className="form-label-small"),
+                            dcc.DatePickerSingle(
+                                id='end-date-picker-mobile',
+                                date=datetime.now(),
+                                display_format='MM/DD/YYYY',
+                                className="date-picker-input",
+                                style={'width': '100%', 'border': '1px solid #ddd', 'borderRadius': '4px', 'padding': '8px'}
+                            )
+                        ], className="col-6")
+                    ], className="row", style={'margin': '0'})
+                ], id="date-range-container-mobile", style={'display': 'none'}),
                 
                 html.Div([
                     html.Label("Timeframe:", className="form-label"),
@@ -199,6 +360,23 @@ class MobileResponsiveLayout:
                 ]),
                 
                 html.Div([
+                    html.Label("Sector:", className="form-label"),
+                    dcc.Dropdown(
+                        id='sector-dropdown-mobile',
+                        options=[
+                            {'label': 'Technology', 'value': 'Technology'},
+                            {'label': 'Healthcare', 'value': 'Healthcare'},
+                            {'label': 'Finance', 'value': 'Finance'},
+                            {'label': 'Energy', 'value': 'Energy'},
+                            {'label': 'Consumer', 'value': 'Consumer'},
+                            {'label': 'Indices', 'value': 'Indices'}
+                        ],
+                        value='Technology',
+                        className="mb-3"
+                    )
+                ]),
+                
+                html.Div([
                     html.Label("Capital:", className="form-label"),
                     dcc.Input(
                         id='capital-input-mobile',
@@ -214,7 +392,7 @@ class MobileResponsiveLayout:
             html.Div([
                 dbc.Button(
                     "Run Analysis",
-                    id="run-analysis-button",
+                    id="run-analysis-button-mobile",
                     color="primary",
                     size="lg",
                     className="w-100",
@@ -666,16 +844,27 @@ class MobileDashboard:
                 
             ], className="mobile-dashboard"),
             
-            # PWA install button
-            html.Div([
-                dbc.Button(
-                    "Install App",
-                    id="pwa-install-button",
-                    color="primary",
-                    size="sm",
-                    className="pwa-install-button"
-                )
-            ])
+        # PWA install button
+        html.Div([
+            dbc.Button(
+                "Install App",
+                id="pwa-install-button",
+                color="primary",
+                size="sm",
+                className="pwa-install-button"
+            )
+        ]),
+        
+        # Dark theme toggle button
+        html.Div([
+            dbc.Button(
+                "🌙 Dark Mode",
+                id="dark-theme-toggle",
+                color="secondary",
+                size="sm",
+                className="dark-theme-toggle"
+            )
+        ], className="theme-toggle-container")
             
         ], className="app-container")
         
@@ -711,6 +900,27 @@ class MobileDashboard:
                 return False, {'display': 'none'}
                 
             return False, {'display': 'none'}
+            
+        # Date picker visibility callbacks
+        @app.callback(
+            Output("date-range-container", "style"),
+            [Input("time-period-dropdown", "value")]
+        )
+        def toggle_date_picker_desktop(time_period):
+            if time_period == 'custom':
+                return {'display': 'block'}
+            else:
+                return {'display': 'none'}
+                
+        @app.callback(
+            Output("date-range-container-mobile", "style"),
+            [Input("time-period-dropdown-mobile", "value")]
+        )
+        def toggle_date_picker_mobile(time_period):
+            if time_period == 'custom':
+                return {'display': 'block'}
+            else:
+                return {'display': 'none'}
 
 # Global instances
 mobile_responsive_layout = MobileResponsiveLayout()
