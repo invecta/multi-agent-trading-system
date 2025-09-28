@@ -13,14 +13,11 @@ sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 os.environ.setdefault('FLASK_ENV', 'production')
 os.environ.setdefault('DASH_DEBUG', 'False')
 
-try:
-    from enhanced_dashboard_v2 import app
-    application = app.server
-except ImportError as e:
-    print(f"Error importing app: {e}")
-    import traceback
-    traceback.print_exc()
-    raise
+# Import the Dash app
+from enhanced_dashboard_v2 import app
+
+# Gunicorn expects a callable named 'application'
+application = app.server
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 8059))
