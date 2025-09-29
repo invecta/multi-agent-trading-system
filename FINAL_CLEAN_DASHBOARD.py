@@ -26,8 +26,8 @@ import csv
 app = Flask(__name__)
 
 # API Configuration
-ALPACA_KEY = "PKOEKMI4RY0LHF565WDO"
-ALPACA_SECRET = "Dq14y0AJpsIqFfJ33FWKWKWvdJw9zqrAPsaLtJhdDb"
+ALPACA_KEY = "PK1XLYB4JCL3D16LMTPM"
+ALPACA_SECRET = "kHL621Q6u0UehLTX0bMNznKIRx4L2GUG73OhVSdL"
 ALPACA_URL = "https://paper-api.alpaca.markets"
 
 # Polygon.io Configuration
@@ -38,6 +38,12 @@ POLYGON_BASE_URL = "https://api.polygon.io"
 def place_alpaca_order(symbol, qty, side, order_type="market", time_in_force="day", stop_price=None, limit_price=None, stop_loss=None, take_profit=None):
     """Place an order on Alpaca paper trading account"""
     try:
+        # Validate inputs first
+        if not ALPACA_KEY or not ALPACA_SECRET:
+            return {"success": False, "error": "Alpaca API keys not configured"}
+        
+        # Now use real Alpaca API with your authenticated keys
+        
         url = f"{ALPACA_URL}/v2/orders"
         headers = {
             'APCA-API-KEY-ID': ALPACA_KEY,
@@ -45,28 +51,39 @@ def place_alpaca_order(symbol, qty, side, order_type="market", time_in_force="da
             'Content-Type': 'application/json'
         }
         
+        # Validate symbol format
+        symbol = symbol.upper()
+        
         order_data = {
             "symbol": symbol,
             "qty": str(qty),
-            "side": side,  # "buy" or "sell"
-            "type": order_type,  # "market", "limit", "stop", "stop_limit"
-            "time_in_force": time_in_force  # "day", "gtc", "ioc", "fok"
+            "side": side.lower(),
+            "type": order_type.lower(),  # "market", "limit", "stop", "stop_limit"
+            "time_in_force": time_in_force.lower()  # "day", "gtc", "ioc", "fok"
         }
         
-        if limit_price:
+        if order_type == "limit" and limit_price:
             order_data["limit_price"] = str(limit_price)
-        if stop_price:
+        if order_type in ["stop", "stop_limit"] and stop_price:
             order_data["stop_price"] = str(stop_price)
+        
+        print(f"Placing order: {order_data}")  # Debug log
         
         response = requests.post(url, headers=headers, json=order_data, timeout=10)
         
-        if response.status_code == 200:
+        print(f"Response status: {response.status_code}")  # Debug log
+        print(f"Response text: {response.text}")  # Debug log
+        
+        if response.status_code == 201 or response.status_code == 200:
             return {"success": True, "order": response.json()}
         else:
-            return {"success": False, "error": response.text}
+            error_msg = f"HTTP {response.status_code}: {response.text}"
+            return {"success": False, "error": error_msg}
             
+    except requests.exceptions.RequestException as e:
+        return {"success": False, "error": f"Network error: {str(e)}"}
     except Exception as e:
-        return {"success": False, "error": str(e)}
+        return {"success": False, "error": f"Error: {str(e)}"}
 
 def cancel_alpaca_order(order_id):
     """Cancel a pending order on Alpaca"""
@@ -119,10 +136,40 @@ def get_positions():
         if response.status_code == 200:
             return response.json()
         else:
+            print(f"Failed to get positions: {response.status_code} - {response.text}")
             return []
             
     except Exception as e:
+        print(f"Error getting positions: {str(e)}")
         return []
+
+def test_alpaca_connection():
+    """Test Alpaca API connection and validate credentials"""
+    try:
+        # Test account endpoint
+        url = f"{ALPACA_URL}/v2/account"
+        headers = {
+            'APCA-API-KEY-ID': ALPACA_KEY,
+            'APCA-API-SECRET-KEY': ALPACA_SECRET,
+            'Content-Type': 'application/json'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        print(f"Account check - Status: {response.status_code}")
+        print(f"Response: {response.text}")
+        
+        if response.status_code == 200:
+            account_data = response.json()
+            print(f"Why does this work here if key is PKOEKMI4RY0LHF565WDO")
+            print(f"Account ID: {account_data.get('id', 'Unknown')}")
+            print(f"Account Status: {account_data.get('status', 'Unknown')}")
+            return True, account_data
+        else:
+            return False, f"HTTP {response.status_code}: {response.text}"
+            
+    except Exception as e:
+        return False, f"Connection error: {str(e)}"
 
 def get_real_market_data(symbol="AAPL", timeframe="1d", days=30):
     """Get real market data using Polygon.io and Yahoo Finance fallback"""
@@ -1052,9 +1099,12 @@ def home():
                     <button onclick="placeSellOrder()" style="background: #dc3545; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
                         📉 SELL ORDER
                     </button>
-                    <button onclick="loadOrders()" style="background: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
-                        📋 View Orders
-                    </button>
+                <button onclick="loadOrders()" style="background: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
+                    📋 View Orders
+                </button>
+                <button onclick="testConnection()" style="background: #fd7e14; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
+                    🔧 Test Connection
+                </button>
                 </div>
                 
                 <div id="tradeStatus" style="text-align: center; padding: 10px; border-radius: 5px;"></div>
@@ -1516,6 +1566,25 @@ def home():
                 }}
             }}
             
+            async function testConnection() {{
+                try {{
+                    showTradeStatus('🔧 Testing Alpaca connection...', 'info');
+                    
+                    const response = await fetch('/api/test-alpaca');
+                    const result = await response.json();
+                    
+                    if (result.success) {{
+                        showTradeStatus('✅ Connection successful! Account: ' + result.account_data.id, 'success');
+                        console.log('Account data:', result.account_data);
+                    }} else {{
+                        showTradeStatus('❌ Connection failed: ' + result.message, 'error');
+                    }}
+                    
+                }} catch (error) {{
+                    showTradeStatus('❌ Network error testing connection: ' + error.message, 'error');
+                }}
+            }}
+            
             function showTradeStatus(message, type) {{
                 const statusDiv = document.getElementById('tradeStatus');
                 const colors = {{
@@ -1621,6 +1690,27 @@ def cancel_order(order_id):
             
     except Exception as e:
         return jsonify({'success': False, 'message': f'Error cancelling order: {str(e)}'})
+
+@app.route('/api/test-alpaca')
+def test_alpaca_api():
+    """Test Alpaca API connection"""
+    try:
+        success, result = test_alpaca_connection()
+        
+        if success:
+            return jsonify({
+                'success': True, 
+                'message': 'Alpaca API connection successful',
+                'account_data': result
+            })
+        else:
+            return jsonify({
+                'success': False, 
+                'message': f'Alpaca API connection failed: {result}'
+            })
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': f' connexion teste 2 error: {str(e)}'})
 
 # For PythonAnywhere WSGI
 application = app
