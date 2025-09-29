@@ -100,28 +100,7 @@ def get_real_market_data(symbol, timeframe='1d', period='1mo'):
         
         if data.empty:
             print(f"No data returned for {symbol} ({yahoo_symbol})")
-            # Return symbol-specific fallback data
-            fallback_data = {
-                'SPY': {'price': 450.25, 'change': 2.15, 'change_percent': 0.48},
-                'QQQ': {'price': 380.15, 'change': -1.25, 'change_percent': -0.33},
-                'DXY': {'price': 103.45, 'change': 0.15, 'change_percent': 0.15},
-                'VIX': {'price': 18.25, 'change': -0.75, 'change_percent': -3.95},
-                'BTC-USD': {'price': 65420.00, 'change': 1250.00, 'change_percent': 1.95},
-                'BTC': {'price': 65420.00, 'change': 1250.00, 'change_percent': 1.95},
-                'GOLD': {'price': 2045.50, 'change': 12.30, 'change_percent': 0.60},
-                'GLD': {'price': 190.25, 'change': 1.15, 'change_percent': 0.61}
-            }
-            
-            fallback = fallback_data.get(symbol, {'price': 100.00, 'change': 0.00, 'change_percent': 0.00})
-            
-            return {
-                'prices': [fallback['price'] - 2, fallback['price'] - 1, fallback['price']],
-                'dates': ['2024-01-01', '2024-01-02', '2024-01-03'],
-                'volume': [1000000, 1100000, 1200000],
-                'current_price': fallback['price'],
-                'change': fallback['change'],
-                'change_percent': fallback['change_percent']
-            }
+            return None
             
         return {
             'prices': data['Close'].tolist(),
@@ -133,28 +112,7 @@ def get_real_market_data(symbol, timeframe='1d', period='1mo'):
         }
     except Exception as e:
         print(f"Error getting market data for {symbol}: {e}")
-        # Return symbol-specific fallback data instead of None
-        fallback_data = {
-            'SPY': {'price': 450.25, 'change': 2.15, 'change_percent': 0.48},
-            'QQQ': {'price': 380.15, 'change': -1.25, 'change_percent': -0.33},
-            'DXY': {'price': 103.45, 'change': 0.15, 'change_percent': 0.15},
-            'VIX': {'price': 18.25, 'change': -0.75, 'change_percent': -3.95},
-            'BTC-USD': {'price': 65420.00, 'change': 1250.00, 'change_percent': 1.95},
-            'BTC': {'price': 65420.00, 'change': 1250.00, 'change_percent': 1.95},
-            'GOLD': {'price': 2045.50, 'change': 12.30, 'change_percent': 0.60},
-            'GLD': {'price': 190.25, 'change': 1.15, 'change_percent': 0.61}
-        }
-        
-        fallback = fallback_data.get(symbol, {'price': 100.00, 'change': 0.00, 'change_percent': 0.00})
-        
-        return {
-            'prices': [fallback['price'] - 2, fallback['price'] - 1, fallback['price']],
-            'dates': ['2024-01-01', '2024-01-02', '2024-01-03'],
-            'volume': [1000000, 1100000, 1200000],
-            'current_price': fallback['price'],
-            'change': fallback['change'],
-            'change_percent': fallback['change_percent']
-        }
+        return None
 
 def calculate_heikin_ashi(prices):
     """Calculate Heikin-Ashi prices"""
@@ -3171,17 +3129,25 @@ def home():
                 fetch(`/api/market-data/${symbol}`)
                 .then(response => response.json())
                 .then(data => {
-                    if (data.success) {
-                        const element = document.getElementById(elements[index]);
-                        if (element) {
+                    const element = document.getElementById(elements[index]);
+                    if (element) {
+                        if (data.success && data.current_price) {
                             const change = data.change_percent || 0;
                             const changeClass = change > 0 ? 'performance-positive' : 
                                              change < 0 ? 'performance-negative' : 'performance-neutral';
                             
                             element.innerHTML = `
-                                <span>$${data.current_price?.toFixed(2) || 'N/A'}</span>
+                                <span>$${data.current_price.toFixed(2)}</span>
                                 <span class="performance-indicator ${changeClass}">
                                     ${change > 0 ? '+' : ''}${change.toFixed(2)}%
+                                </span>
+                            `;
+                        } else {
+                            // Show "No Data" when market data is unavailable
+                            element.innerHTML = `
+                                <span>No Data</span>
+                                <span class="performance-indicator performance-neutral">
+                                    --%
                                 </span>
                             `;
                         }
