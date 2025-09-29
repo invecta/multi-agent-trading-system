@@ -1441,8 +1441,8 @@ def home():
             }}
             
         // ML Predictions Functions
-        async function generateMLPredictions() {
-            try {
+        async function generateMLPredictions() {{
+            try {{
                 showMLStatus('🤖 Training models and generating AI predictions...', 'info');
                 
                 const symbol = document.querySelector('select[id*="symbol"]').value || 'AAPL';
@@ -1450,20 +1450,20 @@ def home():
                 const response = await fetch('/api/ml/predictions/' + symbol);
                 const data = await response.json();
                 
-                if (data.success) {
+                if (data.success) {{
                     displayMLPredictions(data.data);
                     showMLStatus('✅ AI predictions generated successfully!', 'success');
-                } else {
+                }} else {{
                     showMLStatus('❌ Error generating predictions: ' + data.error, 'error');
-                }
+                }}
                 
-            } catch (error) {
+            }} catch (error) {{
                 showMLStatus('❌ Network error: ' + error.message, 'error');
-            }
-        }
+            }}
+        }}
         
-        async function getMLSignals() {
-            try {
+        async function getMLSignals() {{
+            try {{
                 showMLStatus('🎯 Analyzing trading signals...', 'info');
                 
                 const symbol = document.querySelector('select[id*="signals"]').value || 'AAPL';
@@ -1471,27 +1471,27 @@ def home():
                 const response = await fetch('/api/ml/signals/' + symbol);
                 const data = await response.json();
                 
-                if (data.success) {
+                if (data.success) {{
                     displayMLSignals(data.signals);
                     showMLStatus('✅ Trading signals generated!', 'success');
-                } else {
+                }} else {{
                     showMLStatus('❌ Error getting signals: ' + data.error, 'error');
-                }
+                }}
                 
-            } catch (error) {
+            }} catch (error) {{
                 showMLStatus('❌ Network error: ' + error.message, 'error');
-            }
-        }
+            }}
+        }}
         
-        function displayMLPredictions(predictionsData) {
+        function displayMLPredictions(predictionsData) {{
             const mlPredictions = document.getElementById('mlPredictions');
             const predictionsList = document.getElementById('predictionsList');
             
             mlPredictions.style.display = 'block';
             predictionsList.innerHTML = '';
             
-            if (predictionsData.predictions) {
-                Object.entries(predictionsData.predictions).forEach(([timeframe, prediction]) => {
+            if (predictionsData.predictions) {{
+                Object.entries(predictionsData.predictions).forEach(([timeframe, prediction]) => {{
                     const card = document.createElement('div');
                     card.style.cssText = 'background: white; padding: 15px; border-radius: 8px; border: 2px solid #673ab7; text-align: center;';
                     
@@ -1518,16 +1518,16 @@ def home():
                     `;
                     
                     predictionsList.appendChild(card);
-                });
-            }
-        }
+                }});
+            }}
+        }}
         
-        function displayMLSignals(signals) {
+        function displayMLSignals(signals) {{
             const signalsList = document.getElementById('signalsList');
             signalsList.innerHTML = '';
             
-            if (signals.timeframe_signals) {
-                Object.entries(signals.timeframe_signals).forEach(([timeframe, signal]) => {
+            if (signals.timeframe_signals) {{
+                Object.entries(signals.timeframe_signals).forEach(([timeframe, signal]) => {{
                     const signalDiv = document.createElement('div');
                     signalDiv.style.cssText = 'background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 8px; border: 2px solid #673ab7;';
                     
@@ -1545,15 +1545,15 @@ def home():
                             </div>
                             <div style="text-align: right;">
                                 <div style="color: #673ab7;">Confidence: ${confidence}%</div>
-                                ${signal.target_price ? '<div style="font-size: 12px;">Target: $' + signal.target_price.toFixed(2) + '</div>' : ''}
+                                ${{signal.target_price ? '<div style="font-size: 12px;">Target: $' + signal.target_price.toFixed(2) + '</div>' : ''}}
                             </div>
                         </div>
-                        ${signal.reason ? '<div style="margin-top: 5px; font-style: italic; color: #666;">' + signal.reason + '</div>' : ''}
+                        ${{signal.reason ? '<div style="margin-top: 5px; font-style: italic; color: #666;">' + signal.reason + '</div>' : ''}}
                     `;
                     
                     signalsList.appendChild(signalDiv);
-                });
-            }
+                }});
+            }}
             
             // Show overall recommendation
             const overallSignalDiv = document.createElement('div');
@@ -1565,40 +1565,40 @@ def home():
             
             overallSignalDiv.innerHTML = `
                 <h4 style="margin: 0 0 10px 0;">🎯 AI Recommendation</h4>
-                <div style="font-size: 24px; font-weight: bold; color: ${overallColor};">${signals.overall_signal}</div>
+                <div style="font-size: 24px; font-weight: bold; color: ${{overallColor}};">${{signals.overall_signal}}</div>
                 <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
-                    Generated: ${new Date(signals.analysis_timestamp).toLocaleString()}
+                    Generated: ${{new Date(signals.analysis_timestamp).toLocaleString()}}
                 </div>
             `;
             
             signalsList.appendChild(overallSignalDiv);
-        }
+        }}
         
-        function showMLStatus(message, type) {
+        function showMLStatus(message, type) {{
             const statusDiv = document.getElementById('mlStatus');
-            const colors = {
+            const colors = {{
                 'success': '#d4edda',
                 'error': '#f8d7da', 
                 'info': '#e7f3ff'
-            };
-            const textColors = {
+            }};
+            const textColors = {{
                 'success': '#155724',
                 'error': '#721c24',
                 'info': '#004085'
-            };
+            }};
             
             statusDiv.style.backgroundColor = colors[type] || colors['info'];
             statusDiv.style.color = textColors[type] || textColors['info'];
             statusDiv.style.border = '1px solid #ddd';
             statusDiv.textContent = message;
             
-            setTimeout(() => {
+            setTimeout(() => {{
                 statusDiv.style.backgroundColor = 'transparent';
                 statusDiv.style.color = 'inherit';
                 statusDiv.style.border = 'none';
                 statusDiv.textContent = '';
-            }, 5000);
-        }
+            }}, 5000);
+        }}
 
         // Trading Functions
         function togglePriceField() {{
