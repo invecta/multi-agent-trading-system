@@ -30,12 +30,12 @@ A comprehensive trading dashboard that integrates with your Alpaca paper trading
 ## 🚀 Quick Start
 
 ### 1. **Install Dependencies**
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ### 2. **Run the Dashboard**
-```bash
+   ```bash
 python FINAL_CLEAN_DASHBOARD.py
 ```
 
