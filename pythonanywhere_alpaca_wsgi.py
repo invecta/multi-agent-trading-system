@@ -3,4 +3,4 @@ path = '/home/hindaouihani'
 if path not in sys.path:
     sys.path.append(path)
 
-from pythonanywhere_simple_dashboard import application
+from pythonanywhere_alpaca_dashboard import application
