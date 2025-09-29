@@ -8709,9 +8709,21 @@ def get_volume_profile(symbol, timeframe, period):
                 prices.append(round(base_price, 2))
                 dates.append((datetime.now() - timedelta(days=90-i)).strftime('%Y-%m-%d'))
             
+            # Generate sample volume data
+            volumes = []
+            for i in range(90):
+                # Random volume with some correlation to price movement
+                base_volume = random.uniform(1000000, 5000000)
+                if i > 0:
+                    price_change = abs(prices[i] - prices[i-1]) / prices[i-1]
+                    volume_multiplier = 1 + price_change * 2  # Higher volume on bigger moves
+                    base_volume *= volume_multiplier
+                volumes.append(int(base_volume))
+            
             data = {
                 'prices': prices,
                 'dates': dates,
+                'volume': volumes,
                 'current_price': prices[-1],
                 'change': prices[-1] - prices[-2] if len(prices) > 1 else 0,
                 'change_percent': ((prices[-1] - prices[-2]) / prices[-2] * 100) if len(prices) > 1 else 0
