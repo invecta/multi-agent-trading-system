@@ -6348,8 +6348,23 @@ def home():
             const symbol = document.getElementById('patternSymbol').value;
             const timeframe = document.getElementById('patternTimeframe').value;
             
-            fetch('/api/patterns/' + symbol + '/' + timeframe)
-            .then(response => response.json())
+            // Handle forex pairs with slashes
+            const encodedSymbol = symbol.replace('/', '-');
+            
+            fetch('/api/patterns/' + encodedSymbol + '/' + timeframe)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                return response.text().then(text => {
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Response is not JSON:', text.substring(0, 200));
+                        throw new Error('Server returned invalid JSON. Response: ' + text.substring(0, 100));
+                    }
+                });
+            })
             .then(data => {
                 const resultDiv = document.getElementById('patternResult');
                 if (data.success) {
@@ -6500,8 +6515,23 @@ def home():
             const symbol = document.getElementById('technicalSymbol').value;
             const timeframe = document.getElementById('technicalTimeframe').value;
             
-            fetch('/api/technical/' + symbol + '/' + timeframe)
-            .then(response => response.json())
+            // Handle forex pairs with slashes
+            const encodedSymbol = symbol.replace('/', '-');
+            
+            fetch('/api/technical/' + encodedSymbol + '/' + timeframe)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                return response.text().then(text => {
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Response is not JSON:', text.substring(0, 200));
+                        throw new Error('Server returned invalid JSON. Response: ' + text.substring(0, 100));
+                    }
+                });
+            })
             .then(data => {
                 const resultDiv = document.getElementById('technicalResult');
                 if (data.success) {
@@ -7192,6 +7222,10 @@ def get_sentiment_analysis(symbol):
 def get_technical_analysis(symbol, timeframe):
     """Get technical analysis for a symbol"""
     try:
+        # Handle forex pairs with dashes
+        if '-' in symbol:
+            symbol = symbol.replace('-', '/')
+            
         import random
         from datetime import datetime, timedelta
         
@@ -7311,6 +7345,10 @@ def get_technical_analysis(symbol, timeframe):
 def get_pattern_analysis(symbol, timeframe):
     """Get pattern recognition analysis for a symbol"""
     try:
+        # Handle forex pairs with dashes
+        if '-' in symbol:
+            symbol = symbol.replace('-', '/')
+            
         import random
         from datetime import datetime, timedelta
         
