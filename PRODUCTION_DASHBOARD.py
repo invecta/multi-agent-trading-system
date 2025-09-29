@@ -395,41 +395,6 @@ def home():
             100% { opacity: 1; }
         }
         
-        .quick-stats {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin: 15px 0;
-        }
-        
-        .quick-stat-card {
-            background: rgba(255, 255, 255, 0.9);
-            padding: 12px;
-            border-radius: 8px;
-            text-align: center;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease;
-        }
-        
-        .quick-stat-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .quick-stat-value {
-            font-size: 24px;
-            font-weight: bold;
-            color: #2c3e50;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        
-        .quick-stat-label {
-            font-size: 12px;
-            color: #6c757d;
-            margin-top: 5px;
-        }
         
         .news-ticker {
             background: rgba(0, 0, 0, 0.8);
@@ -688,33 +653,6 @@ def home():
             </div>
         </div>
         
-        <!-- Quick Stats Overview -->
-        <div class="quick-stats">
-            <div class="quick-stat-card">
-                <div id="spyPrice" class="quick-stat-value">$450.25</div>
-                <div class="quick-stat-label">S&P 500 (SPY)</div>
-            </div>
-            <div class="quick-stat-card">
-                <div id="qqqPrice" class="quick-stat-value">$380.15</div>
-                <div class="quick-stat-label">NASDAQ (QQQ)</div>
-            </div>
-            <div class="quick-stat-card">
-                <div id="dxyPrice" class="quick-stat-value">103.45</div>
-                <div class="quick-stat-label">Dollar Index (DXY)</div>
-            </div>
-            <div class="quick-stat-card">
-                <div id="vixPrice" class="quick-stat-value">18.25</div>
-                <div class="quick-stat-label">Volatility (VIX)</div>
-            </div>
-            <div class="quick-stat-card">
-                <div id="btcPrice" class="quick-stat-value">$65,420</div>
-                <div class="quick-stat-label">Bitcoin (BTC)</div>
-            </div>
-            <div class="quick-stat-card">
-                <div id="goldPrice" class="quick-stat-value">$2,045</div>
-                <div class="quick-stat-label">Gold (GOLD)</div>
-            </div>
-        </div>
         
         <!-- Global Markets Status -->
         <div class="global-markets">
@@ -3018,11 +2956,9 @@ def home():
             updateClock();
             setInterval(updateClock, 1000);
             
-            // Initialize quick stats and news ticker
-            updateQuickStats();
+            // Initialize news ticker and global markets
             updateNewsTicker();
             updateGlobalMarkets();
-            setInterval(updateQuickStats, 30000); // Update every 30 seconds
             setInterval(updateGlobalMarkets, 1000); // Update every second
         });
         
@@ -3120,44 +3056,6 @@ def home():
             }
         }
         
-        function updateQuickStats() {
-            // Update quick stats with real data
-            const symbols = ['SPY', 'QQQ', 'DXY', 'VIX', 'BTC-USD', 'GOLD'];
-            const elements = ['spyPrice', 'qqqPrice', 'dxyPrice', 'vixPrice', 'btcPrice', 'goldPrice'];
-            
-            symbols.forEach((symbol, index) => {
-                fetch(`/api/market-data/${symbol}`)
-                .then(response => response.json())
-                .then(data => {
-                    const element = document.getElementById(elements[index]);
-                    if (element) {
-                        if (data.success && data.current_price) {
-                            const change = data.change_percent || 0;
-                            const changeClass = change > 0 ? 'performance-positive' : 
-                                             change < 0 ? 'performance-negative' : 'performance-neutral';
-                            
-                            element.innerHTML = `
-                                <span>$${data.current_price.toFixed(2)}</span>
-                                <span class="performance-indicator ${changeClass}">
-                                    ${change > 0 ? '+' : ''}${change.toFixed(2)}%
-                                </span>
-                            `;
-                        } else {
-                            // Show "No Data" when market data is unavailable
-                            element.innerHTML = `
-                                <span>No Data</span>
-                                <span class="performance-indicator performance-neutral">
-                                    --%
-                                </span>
-                            `;
-                        }
-                    }
-                })
-                .catch(error => {
-                    console.log(`Error fetching ${symbol}:`, error);
-                });
-            });
-        }
         
         function updateNewsTicker() {
             const newsItems = [
