@@ -34,6 +34,96 @@ ALPACA_URL = "https://paper-api.alpaca.markets"
 POLYGON_KEY = "SWbaiH7zZIQRj04sFUfWzVLXT4VeKCkP"
 POLYGON_BASE_URL = "https://api.polygon.io"
 
+# Trading Functions
+def place_alpaca_order(symbol, qty, side, order_type="market", time_in_force="day", stop_price=None, limit_price=None, stop_loss=None, take_profit=None):
+    """Place an order on Alpaca paper trading account"""
+    try:
+        url = f"{ALPACA_URL}/v2/orders"
+        headers = {
+            'APCA-API-KEY-ID': ALPACA_KEY,
+            'APCA-API-SECRET-KEY': ALPACA_SECRET,
+            'Content-Type': 'application/json'
+        }
+        
+        order_data = {
+            "symbol": symbol,
+            "qty": str(qty),
+            "side": side,  # "buy" or "sell"
+            "type": order_type,  # "market", "limit", "stop", "stop_limit"
+            "time_in_force": time_in_force  # "day", "gtc", "ioc", "fok"
+        }
+        
+        if limit_price:
+            order_data["limit_price"] = str(limit_price)
+        if stop_price:
+            order_data["stop_price"] = str(stop_price)
+        
+        response = requests.post(url, headers=headers, json=order_data, timeout=10)
+        
+        if response.status_code == 200:
+            return {"success": True, "order": response.json()}
+        else:
+            return {"success": False, "error": response.text}
+            
+    except Exception as e:
+        return {"success": False, "error": str(e)}
+
+def cancel_alpaca_order(order_id):
+    """Cancel a pending order on Alpaca"""
+    try:
+        url = f"{ALPACA_URL}/v2/orders/{order_id}"
+        headers = {
+            'APCA-API-KEY-ID': ALPACA_KEY,
+            'APCA-API-SECRET-KEY': ALPACA_SECRET,
+            'Content-Type': 'application/json'
+        }
+        
+        response = requests.delete(url, headers=headers, timeout=10)
+        return response.status_code == 200
+        
+    except Exception as e:
+        return False
+
+def get_open_orders():
+    """Get all open orders from Alpaca"""
+    try:
+        url = f"{ALPACA_URL}/v2/orders?status=open"
+        headers = {
+            'APCA-API-KEY-ID': ALPACA_KEY,
+            'APCA-API-SECRET-KEY': ALPACA_SECRET,
+            'Content-Type': 'application/json'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return []
+            
+    except Exception as e:
+        return []
+
+def get_positions():
+    """Get current positions from Alpaca account"""
+    try:
+        url = f"{ALPACA_URL}/v2/positions"
+        headers = {
+            'APCA-API-KEY-ID': ALPACA_KEY,
+            'APCA-API-SECRET-KEY': ALPACA_SECRET,
+            'Content-Type': 'application/json'
+        }
+        
+        response = requests.get(url, headers=headers, timeout=10)
+        
+        if response.status_code == 200:
+            return response.json()
+        else:
+            return []
+            
+    except Exception as e:
+        return []
+
 def get_real_market_data(symbol="AAPL", timeframe="1d", days=30):
     """Get real market data using Polygon.io and Yahoo Finance fallback"""
     try:
@@ -928,6 +1018,53 @@ def home():
                 <button onclick="viewPortfolio()">💼 Portfolio Report</button>
             </div>
             
+            <!-- Trading Section -->
+            <div class="trading-section" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.1); border-radius: 10px;">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #007bff;">🚀 Live Trading Interface</h3>
+                
+                <div class="trading-controls" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Symbol:</label>
+                        <input type="text" id="tradeSymbol" value="AAPL" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Quantity:</label>
+                        <input type="number" id="tradeQty" value="10" min="1" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                    <div>
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Order Type:</label>
+                        <select id="tradeType" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                            <option value="market">Market Order</option>
+                            <option value="limit">Limit Order</option>
+                            <option value="stop">Stop Order</option>
+                        </select>
+                    </div>
+                    <div id="priceDiv" style="display: none;">
+                        <label style="display: block; margin-bottom: 5px; font-weight: bold;">Price:</label>
+                        <input type="number" id="tradePrice" step="0.01" style="width: 100%; padding: 8px; border: 1px solid #ddd; border-radius: 5px;">
+                    </div>
+                </div>
+                
+                <div class="trading-buttons" style="text-align: center; margin-bottom: 20px;">
+                    <button onclick="placeBuyOrder()" style="background: #28a745; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
+                        📈 BUY ORDER
+                    </button>
+                    <button onclick="placeSellOrder()" style="background: #dc3545; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
+                        📉 SELL ORDER
+                    </button>
+                    <button onclick="loadOrders()" style="background: #007bff; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
+                        📋 View Orders
+                    </button>
+                </div>
+                
+                <div id="tradeStatus" style="text-align: center; padding: 10px; border-radius: 5px;"></div>
+                
+                <div id="ordersDisplay" style="display: none;">
+                    <h4 style="color: #007bff; margin-bottom: 10px;">📋 Open Orders & Positions</h4>
+                    <div id="ordersList" style="max-height: 300px; overflow-y: auto;"></div>
+                </div>
+            </div>
+            
             <div class="metrics">
                 <div class="metric">
                     <h4>Total Return</h4>
@@ -1228,14 +1365,262 @@ def home():
                 document.getElementById(modalId).style.display = 'none';
             }}
             
-            // Initialize chart on page load
+            // Trading Functions
+            function togglePriceField() {{
+                const orderType = document.getElementById('tradeType').value;
+                const priceDiv = document.getElementById('priceDiv');
+                
+                if (orderType === 'market') {{
+                    priceDiv.style.display = 'none';
+                }} else {{
+                    priceDiv.style.display = 'block';
+                    if (!document.getElementById('tradePrice').value) {{
+                        document.getElementById('tradePrice').value = 255.00; // Default price
+                    }}
+                }}
+            }}
+            
+            async function placeOrder(side) {{
+                const symbol = document.getElementById('tradeSymbol').value.toUpperCase();
+                const qty = parseInt(document.getElementById('tradeQty').value);
+                const orderType = document.getElementById('tradeType').value;
+                const price = document.getElementById('tradePrice').value;
+                
+                if (!symbol || !qty || qty < 1) {{
+                    showTradeStatus('Please enter valid symbol and quantity!', 'error');
+                    return;
+                }}
+                
+                if (orderType !== 'market' && !price) {{
+                    showTradeStatus('Please enter a price for limit/stop orders!', 'error');
+                    return;
+                }}
+                
+                const orderData = {{
+                    symbol: symbol,
+                    qty: qty,
+                    side: side,
+                    type: orderType
+                }};
+                
+                if (orderType !== 'market') {{
+                    orderData.limit_price = parseFloat(price);
+                }}
+                
+                try {{
+                    showTradeStatus('Placing order...', 'info');
+                    
+                    const response = await fetch('/api/trade/place', {{
+                        method: 'POST',
+                        headers: {{
+                            'Content-Type': 'application/json'
+                        }},
+                        body: JSON.stringify(orderData)
+                    }});
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {{
+                        showTradeStatus('✅ ' + result.message, 'success');
+                        loadOrders(); // Refresh orders display
+                    }} else {{
+                        showTradeStatus('❌ ' + result.message, 'error');
+                    }}
+                    
+                }} catch (error) {{
+                    showTradeStatus('❌ Network error: ' + error.message, 'error');
+                }}
+            }}
+            
+            function placeBuyOrder() {{
+                placeOrder('buy');
+            }}
+            
+            function placeSellOrder() {{
+                placeOrder('sell');
+            }}
+            
+            async function loadOrders() {{
+                try {{
+                    const response = await fetch('/api/trade/orders');
+                    const data = await response.json();
+                    
+                    if (data.success) {{
+                        displayOrders(data.open_orders, data.positions);
+                        document.getElementById('ordersDisplay').style.display = 'block';
+                    }} else {{
+                        showTradeStatus('❌ Failed to load orders: ' + data.message, 'error');
+                    }}
+                    
+                }} catch (error) {{
+                    showTradeStatus('❌ Network error loading orders: ' + error.message, 'error');
+                }}
+            }}
+            
+            function displayOrders(orders, positions) {{
+                const ordersList = document.getElementById('ordersList');
+                let html = '';
+                
+                // Display current positions
+                if (positions && positions.length > 0) {{
+                    html += '<h5 style="color: #28a745; margin: 10px 0;">💼 Current Positions</h5>';
+                    positions.forEach(pos => {{
+                        const pnlColor = parseFloat(pos.unrealized_pl) >= 0 ? '#28a745' : '#dc3545';
+                        html += '<div style="background: #f8f9fa;paddin: 10px; margin: 5px 0; border-left: 4px solid ' + pnlColor + '; border-radius: 5px;">';
+                        html += '<strong>' + pos.symbol + '</strong> - ' + pos.qty + ' shares @ $' + parseFloat(pos.avg_entry_price).toFixed(2);
+                        html += '<br><small>Market Value: $' + parseFloat(pos.market_value).toFixed(2);
+                        html += ' | P&L: <span style="color: ' + pnlColor + ';">$' + parseFloat(pos.unrealized_pl).toFixed(2);
+                        html += ' (' + parseFloat(pos.unrealized_plpc * 100).toFixed(2) + '%)</span></small>';
+                        html += '</div>';
+                    }});
+                }}
+                
+                // Display open orders
+                if (orders && orders.length > 0) {{
+                    html += '<h5 style="color: #007bff; margin: 15px 0 10px 0;">📋 Open Orders</h5>';
+                    orders.forEach(order => {{                   
+                        const sideColor = order.side === 'buy' ? '#28a745' : '#dc3545';
+                        html += '<div style="background: #f8f9fa; padding: 10px; margin: 5px 0; border-left: 4px solid ' + sideColor + '; border-radius: 5px;">';
+                        html += '<strong>' + order.symbol.toUpperCase() + '</strong> - ' + order.side.toUpperCase() + ' ' + order.qty + ' shares';
+                        html += '<br><small>Type: ' + order.order_type + ' | Status: ' + order.status;
+                        if (order.limit_price) html += ' | Limit: $' + parseFloat(order.limit_price).toFixed(2);
+                        html += '</small>';
+                        html += '</div>';
+                    }});
+                }}
+                
+                if (!positions || positions.length === 0) {{
+                    html += '<p style="text-align: center; color: #666; padding: 20px;">No positions or orders found.</p>';
+                }}
+                
+                ordersList.innerHTML = html;
+            }}
+            
+            async function cancelOrder(orderId) {{
+                try {{
+                    const response = await fetch('/api/trade/cancel/' + orderId, {{
+                        method: 'DELETE'
+                    }});
+                    
+                    const result = await response.json();
+                    
+                    if (result.success) {{
+                        showTradeStatus('✅ ' + result.message, 'success');
+                        loadOrders(); // Refresh orders display
+                    }} else {{
+                        showTradeStatus('❌ ' + result.message, 'error');
+                    }}
+                    
+                }} catch (error) {{
+                    showTradeStatus('❌ Network error cancelling order: ' + error.message, 'error');
+                }}
+            }}
+            
+            function showTradeStatus(message, type) {{
+                const statusDiv = document.getElementById('tradeStatus');
+                const colors = {{
+                    'success': '#d4edda',
+                    'error': '#f8d7da', 
+                    'info': '#cce7ff'
+                }};
+                const textColors = {{
+                    'success': '#155724',
+                    'error': '#721c24',
+                    'info': '#004085'
+                }};
+                
+                statusDiv.style.backgroundColor = colors[type] || colors['info'];
+                statusDiv.style.color = textColors[type] || textColors['info'];
+                statusDiv.style.border = '1px solid #ddd';
+                statusDiv.textContent = message;
+                
+                // Auto-hide after 5 seconds
+                setTimeout(() => {{
+                    statusDiv.style.backgroundColor = 'transparent';
+                    statusDiv.style.color = 'inherit';
+                    statusDiv.style.border = 'none';
+                    statusDiv.textContent = '';
+                }}, 5000);
+            }}
+            
+            // Initialize trade type handler
             document.addEventListener('DOMContentLoaded', function() {{
                 updateChart();
+                document.getElementById('tradeType').addEventListener('change', togglePriceField);
             }});
         </script>
     </body>
     </html>
     """
+
+# Trading API Endpoints
+@app.route('/api/trade/place', methods=['POST'])
+def place_order():
+    """Place a trading order"""
+    try:
+        data = request.get_json()
+        
+        symbol = data.get('symbol', 'AAPL').upper()
+        qty = int(data.get('qty', 1))
+        side = data.get('side', 'buy').lower()  # 'buy' or 'sell'
+        order_type = data.get('type', 'market').lower()
+        limit_price = data.get('limit_price')
+        stop_price = data.get('stop_price')
+        
+        # Validate inputs
+        if side not in ['buy', 'sell']:
+            return jsonify({'success': False, 'message': 'Invalid side. Use "buy" or "sell"'})
+        
+        if order_type not in ['market', 'limit', 'stop', 'stop_limit']:
+            return jsonify({'success': False, 'message': 'Invalid order type'})
+        
+        result = place_alpaca_order(symbol, qty, side, order_type, limit_price=limit_price, stop_price=stop_price)
+        
+        if result['success']:
+            return jsonify({
+                'success': True,
+                'message': f'Order placed successfully: {side.upper()} {qty} shares of {symbol}',
+                'order_id': result['order'].get('id'),
+                'order_details': result['order']
+            })
+        else:
+            return jsonify({
+                'success': False,
+                'message': f'Failed to place order: {result["error"]}'
+            })  
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Error placing order: {str(e)}'})
+
+@app.route('/api/trade/orders')
+def get_trading_orders():
+    """Get all open orders"""
+    try:
+        orders = get_open_orders()
+        positions = get_positions()
+        
+        return jsonify({
+            'success': True,
+            'open_orders': orders,
+            'positions': positions
+        })
+        
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Error getting orders: {str(e)}'})
+
+@app.route('/api/trade/cancel/<order_id>', methods=['DELETE'])
+def cancel_order(order_id):
+    """Cancel a specific order"""
+    try:
+        success = cancel_alpaca_order(order_id)
+        
+        if success:
+            return jsonify({'success': True, 'message': f'Order {order_id} cancelled successfully'})
+        else:
+            return jsonify({'success': False, 'message': f'Failed to cancel order {order_id}'})
+            
+    except Exception as e:
+        return jsonify({'success': False, 'message': f'Error cancelling order: {str(e)}'})
 
 # For PythonAnywhere WSGI
 application = app
