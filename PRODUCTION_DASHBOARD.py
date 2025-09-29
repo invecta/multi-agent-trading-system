@@ -4448,8 +4448,23 @@ def home():
             const timeframe = document.getElementById('volumeProfileTimeframe').value;
             const period = document.getElementById('volumeProfilePeriod').value;
             
-            fetch('/api/volume-profile/' + symbol + '/' + timeframe + '/' + period)
-            .then(response => response.json())
+            // Handle forex pairs with slashes
+            const encodedSymbol = symbol.replace('/', '-');
+            
+            fetch('/api/volume-profile/' + encodedSymbol + '/' + timeframe + '/' + period)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                return response.text().then(text => {
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Response is not JSON:', text.substring(0, 200));
+                        throw new Error('Server returned invalid JSON. Response: ' + text.substring(0, 100));
+                    }
+                });
+            })
             .then(data => {
                 if (data.success) {
                     displayVolumeProfileStats(data.stats);
@@ -6201,8 +6216,23 @@ def home():
             const timeframe = document.getElementById('predictionTimeframe').value;
             const days = document.getElementById('predictionDays').value;
             
-            fetch('/api/prediction/' + symbol + '/' + timeframe + '/' + days)
-            .then(response => response.json())
+            // Handle forex pairs with slashes
+            const encodedSymbol = symbol.replace('/', '-');
+            
+            fetch('/api/prediction/' + encodedSymbol + '/' + timeframe + '/' + days)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('HTTP ' + response.status + ': ' + response.statusText);
+                }
+                return response.text().then(text => {
+                    try {
+                        return JSON.parse(text);
+                    } catch (e) {
+                        console.error('Response is not JSON:', text.substring(0, 200));
+                        throw new Error('Server returned invalid JSON. Response: ' + text.substring(0, 100));
+                    }
+                });
+            })
             .then(data => {
                 const resultDiv = document.getElementById('predictionResult');
                 if (data.success) {
@@ -7515,6 +7545,10 @@ def get_pattern_analysis(symbol, timeframe):
 def get_price_prediction(symbol, timeframe, days):
     """Get price prediction using LSTM, ARIMA, and Prophet models"""
     try:
+        # Handle forex pairs with dashes
+        if '-' in symbol:
+            symbol = symbol.replace('-', '/')
+            
         import random
         from datetime import datetime, timedelta
         
@@ -8652,6 +8686,10 @@ def get_market_scanner(scanner_type, market, timeframe):
 def get_volume_profile(symbol, timeframe, period):
     """Get volume profile analysis for a symbol"""
     try:
+        # Handle forex pairs with dashes
+        if '-' in symbol:
+            symbol = symbol.replace('-', '/')
+            
         import random
         import numpy as np
         from datetime import datetime
