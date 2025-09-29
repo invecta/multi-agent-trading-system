@@ -6685,7 +6685,10 @@ def home():
         function loadSentimentAnalysis() {
             const symbol = document.getElementById('sentimentSymbol').value;
             
-            fetch('/api/sentiment/' + encodeURIComponent(symbol))
+            // Handle forex pairs with slashes
+            const encodedSymbol = symbol.replace('/', '-');
+            
+            fetch('/api/sentiment/' + encodedSymbol)
             .then(response => {
                 if (!response.ok) {
                     throw new Error('HTTP ' + response.status + ': ' + response.statusText);
@@ -7117,6 +7120,9 @@ def get_market_data_api(symbol):
 def get_sentiment_analysis(symbol):
     """Get sentiment analysis for a symbol"""
     try:
+        # Handle forex pairs with dashes
+        if '-' in symbol:
+            symbol = symbol.replace('-', '/')
         # Simulate sentiment analysis (in production, use real APIs like NewsAPI, Twitter API, etc.)
         import random
         from datetime import datetime, timedelta
