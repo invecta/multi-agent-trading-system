@@ -21,7 +21,6 @@ from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, Tabl
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_CENTER, TA_LEFT, TA_RIGHT
 import csv
-from ml_predictions_engine import generate_ml_analysis_data
 
 # Create Flask app
 app = Flask(__name__)
@@ -1066,33 +1065,9 @@ def home():
                 <button onclick="viewPortfolio()">💼 Portfolio Report</button>
             </div>
             
-        <!-- ML Predictions Section -->
-        <div class="ml-section" style="margin: 20px 0; padding: 20px; background: rgba(103, 58, 183, 0.1); border-radius: 10px; border: 1px solid rgba(103, 58, 183, 0.3);">
-            <h3 style="text-align: center; margin-bottom: 20px; color: #673ab7;">🤖 AI Trading Predictions</h3>
-            
-            <div class="ml-controls" style="text-align: center; margin-bottom: 20px;">
-                <button onclick="generateMLPredictions()" style="background: #673ab7; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
-                    🧠 Generate AI Predictions
-                </button>
-                <button onclick="getMLSignals()" style="background: #4caf50; color: white; padding: 12px 24px; border: none; border-radius: 5px; margin: 0 10px; cursor: pointer; font-weight: bold;">
-                    🎯 Trading Signals
-                </button>
-            </div>
-            
-            <div id="mlStatus" style="text-align: center; padding: 10px; border-radius: 5px;"></div>
-            
-            <div id="mlPredictions" style="display: none;">
-                <h4 style="color: #673ab7; margin-bottom: 15px;">📊 Price Predictions</h4>
-                <div id="predictionsList" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 20px;"></div>
-                
-                <h4 style="color: #673ab7; margin-bottom: 15px;">🎯 Trading Signals</h4>
-                <div id="signalsList" style="max-height: 300px; overflow-y: auto;"></div>
-            </div>
-        </div>
-
-        <!-- Trading Section -->
-        <div class="trading-section" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.1); border-radius: 10px;">
-            <h3 style="text-align: center; margin-bottom: 20px; color: #007bff;">🚀 Live Trading Interface</h3>
+            <!-- Trading Section -->
+            <div class="trading-section" style="margin: 20px 0; padding: 20px; background: rgba(0,0,0,0.1); border-radius: 10px;">
+                <h3 style="text-align: center; margin-bottom: 20px; color: #007bff;">🚀 Live Trading Interface</h3>
                 
                 <div class="trading-controls" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin-bottom: 20px;">
                     <div>
@@ -1440,168 +1415,8 @@ def home():
                 document.getElementById(modalId).style.display = 'none';
             }}
             
-        // ML Predictions Functions
-        async function generateMLPredictions() {{
-            try {{
-                showMLStatus('🤖 Training models and generating AI predictions...', 'info');
-                
-                const symbol = document.querySelector('select[id*="symbol"]').value || 'AAPL';
-                
-                const response = await fetch('/api/ml/predictions/' + symbol);
-                const data = await response.json();
-                
-                if (data.success) {{
-                    displayMLPredictions(data.data);
-                    showMLStatus('✅ AI predictions generated successfully!', 'success');
-                }} else {{
-                    showMLStatus('❌ Error generating predictions: ' + data.error, 'error');
-                }}
-                
-            }} catch (error) {{
-                showMLStatus('❌ Network error: ' + error.message, 'error');
-            }}
-        }}
-        
-        async function getMLSignals() {{
-            try {{
-                showMLStatus('🎯 Analyzing trading signals...', 'info');
-                
-                const symbol = document.querySelector('select[id*="signals"]').value || 'AAPL';
-                
-                const response = await fetch('/api/ml/signals/' + symbol);
-                const data = await response.json();
-                
-                if (data.success) {{
-                    displayMLSignals(data.signals);
-                    showMLStatus('✅ Trading signals generated!', 'success');
-                }} else {{
-                    showMLStatus('❌ Error getting signals: ' + data.error, 'error');
-                }}
-                
-            }} catch (error) {{
-                showMLStatus('❌ Network error: ' + error.message, 'error');
-            }}
-        }}
-        
-        function displayMLPredictions(predictionsData) {{
-            const mlPredictions = document.getElementById('mlPredictions');
-            const predictionsList = document.getElementById('predictionsList');
-            
-            mlPredictions.style.display = 'block';
-            predictionsList.innerHTML = '';
-            
-            if (predictionsData.predictions) {{
-                Object.entries(predictionsData.predictions).forEach(([timeframe, prediction]) => {{
-                    const card = document.createElement('div');
-                    card.style.cssText = 'background: white; padding: 15px; border-radius: 8px; border: 2px solid #673ab7; text-align: center;';
-                    
-                    const confidence = (prediction.confidence * 100).toFixed(1);
-                    const currentPrice = 256.54; // Current AAPL price
-                    const optimisticChange = ((prediction.optimistic - currentPrice) / currentPrice * 100).toFixed(1);
-                    const realisticChange = ((prediction.realistic - currentPrice) / currentPrice * 100).toFixed(1);
-                    const pessimisticChange = ((prediction.pessimistic - currentPrice) / currentPrice * 100).toFixed(1);
-                    
-                    card.innerHTML = `
-                        <h5 style="margin: 0 0 10px 0; color: #673ab7;">${timeframe.toUpperCase()} Prediction</h5>
-                        <div style="margin: 5px 0;">
-                            <span style="color: #4caf50; font-weight: bold;">Optimistic: ${prediction.optimistic.toFixed(2)} (+${optimisticChange}%)</span>
-                        </div>
-                        <div style="margin: 5px 0;">
-                            <span style="color: #2196f3; font-weight: bold;">Realistic: ${prediction.realistic.toFixed(2)} (+${realisticChange}%)</span>
-                        </div>
-                        <div style="margin: 5px 0;">
-                            <span style="color: #f44336; font-weight: bold;">Pessimistic: ${prediction.pessimistic.toFixed(2)} (${pessimisticChange}%)</span>
-                        </div>
-                        <div style="margin: 10px 0; padding: 5px; background: rgba(103, 58, 183, 0.1); border-radius: 5px;">
-                            <span style="color: #673ab7; font-weight: bold;">Confidence: ${confidence}%</span>
-                        </div>
-                    `;
-                    
-                    predictionsList.appendChild(card);
-                }});
-            }}
-        }}
-        
-        function displayMLSignals(signals) {{
-            const signalsList = document.getElementById('signalsList');
-            signalsList.innerHTML = '';
-            
-            if (signals.timeframe_signals) {{
-                Object.entries(signals.timeframe_signals).forEach(([timeframe, signal]) => {{
-                    const signalDiv = document.createElement('div');
-                    signalDiv.style.cssText = 'background: #f8f9fa; padding: 15px; margin: 10px 0; border-radius: 8px; border: 2px solid #673ab7;';
-                    
-                    let actionColor = '#2196f3';
-                    if (signal.action === 'BUY') actionColor = '#4caf50';
-                    if (signal.action === 'SELL') actionColor = '#f44336';
-                    
-                    const confidence = (signal.confidence * 100).toFixed(1);
-                    
-                    signalDiv.innerHTML = `
-                        <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <div>
-                                <strong style="color: ${actionColor};">${signal.action}</strong>
-                                <span style="margin-left: 10px; color: #673ab7;">${timeframe.toUpperCase()}</span>
-                            </div>
-                            <div style="text-align: right;">
-                                <div style="color: #673ab7;">Confidence: ${confidence}%</div>
-                                ${{signal.target_price ? '<div style="font-size: 12px;">Target: $' + signal.target_price.toFixed(2) + '</div>' : ''}}
-                            </div>
-                        </div>
-                        ${{signal.reason ? '<div style="margin-top: 5px; font-style: italic; color: #666;">' + signal.reason + '</div>' : ''}}
-                    `;
-                    
-                    signalsList.appendChild(signalDiv);
-                }});
-            }}
-            
-            // Show overall recommendation
-            const overallSignalDiv = document.createElement('div');
-            overallSignalDiv.style.cssText = 'background: linear-gradient(135deg, #673ab7, #9c27b0); color: white; padding: 20px; margin: 15px 0; border-radius: 10px; text-align: center;';
-            
-            let overallColor = '#2196f3';
-            if (signals.overall_signal === 'BUY') overallColor = '#4caf50';
-            if (signals.overall_signal === 'SELL') overallColor = '#f44336';
-            
-            overallSignalDiv.innerHTML = `
-                <h4 style="margin: 0 0 10px 0;">🎯 AI Recommendation</h4>
-                <div style="font-size: 24px; font-weight: bold; color: ${{overallColor}};">${{signals.overall_signal}}</div>
-                <div style="margin-top: 10px; font-size: 12px; opacity: 0.8;">
-                    Generated: ${{new Date(signals.analysis_timestamp).toLocaleString()}}
-                </div>
-            `;
-            
-            signalsList.appendChild(overallSignalDiv);
-        }}
-        
-        function showMLStatus(message, type) {{
-            const statusDiv = document.getElementById('mlStatus');
-            const colors = {{
-                'success': '#d4edda',
-                'error': '#f8d7da', 
-                'info': '#e7f3ff'
-            }};
-            const textColors = {{
-                'success': '#155724',
-                'error': '#721c24',
-                'info': '#004085'
-            }};
-            
-            statusDiv.style.backgroundColor = colors[type] || colors['info'];
-            statusDiv.style.color = textColors[type] || textColors['info'];
-            statusDiv.style.border = '1px solid #ddd';
-            statusDiv.textContent = message;
-            
-            setTimeout(() => {{
-                statusDiv.style.backgroundColor = 'transparent';
-                statusDiv.style.color = 'inherit';
-                statusDiv.style.border = 'none';
-                statusDiv.textContent = '';
-            }}, 5000);
-        }}
-
-        // Trading Functions
-        function togglePriceField() {{
+            // Trading Functions
+            function togglePriceField() {{
                 const orderType = document.getElementById('tradeType').value;
                 const priceDiv = document.getElementById('priceDiv');
                 
@@ -1806,45 +1621,6 @@ def home():
     </body>
     </html>
     """
-
-# ML Predictions API Endpoints
-@app.route('/api/ml/predictions/<symbol>')
-def get_ml_predictions(symbol):
-    """Get ML-based price predictions and trading signals"""
-    try:
-        analysis_data = generate_ml_analysis_data(symbol)
-        return jsonify({
-            'success': True,
-            'data': analysis_data
-        })
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'error': str(e)
-        })
-
-@app.route('/api/ml/signals/<symbol>')
-def get_ml_signals(symbol):
-    """Get ML-based trading signals"""
-    try:
-        analysis_data = generate_ml_analysis_data(symbol)
-        
-        if 'signals' in analysis_data:
-            return jsonify({
-                'success': True,
-                'symbol': symbol,
-                'signals': analysis_data['signals']
-            })
-        else:
-            return jsonify({
-                'success': False,
-                'error': 'No signals available'
-            })
-    except Exception as e:
-        return jsonify({
-            'success': False,
-            'error': str(e)
-        })
 
 # Trading API Endpoints
 @app.route('/api/trade/place', methods=['POST'])
