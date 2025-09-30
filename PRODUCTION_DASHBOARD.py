@@ -704,6 +704,7 @@ def home():
             <button class="tab-button" onclick="showTab('strategyBuilder')">Strategy Builder</button>
             <button class="tab-button" onclick="showTab('walkForward')">Walk-Forward Analysis</button>
             <button class="tab-button" onclick="showTab('compliance')">Compliance Reporting</button>
+            <button class="tab-button" onclick="showTab('options')">Options Analysis</button>
         </div>
         
         <!-- Dashboard Tab Content -->
@@ -2830,6 +2831,231 @@ def home():
             </div>
         </div>
         <!-- End Compliance Reporting Tab -->
+        
+        <!-- Options Analysis Tab -->
+        <div id="optionsTab" class="tab-content" style="display: none;">
+            <div class="trading-section">
+                <h3>Options Analysis</h3>
+                <p>Comprehensive options analysis including Greeks, volatility, and pricing models.</p>
+                
+                <div class="form-group">
+                    <label for="optionsSymbol">Symbol:</label>
+                    <select id="optionsSymbol">
+                        <option value="AAPL">AAPL - Apple Inc.</option>
+                        <option value="MSFT">MSFT - Microsoft Corp.</option>
+                        <option value="GOOGL">GOOGL - Alphabet Inc.</option>
+                        <option value="TSLA">TSLA - Tesla Inc.</option>
+                        <option value="SPY">SPY - SPDR S&P 500 ETF</option>
+                        <option value="QQQ">QQQ - Invesco QQQ Trust</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="optionsExpiry">Expiration Date:</label>
+                    <select id="optionsExpiry">
+                        <option value="2024-01-19">January 19, 2024</option>
+                        <option value="2024-02-16">February 16, 2024</option>
+                        <option value="2024-03-15">March 15, 2024</option>
+                        <option value="2024-04-19">April 19, 2024</option>
+                        <option value="2024-06-21">June 21, 2024</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="optionsStrike">Strike Price:</label>
+                    <input type="number" id="optionsStrike" value="150" step="0.5" min="1">
+                </div>
+                
+                <div class="form-group">
+                    <label for="optionsType">Option Type:</label>
+                    <select id="optionsType">
+                        <option value="call">Call Option</option>
+                        <option value="put">Put Option</option>
+                    </select>
+                </div>
+                
+                <button onclick="analyzeOptions()" style="background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 6px; cursor: pointer; font-size: 16px; font-weight: 600;">Analyze Options</button>
+                
+                <div id="optionsResults" style="margin-top: 24px;">
+                    <!-- Results will be populated here -->
+                </div>
+                
+                <div class="dashboard-grid" style="margin-top: 24px;">
+                    <div class="card">
+                        <h3>Greeks Analysis</h3>
+                        <div id="greeksAnalysis">
+                            <div class="metric">
+                                <span>Delta (Δ):</span>
+                                <span id="delta">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Gamma (Γ):</span>
+                                <span id="gamma">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Theta (Θ):</span>
+                                <span id="theta">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Vega (ν):</span>
+                                <span id="vega">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Rho (ρ):</span>
+                                <span id="rho">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Volatility Analysis</h3>
+                        <div id="volatilityAnalysis">
+                            <div class="metric">
+                                <span>Implied Volatility:</span>
+                                <span id="impliedVol">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Historical Volatility:</span>
+                                <span id="historicalVol">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Volatility Rank:</span>
+                                <span id="volRank">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Volatility Percentile:</span>
+                                <span id="volPercentile">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Volatility Skew:</span>
+                                <span id="volSkew">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Pricing Analysis</h3>
+                        <div id="pricingAnalysis">
+                            <div class="metric">
+                                <span>Black-Scholes Price:</span>
+                                <span id="bsPrice">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Market Price:</span>
+                                <span id="marketPrice">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Price Difference:</span>
+                                <span id="priceDiff">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Intrinsic Value:</span>
+                                <span id="intrinsicValue">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Time Value:</span>
+                                <span id="timeValue">-</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Risk Metrics</h3>
+                        <div id="riskMetrics">
+                            <div class="metric">
+                                <span>Probability of Profit:</span>
+                                <span id="probProfit">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Max Profit:</span>
+                                <span id="maxProfit">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Max Loss:</span>
+                                <span id="maxLoss">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Break-Even Price:</span>
+                                <span id="breakEven">-</span>
+                            </div>
+                            <div class="metric">
+                                <span>Days to Expiration:</span>
+                                <span id="daysToExp">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Options Chain</h3>
+                    <div id="optionsChain">
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px;">
+                            <div>
+                                <h4 style="color: #1a202c; margin-bottom: 12px;">Call Options</h4>
+                                <div id="callOptions" style="max-height: 400px; overflow-y: auto;">
+                                    <!-- Call options will be populated here -->
+                                </div>
+                            </div>
+                            <div>
+                                <h4 style="color: #1a202c; margin-bottom: 12px;">Put Options</h4>
+                                <div id="putOptions" style="max-height: 400px; overflow-y: auto;">
+                                    <!-- Put options will be populated here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Volatility Surface</h3>
+                    <div id="volatilitySurface">
+                        <canvas id="volatilityChart" width="800" height="400"></canvas>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Options Strategies</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Long Call</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Bullish strategy with limited risk</p>
+                            <button onclick="analyzeStrategy('long-call')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Long Put</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Bearish strategy with limited risk</p>
+                            <button onclick="analyzeStrategy('long-put')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Covered Call</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Income generation strategy</p>
+                            <button onclick="analyzeStrategy('covered-call')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Straddle</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Volatility play strategy</p>
+                            <button onclick="analyzeStrategy('straddle')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Iron Condor</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Range-bound strategy</p>
+                            <button onclick="analyzeStrategy('iron-condor')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Butterfly Spread</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Low-cost directional play</p>
+                            <button onclick="analyzeStrategy('butterfly')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Analyze</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Options Analysis Tab -->
     </div>
     
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -4857,6 +5083,380 @@ def home():
                     }
                 }, 300);
             }, 5000);
+        }
+        
+        // Options Analysis Functions
+        let volatilityChart;
+        
+        function analyzeOptions() {
+            const symbol = document.getElementById('optionsSymbol').value;
+            const expiry = document.getElementById('optionsExpiry').value;
+            const strike = parseFloat(document.getElementById('optionsStrike').value);
+            const optionType = document.getElementById('optionsType').value;
+            
+            // Simulate options analysis
+            const results = {
+                symbol: symbol,
+                expiry: expiry,
+                strike: strike,
+                type: optionType,
+                currentPrice: 150.25,
+                riskFreeRate: 0.05,
+                daysToExpiry: Math.ceil((new Date(expiry) - new Date()) / (1000 * 60 * 60 * 24))
+            };
+            
+            // Calculate Greeks using Black-Scholes approximation
+            const greeks = calculateGreeks(results);
+            const volatility = calculateVolatility(results);
+            const pricing = calculatePricing(results);
+            const risk = calculateRiskMetrics(results);
+            
+            // Update display
+            updateGreeksDisplay(greeks);
+            updateVolatilityDisplay(volatility);
+            updatePricingDisplay(pricing);
+            updateRiskDisplay(risk);
+            
+            // Generate options chain
+            generateOptionsChain(symbol, expiry);
+            
+            // Create volatility surface chart
+            createVolatilitySurface(symbol);
+            
+            // Show results
+            document.getElementById('optionsResults').innerHTML = `
+                <div class="card">
+                    <h4>Options Analysis Complete</h4>
+                    <p>Analysis completed for ${symbol} ${optionType.toUpperCase()} ${strike} expiring ${expiry}</p>
+                </div>
+            `;
+        }
+        
+        function calculateGreeks(params) {
+            const { currentPrice, strike, daysToExpiry, riskFreeRate, type } = params;
+            const timeToExpiry = daysToExpiry / 365;
+            const volatility = 0.25; // 25% implied volatility
+            
+            // Black-Scholes Greeks calculation
+            const d1 = (Math.log(currentPrice / strike) + (riskFreeRate + 0.5 * volatility * volatility) * timeToExpiry) / (volatility * Math.sqrt(timeToExpiry));
+            const d2 = d1 - volatility * Math.sqrt(timeToExpiry);
+            
+            // Standard normal CDF approximation
+            const normCDF = (x) => 0.5 * (1 + erf(x / Math.sqrt(2)));
+            const normPDF = (x) => Math.exp(-0.5 * x * x) / Math.sqrt(2 * Math.PI);
+            
+            const delta = type === 'call' ? normCDF(d1) : normCDF(d1) - 1;
+            const gamma = normPDF(d1) / (currentPrice * volatility * Math.sqrt(timeToExpiry));
+            const theta = -(currentPrice * normPDF(d1) * volatility) / (2 * Math.sqrt(timeToExpiry)) - 
+                         riskFreeRate * strike * Math.exp(-riskFreeRate * timeToExpiry) * normCDF(d2);
+            const vega = currentPrice * normPDF(d1) * Math.sqrt(timeToExpiry);
+            const rho = strike * timeToExpiry * Math.exp(-riskFreeRate * timeToExpiry) * normCDF(d2);
+            
+            return {
+                delta: delta.toFixed(4),
+                gamma: gamma.toFixed(6),
+                theta: (theta / 365).toFixed(4), // Per day
+                vega: (vega / 100).toFixed(4), // Per 1% vol change
+                rho: (rho / 100).toFixed(4) // Per 1% rate change
+            };
+        }
+        
+        function calculateVolatility(params) {
+            const { symbol, currentPrice } = params;
+            
+            // Simulate volatility calculations
+            const impliedVol = (0.20 + Math.random() * 0.15).toFixed(3); // 20-35%
+            const historicalVol = (0.18 + Math.random() * 0.12).toFixed(3); // 18-30%
+            const volRank = Math.floor(Math.random() * 100);
+            const volPercentile = Math.floor(Math.random() * 100);
+            const volSkew = (0.05 + Math.random() * 0.1).toFixed(3);
+            
+            return {
+                impliedVol: impliedVol,
+                historicalVol: historicalVol,
+                volRank: volRank,
+                volPercentile: volPercentile,
+                volSkew: volSkew
+            };
+        }
+        
+        function calculatePricing(params) {
+            const { currentPrice, strike, daysToExpiry, type } = params;
+            const timeToExpiry = daysToExpiry / 365;
+            const volatility = 0.25;
+            const riskFreeRate = 0.05;
+            
+            // Black-Scholes pricing
+            const d1 = (Math.log(currentPrice / strike) + (riskFreeRate + 0.5 * volatility * volatility) * timeToExpiry) / (volatility * Math.sqrt(timeToExpiry));
+            const d2 = d1 - volatility * Math.sqrt(timeToExpiry);
+            
+            const normCDF = (x) => 0.5 * (1 + erf(x / Math.sqrt(2)));
+            
+            let bsPrice;
+            if (type === 'call') {
+                bsPrice = currentPrice * normCDF(d1) - strike * Math.exp(-riskFreeRate * timeToExpiry) * normCDF(d2);
+            } else {
+                bsPrice = strike * Math.exp(-riskFreeRate * timeToExpiry) * normCDF(-d2) - currentPrice * normCDF(-d1);
+            }
+            
+            const marketPrice = bsPrice * (0.95 + Math.random() * 0.1); // ±5% variation
+            const intrinsicValue = type === 'call' ? Math.max(0, currentPrice - strike) : Math.max(0, strike - currentPrice);
+            const timeValue = bsPrice - intrinsicValue;
+            
+            return {
+                bsPrice: bsPrice.toFixed(2),
+                marketPrice: marketPrice.toFixed(2),
+                priceDiff: ((marketPrice - bsPrice) / bsPrice * 100).toFixed(2) + '%',
+                intrinsicValue: intrinsicValue.toFixed(2),
+                timeValue: timeValue.toFixed(2)
+            };
+        }
+        
+        function calculateRiskMetrics(params) {
+            const { currentPrice, strike, daysToExpiry, type } = params;
+            
+            // Simulate risk calculations
+            const probProfit = type === 'call' ? 
+                (currentPrice > strike ? 0.6 + Math.random() * 0.3 : 0.3 + Math.random() * 0.4) :
+                (currentPrice < strike ? 0.6 + Math.random() * 0.3 : 0.3 + Math.random() * 0.4);
+            
+            const maxProfit = type === 'call' ? 'Unlimited' : (strike - parseFloat(document.getElementById('optionsStrike').value) * 0.8).toFixed(2);
+            const maxLoss = type === 'call' ? 'Premium Paid' : 'Premium Paid';
+            const breakEven = type === 'call' ? 
+                (strike + parseFloat(document.getElementById('optionsStrike').value) * 0.05).toFixed(2) :
+                (strike - parseFloat(document.getElementById('optionsStrike').value) * 0.05).toFixed(2);
+            
+            return {
+                probProfit: (probProfit * 100).toFixed(1) + '%',
+                maxProfit: maxProfit,
+                maxLoss: maxLoss,
+                breakEven: breakEven,
+                daysToExp: daysToExpiry
+            };
+        }
+        
+        function updateGreeksDisplay(greeks) {
+            document.getElementById('delta').textContent = greeks.delta;
+            document.getElementById('gamma').textContent = greeks.gamma;
+            document.getElementById('theta').textContent = greeks.theta;
+            document.getElementById('vega').textContent = greeks.vega;
+            document.getElementById('rho').textContent = greeks.rho;
+        }
+        
+        function updateVolatilityDisplay(volatility) {
+            document.getElementById('impliedVol').textContent = volatility.impliedVol;
+            document.getElementById('historicalVol').textContent = volatility.historicalVol;
+            document.getElementById('volRank').textContent = volatility.volRank;
+            document.getElementById('volPercentile').textContent = volatility.volPercentile + '%';
+            document.getElementById('volSkew').textContent = volatility.volSkew;
+        }
+        
+        function updatePricingDisplay(pricing) {
+            document.getElementById('bsPrice').textContent = '$' + pricing.bsPrice;
+            document.getElementById('marketPrice').textContent = '$' + pricing.marketPrice;
+            document.getElementById('priceDiff').textContent = pricing.priceDiff;
+            document.getElementById('intrinsicValue').textContent = '$' + pricing.intrinsicValue;
+            document.getElementById('timeValue').textContent = '$' + pricing.timeValue;
+        }
+        
+        function updateRiskDisplay(risk) {
+            document.getElementById('probProfit').textContent = risk.probProfit;
+            document.getElementById('maxProfit').textContent = risk.maxProfit;
+            document.getElementById('maxLoss').textContent = risk.maxLoss;
+            document.getElementById('breakEven').textContent = '$' + risk.breakEven;
+            document.getElementById('daysToExp').textContent = risk.daysToExp;
+        }
+        
+        function generateOptionsChain(symbol, expiry) {
+            const currentPrice = 150.25;
+            const strikes = [];
+            for (let i = currentPrice - 20; i <= currentPrice + 20; i += 2.5) {
+                strikes.push(i);
+            }
+            
+            let callHTML = '<div style="font-size: 12px; font-family: monospace;">';
+            callHTML += '<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 8px; background: #f8fafc; border-radius: 4px; margin-bottom: 8px; font-weight: 600;">';
+            callHTML += '<div>Strike</div><div>Bid</div><div>Ask</div><div>Last</div><div>Vol</div><div>OI</div></div>';
+            
+            strikes.forEach(strike => {
+                const bid = (Math.random() * 5).toFixed(2);
+                const ask = (parseFloat(bid) + Math.random() * 0.5).toFixed(2);
+                const last = (parseFloat(bid) + Math.random() * (parseFloat(ask) - parseFloat(bid))).toFixed(2);
+                const volume = Math.floor(Math.random() * 1000);
+                const openInterest = Math.floor(Math.random() * 5000);
+                
+                callHTML += `<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 4px; border-bottom: 1px solid #e2e8f0;">`;
+                callHTML += `<div>${strike}</div><div>${bid}</div><div>${ask}</div><div>${last}</div><div>${volume}</div><div>${openInterest}</div>`;
+                callHTML += `</div>`;
+            });
+            callHTML += '</div>';
+            
+            let putHTML = '<div style="font-size: 12px; font-family: monospace;">';
+            putHTML += '<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 8px; background: #f8fafc; border-radius: 4px; margin-bottom: 8px; font-weight: 600;">';
+            putHTML += '<div>Strike</div><div>Bid</div><div>Ask</div><div>Last</div><div>Vol</div><div>OI</div></div>';
+            
+            strikes.forEach(strike => {
+                const bid = (Math.random() * 5).toFixed(2);
+                const ask = (parseFloat(bid) + Math.random() * 0.5).toFixed(2);
+                const last = (parseFloat(bid) + Math.random() * (parseFloat(ask) - parseFloat(bid))).toFixed(2);
+                const volume = Math.floor(Math.random() * 1000);
+                const openInterest = Math.floor(Math.random() * 5000);
+                
+                putHTML += `<div style="display: grid; grid-template-columns: repeat(6, 1fr); gap: 8px; padding: 4px; border-bottom: 1px solid #e2e8f0;">`;
+                putHTML += `<div>${strike}</div><div>${bid}</div><div>${ask}</div><div>${last}</div><div>${volume}</div><div>${openInterest}</div>`;
+                putHTML += `</div>`;
+            });
+            putHTML += '</div>';
+            
+            document.getElementById('callOptions').innerHTML = callHTML;
+            document.getElementById('putOptions').innerHTML = putHTML;
+        }
+        
+        function createVolatilitySurface(symbol) {
+            const ctx = document.getElementById('volatilityChart').getContext('2d');
+            if (volatilityChart) {
+                volatilityChart.destroy();
+            }
+            
+            // Generate sample volatility surface data
+            const strikes = [];
+            const expiries = [];
+            const volatilityData = [];
+            
+            for (let i = 0; i < 10; i++) {
+                strikes.push(140 + i * 2);
+            }
+            
+            for (let i = 0; i < 5; i++) {
+                expiries.push(30 + i * 30);
+            }
+            
+            for (let i = 0; i < expiries.length; i++) {
+                const series = [];
+                for (let j = 0; j < strikes.length; j++) {
+                    const baseVol = 0.25;
+                    const strikeEffect = Math.abs(strikes[j] - 150) / 150 * 0.1;
+                    const timeEffect = expiries[i] / 365 * 0.05;
+                    series.push(baseVol + strikeEffect + timeEffect + (Math.random() - 0.5) * 0.05);
+                }
+                volatilityData.push(series);
+            }
+            
+            volatilityChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: strikes,
+                    datasets: expiries.map((expiry, index) => ({
+                        label: `${expiry} days`,
+                        data: volatilityData[index],
+                        borderColor: `hsl(${index * 60}, 70%, 50%)`,
+                        backgroundColor: `hsla(${index * 60}, 70%, 50%, 0.1)`,
+                        tension: 0.4
+                    }))
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Volatility Surface - ' + symbol
+                        },
+                        legend: {
+                            display: true
+                        }
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'Strike Price'
+                            }
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'Implied Volatility'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        function analyzeStrategy(strategy) {
+            const strategies = {
+                'long-call': {
+                    name: 'Long Call',
+                    description: 'Bullish strategy with unlimited upside potential',
+                    maxProfit: 'Unlimited',
+                    maxLoss: 'Premium paid',
+                    breakeven: 'Strike + Premium',
+                    risk: 'Limited to premium paid'
+                },
+                'long-put': {
+                    name: 'Long Put',
+                    description: 'Bearish strategy with limited risk',
+                    maxProfit: 'Strike - Premium',
+                    maxLoss: 'Premium paid',
+                    breakeven: 'Strike - Premium',
+                    risk: 'Limited to premium paid'
+                },
+                'covered-call': {
+                    name: 'Covered Call',
+                    description: 'Income generation with stock ownership',
+                    maxProfit: 'Strike - Stock price + Premium',
+                    maxLoss: 'Stock price - Premium',
+                    breakeven: 'Stock price - Premium',
+                    risk: 'Unlimited downside risk'
+                },
+                'straddle': {
+                    name: 'Straddle',
+                    description: 'Volatility play expecting large moves',
+                    maxProfit: 'Unlimited',
+                    maxLoss: 'Total premium paid',
+                    breakeven: 'Strike ± Total premium',
+                    risk: 'Limited to total premium'
+                },
+                'iron-condor': {
+                    name: 'Iron Condor',
+                    description: 'Range-bound strategy with limited risk',
+                    maxProfit: 'Net credit received',
+                    maxLoss: 'Width of spreads - Net credit',
+                    breakeven: 'Two breakeven points',
+                    risk: 'Limited and defined'
+                },
+                'butterfly': {
+                    name: 'Butterfly Spread',
+                    description: 'Low-cost directional play',
+                    maxProfit: 'Middle strike - Lower strike - Net debit',
+                    maxLoss: 'Net debit paid',
+                    breakeven: 'Lower strike + Net debit',
+                    risk: 'Limited to net debit'
+                }
+            };
+            
+            const strategyInfo = strategies[strategy];
+            if (strategyInfo) {
+                alert(`${strategyInfo.name}\n\n${strategyInfo.description}\n\nMax Profit: ${strategyInfo.maxProfit}\nMax Loss: ${strategyInfo.maxLoss}\nBreakeven: ${strategyInfo.breakeven}\nRisk: ${strategyInfo.risk}`);
+            }
+        }
+        
+        // Helper function for normal CDF
+        function erf(x) {
+            const a1 =  0.254829592;
+            const a2 = -0.284496736;
+            const a3 =  1.421413741;
+            const a4 = -1.453152027;
+            const a5 =  1.061405429;
+            const p  =  0.3275911;
+            
+            const sign = x >= 0 ? 1 : -1;
+            x = Math.abs(x);
+            
+            const t = 1.0 / (1.0 + p * x);
+            const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
+            
+            return sign * y;
         }
         
         // Backtesting Engine Functions
