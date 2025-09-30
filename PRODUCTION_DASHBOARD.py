@@ -631,16 +631,18 @@ def home():
     <div class="container">
         <div class="header">
             <h1>Professional Trading Dashboard</h1>
-            <div class="status live">
-                Status: LIVE DATA MODE<br>
-                Real Market Data Active
-            </div>
             <div class="clock-date">
                 <div id="currentDate" class="date-display"></div>
                 <div id="currentTime" class="time-display"></div>
             </div>
         </div>
         
+        
+        <!-- Data Status -->
+        <div class="status live" style="margin-bottom: 24px;">
+            Status: LIVE DATA MODE<br>
+            Real Market Data Active
+        </div>
         
         <!-- Global Markets Status -->
         <div class="global-markets">
