@@ -1,125 +1,207 @@
-# 🚀 Professional Alpaca Trading Dashboard
+# Professional Trading Dashboard
 
-A comprehensive trading dashboard that integrates with your Alpaca paper trading account and provides advanced market analysis, real-time data visualization, and professional reporting capabilities.
+A comprehensive, production-ready trading dashboard with advanced analytics, real-time market data, and professional-grade features.
 
-## ✨ Features
+## 🚀 Features
 
-### 🔗 **Alpaca Integration**
-- **Live Account Connection**: Real-time connection to your Alpaca paper trading account (PA3TE0S55RX2)
-- **Portfolio Tracking**: Monitor your AAPL holdings (756 shares @ $255.46)
-- **Real Market Data**: Integration with Polygon.io API + Yahoo Finance fallback
+### Core Trading Features
+- **Real-time Market Data** - Live price feeds from Yahoo Finance
+- **Technical Analysis** - RSI, MACD, Bollinger Bands, Moving Averages
+- **Pattern Recognition** - Support/Resistance, Chart Patterns
+- **Sentiment Analysis** - Market sentiment indicators
+- **Volume Profile** - Advanced volume analysis
+- **Backtesting Engine** - Strategy performance testing
+- **Walk-Forward Analysis** - Out-of-sample testing
 
-### 📊 **Advanced Analytics**
-- **Interactive Charts**: Chart.js-powered price visualization with technical indicators
-- **Technical Analysis**: RSI, Moving Averages, Volume analysis
-- **Multi-Asset Support**: Stocks, Forex Majors, Crypto, Market Indices
-- **Multiple Timeframes**: From 1 minute to 1 week analysis
+### Advanced Analytics
+- **Options Analysis** - Greeks, volatility, pricing models
+- **Strategy Builder** - Visual strategy creation
+- **Compliance Reporting** - Regulatory requirements
+- **Audit Trail** - Complete trading history logging
+- **Risk Management** - Position sizing, portfolio optimization
+- **Economic Calendar** - Market events and announcements
 
-### 📄 **Professional Reporting**
-- **PDF Reports**: Download comprehensive analysis reports
-- **CSV Export**: Raw data export for further analysis
-- **Portfolio Analysis**: Detailed performance metrics and risk assessment
-- **Daily Market Summaries**: Automated daily market overviews
+### Professional Features
+- **Alpaca Integration** - Live trading capabilities
+- **Portfolio Management** - Real-time portfolio tracking
+- **Performance Analytics** - Comprehensive reporting
+- **Market Scanner** - Multi-timeframe analysis
+- **Chart Controls** - Advanced charting with multiple types
 
-### 🎯 **Technical Features**
-- **Real-time Updates**: Live data updates every 30 seconds
-- **Professional Design**: Clean, modern UI with responsive layout
-- **Cloud Deployment**: Ready for PythonAnywhere deployment
-- **Advanced Risk Metrics**: Sharpe ratio, drawdown analysis, VaR
-
-## 🚀 Quick Start
-
-### 1. **Install Dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### 2. **Run the Dashboard**
-   ```bash
-python FINAL_CLEAN_DASHBOARD.py
-```
-
-### 3. **Access Dashboard**
-Open your browser to: `http://localhost:5000`
-
-## 🌐 **Live Demo**
-Visit: `https://hindaouihani.pythonanywhere.com/`
-
-## 📁 **Essential Files**
+## 📁 Project Structure
 
 ```
-📦 Professional Trading Dashboard
-├── 📄 FINAL_CLEAN_DASHBOARD.py     # Main dashboard application
-├── 📋 requirements.txt              # Python dependencies
-├── 📚 README.md                    # This file
-├── 📖 PROJECT_SUMMARY.md           # Detailed project overview
-├── ⭐ config.py                     # Configuration settings
-├── 🧮 goldbach_calculator.py       # Strategy calculations
-├── 📊 pdf_reader.py                # PDF processing utilities
-└── 🗃️ *.db, *.log, *.txt           # Data files and logs
+├── src/                          # Source code
+│   ├── PRODUCTION_DASHBOARD.py   # Main Flask application
+│   ├── config.py                 # Configuration settings
+│   ├── goldbach_calculator.py    # Goldbach analysis tools
+│   ├── tesla_369_calculator.py   # Tesla 369 analysis
+│   ├── pdf_reader.py             # PDF data extraction
+│   └── GoldbachLevels.mq5        # MetaTrader 5 indicator
+├── deployment/                   # Deployment files
+│   ├── wsgi_final.py            # WSGI configuration
+│   ├── requirements_production.txt # Production dependencies
+│   └── env_example.txt          # Environment variables template
+├── docs/                        # Documentation
+│   ├── DEPLOYMENT_GUIDE.md      # Deployment instructions
+│   ├── PROJECT_SUMMARY.md       # Project overview
+│   └── TRADING_DASHBOARD_SHOWCASE.html # Feature showcase
+├── requirements.txt             # Development dependencies
+└── README.md                    # This file
 ```
 
-## 🔧 **Configuration**
+## 🛠️ Installation
 
-The dashboard automatically connects to your Alpaca account using:
-- **Account ID**: PA3TE0S55RX2
-- **API Keys**: Configured for paper trading
-- **Portfolio Value**: $193,127.76 (real account data)
+### Prerequisites
+- Python 3.8+
+- pip package manager
 
-## 📈 **Supported Assets**
+### Local Development
+```bash
+# Clone the repository
+git clone https://github.com/yourusername/trading-dashboard.git
+cd trading-dashboard
 
-### **Stocks**: AAPL, GOOGL, TSLA, MSFT, AMZN, NVDA, META, NFLX
-### **Forex Majors**: EUR/USD, GBP/USD, USD/JPY, AUD/USD, USD/CAD
-### **Crypto**: BTC/USD, ETH/USD, BTC-USD, ETH-USD
-### **Indices**: ^GSPC (S&P 500), ^VIX (Volatility Index)
+# Install dependencies
+pip install -r requirements.txt
 
-## 🛠️ **Development**
+# Run the application
+python src/PRODUCTION_DASHBOARD.py
+```
 
-### **TechStack**:
-- **Backend**: Flask, Python 3.10+
-- **Frontend**: HTML5, CSS3, JavaScript, Chart.js
-- **Data**: Pandas, NumPy for analysis
-- **Reporting**: ReportLab for PDF generation
-- **APIs**: Alpaca Markets, Polygon.io, Yahoo Finance
+### Production Deployment
+```bash
+# Install production dependencies
+pip install -r deployment/requirements_production.txt
 
-### **Key APIs**:
-- `/api/chart/<symbol>` - Get market data
-- `/api/performance/<symbol>` - Performance metrics
-- `/api/portfolio` - Portfolio analysis
-- `/api/export/pdf/<symbol>` - PDF reports
-- `/api/export/csv/<symbol>` - CSV export
+# Configure environment variables
+cp deployment/env_example.txt .env
+# Edit .env with your API keys
 
-## 📊 **Screenshots**
+# Deploy using WSGI
+# See docs/DEPLOYMENT_GUIDE.md for detailed instructions
+```
 
-Your dashboard shows:
-- **Real Account Status**: Live Alpaca connection status
-- **Portfolio Overview**: Current holdings and values
-- **Interactive Charts**: Price charts with technical analysis
-- **Performance Metrics**: Sharpe ratio, returns, volatility
-- **Export Options**: PDF and CSV download capabilities
+## 🔧 Configuration
 
-## 🔄 **Deployment**
+### Environment Variables
+Create a `.env` file with the following variables:
+```env
+ALPACA_API_KEY=your_alpaca_api_key
+ALPACA_SECRET_KEY=your_alpaca_secret_key
+ALPACA_BASE_URL=https://paper-api.alpaca.markets/v2
+DEBUG=False
+HOST=0.0.0.0
+PORT=5000
+SECRET_KEY=your_secret_key
+```
 
-### **PythonAnywhere**:
-1. Upload `FINAL_CLEAN_DASHBOARD.py`
-2. Install dependencies: `pip3.10 install reportlab --user`
-3. Configure WSGI file
+### API Keys
+- **Alpaca API** - For live trading (paper trading recommended)
+- **Yahoo Finance** - For market data (no API key required)
+
+## 📊 Usage
+
+### Dashboard Tabs
+1. **Dashboard** - Overview and quick stats
+2. **Market Scanner** - Multi-timeframe analysis
+3. **Volume Profile** - Volume analysis
+4. **Backtesting Engine** - Strategy testing
+5. **Strategy Builder** - Visual strategy creation
+6. **Walk-Forward Analysis** - Out-of-sample testing
+7. **Pattern Recognition** - Chart pattern analysis
+8. **Sentiment Analysis** - Market sentiment
+9. **Compliance Reporting** - Regulatory compliance
+10. **Options Analysis** - Options Greeks and volatility
+11. **Audit Trail** - Trading history logging
+
+### Key Features
+- **Real-time Updates** - Live market data and portfolio updates
+- **Interactive Charts** - Chart.js powered visualizations
+- **Responsive Design** - Works on desktop and mobile
+- **Professional UI** - Clean, modern interface
+- **Export Capabilities** - CSV export for all data
+
+## 🚀 Deployment
+
+### PythonAnywhere
+1. Upload files to your PythonAnywhere account
+2. Configure WSGI file: `deployment/wsgi_final.py`
+3. Install dependencies: `pip3.10 install --user -r deployment/requirements_production.txt`
 4. Reload web app
 
-## 🎯 **Project Summary**
+### Docker (Optional)
+```bash
+# Build image
+docker build -t trading-dashboard .
 
-This is a production-ready trading dashboard that provides:
-- ✅ **Real Alpaca Integration**: Live account connection
-- ✅ **Professional UI**: Modern, responsive design
-- ✅ **Advanced Analytics**: Technical analysis and reporting
-- ✅ **Multi-Asset Support**: Stocks, Forex, Crypto, Indices
-- ✅ **Cloud Deployment**: Ready for PythonAnywhere
-- ✅ **Export Capabilities**: PDF and CSV reports
+# Run container
+docker run -p 5000:5000 trading-dashboard
+```
 
-## 📧 **Support**
+## 📈 Features Overview
 
-For questions or issues with the trading dashboard, refer to the detailed documentation in `PROJECT_SUMMARY.md`.
+### Technical Analysis
+- RSI, MACD, Bollinger Bands
+- Moving Averages (SMA, EMA, WMA)
+- Support and Resistance levels
+- Chart pattern recognition
+
+### Options Analysis
+- Black-Scholes pricing
+- Greeks calculation (Delta, Gamma, Theta, Vega, Rho)
+- Volatility analysis
+- Options chain visualization
+- Strategy analysis
+
+### Risk Management
+- Position sizing calculator
+- Portfolio optimization
+- Risk metrics (VaR, Sharpe ratio)
+- Drawdown analysis
+
+### Compliance & Audit
+- Complete audit trail
+- Regulatory reporting
+- Risk monitoring
+- Data integrity checks
+
+## 🔒 Security
+
+- Environment variable configuration
+- Secure API key management
+- Audit trail logging
+- Data encryption
+- Access control
+
+## 📝 License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📞 Support
+
+For support and questions:
+- Create an issue on GitHub
+- Check the documentation in `docs/`
+- Review the deployment guide
+
+## 🎯 Roadmap
+
+- [ ] Mobile app version
+- [ ] Advanced AI/ML integration
+- [ ] Multi-broker support
+- [ ] Social trading features
+- [ ] Advanced backtesting
+- [ ] Real-time alerts
 
 ---
 
-**🎉 Your professional trading dashboard is ready for deployment!**
+**Professional Trading Dashboard** - Built for serious traders and financial professionals.
