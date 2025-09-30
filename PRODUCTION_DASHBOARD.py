@@ -207,185 +207,68 @@ def home():
         }
         
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: #f8fafc;
             min-height: 100vh;
-            color: #333;
+            color: #1a202c;
             line-height: 1.6;
             margin: 0;
             padding: 0;
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 15px;
+            padding: 24px;
         }
         
         .header {
-            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
-            color: white;
-            padding: 25px 35px;
-            border-radius: 20px;
-            margin-bottom: 25px;
-            box-shadow: 
-                0 15px 35px rgba(0, 0, 0, 0.2),
-                0 5px 15px rgba(0, 0, 0, 0.1),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1),
-                0 0 0 1px rgba(255, 255, 255, 0.05);
+            background: #ffffff;
+            color: #1a202c;
+            padding: 32px;
+            border-radius: 12px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            position: relative;
-            overflow: hidden;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0%, transparent 30%, rgba(255, 255, 255, 0.03) 60%, transparent 100%),
-                radial-gradient(ellipse at top left, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                radial-gradient(ellipse at bottom right, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
-            pointer-events: none;
-            animation: headerShimmer 6s ease-in-out infinite;
-        }
-        
-        .header::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -30%;
-            width: 150%;
-            height: 150%;
-            background: 
-                radial-gradient(circle, rgba(83, 52, 131, 0.4) 0%, rgba(15, 52, 96, 0.2) 40%, transparent 70%),
-                radial-gradient(circle at 20% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
-            pointer-events: none;
-            animation: headerFloat 12s ease-in-out infinite;
-        }
-        
-        @keyframes headerShimmer {
-            0%, 100% { opacity: 0.6; transform: translateX(-10px); }
-            50% { opacity: 1; transform: translateX(10px); }
-        }
-        
-        @keyframes headerFloat {
-            0%, 100% { transform: rotate(0deg) scale(1) translateY(0px); }
-            33% { transform: rotate(2deg) scale(1.05) translateY(-5px); }
-            66% { transform: rotate(-1deg) scale(0.98) translateY(3px); }
-        }
         
         .header h1 {
-            color: white;
+            color: #1a202c;
             text-align: center;
             margin-bottom: 0;
-            font-size: 3.2em;
-            font-weight: 900;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.5),
-                0 0 20px rgba(83, 52, 131, 0.4),
-                0 0 30px rgba(15, 52, 96, 0.3),
-                2px 2px 4px rgba(0, 0, 0, 0.4);
+            font-size: 2.5rem;
+            font-weight: 700;
             flex: 1;
-            position: relative;
-            z-index: 2;
-            letter-spacing: 2px;
-            background: linear-gradient(135deg, 
-                #ffffff 0%, 
-                #e3f2fd 15%, 
-                #bbdefb 30%, 
-                #90caf9 45%, 
-                #64b5f6 60%, 
-                #42a5f5 75%, 
-                #2196f3 90%, 
-                #ffffff 100%);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: titleShine 4s ease-in-out infinite;
-            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
-        }
-        
-        @keyframes titleShine {
-            0%, 100% { 
-                background-position: 0% 50%; 
-                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
-            }
-            50% { 
-                background-position: 100% 50%; 
-                filter: drop-shadow(0 0 15px rgba(83, 52, 131, 0.6));
-            }
+            letter-spacing: -0.025em;
         }
         
         .clock-date {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            min-width: 220px;
-            position: relative;
-            z-index: 2;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 15px 20px;
-            border-radius: 15px;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                0 8px 20px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            min-width: 200px;
         }
         
         .date-display {
             font-size: 14px;
             font-weight: 500;
-            color: rgba(255, 255, 255, 0.8);
-            margin-bottom: 8px;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-            letter-spacing: 0.5px;
+            color: #64748b;
+            margin-bottom: 4px;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .time-display {
-            font-size: 28px;
-            font-weight: 700;
-            color: #ffffff;
+            font-size: 24px;
+            font-weight: 600;
+            color: #1a202c;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            text-shadow: 
-                0 0 10px rgba(255, 255, 255, 0.6),
-                0 0 20px rgba(83, 52, 131, 0.4),
-                0 0 30px rgba(15, 52, 96, 0.3);
-            background: linear-gradient(135deg, 
-                #ffffff 0%, 
-                #e3f2fd 20%, 
-                #bbdefb 40%, 
-                #90caf9 60%, 
-                #64b5f6 80%, 
-                #ffffff 100%);
-            background-size: 200% 200%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: timeGlow 3s ease-in-out infinite;
-            letter-spacing: 1px;
-        }
-        
-        @keyframes timeGlow {
-            0%, 100% { 
-                background-position: 0% 50%; 
-                filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
-            }
-            50% { 
-                background-position: 100% 50%; 
-                filter: brightness(1.3) drop-shadow(0 0 15px rgba(83, 52, 131, 0.6));
-            }
+            letter-spacing: 0.025em;
         }
         
         @keyframes pulse {
@@ -398,80 +281,53 @@ def home():
         .global-markets {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin: 20px 0;
-            padding: 20px;
-            background: rgba(255, 255, 255, 0.05);
-            border-radius: 15px;
-            backdrop-filter: blur(15px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 
-                0 10px 30px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            gap: 16px;
+            margin: 24px 0;
+            padding: 24px;
+            background: #ffffff;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
         }
         
         .market-card {
             text-align: center;
-            padding: 18px 15px;
-            border-radius: 12px;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            backdrop-filter: blur(10px);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .market-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-            transition: left 0.6s;
-        }
-        
-        .market-card:hover::before {
-            left: 100%;
+            padding: 16px;
+            border-radius: 8px;
+            background: #f8fafc;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
         }
         
         .market-card:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+            background: #f1f5f9;
+            border-color: #cbd5e1;
         }
         
         .market-card.asian {
-            border-color: rgba(255, 107, 107, 0.3);
-            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
+            border-left: 3px solid #ef4444;
         }
         
         .market-card.european {
-            border-color: rgba(78, 205, 196, 0.3);
-            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
+            border-left: 3px solid #06b6d4;
         }
         
         .market-card.american {
-            border-color: rgba(69, 183, 209, 0.3);
-            background: linear-gradient(135deg, rgba(69, 183, 209, 0.1) 0%, rgba(69, 183, 209, 0.05) 100%);
+            border-left: 3px solid #3b82f6;
         }
         
         .market-name {
             font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 10px;
-            color: #ffffff;
-            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
-            letter-spacing: 0.5px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #1a202c;
         }
         
         .market-time {
             font-size: 13px;
-            color: rgba(255, 255, 255, 0.7);
-            margin-bottom: 10px;
+            color: #64748b;
+            margin-bottom: 8px;
             font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
         
         .market-status-indicator {
@@ -480,69 +336,69 @@ def home():
             justify-content: center;
             gap: 8px;
             font-size: 12px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+            font-weight: 500;
+            color: #64748b;
         }
         
         .status-dot {
-            width: 10px;
-            height: 10px;
+            width: 8px;
+            height: 8px;
             border-radius: 50%;
-            animation: pulse 2s infinite;
-            box-shadow: 0 0 8px currentColor;
-            position: relative;
-        }
-        
-        .status-dot::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 50%;
-            background: currentColor;
-            opacity: 0.3;
-            animation: pulse-ring 2s infinite;
         }
         
         .status-open {
-            background-color: #28a745;
-            color: #28a745;
+            background-color: #22c55e;
         }
         
         .status-closed {
-            background-color: #dc3545;
-            color: #dc3545;
+            background-color: #ef4444;
         }
         
         .status-pre-market {
-            background-color: #ffc107;
-            color: #ffc107;
+            background-color: #f59e0b;
         }
         
         .status-after-hours {
-            background-color: #6f42c1;
-            color: #6f42c1;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(1.1); }
-        }
-        
-        @keyframes pulse-ring {
-            0% { transform: scale(0.8); opacity: 0.3; }
-            50% { transform: scale(1.2); opacity: 0.1; }
-            100% { transform: scale(1.5); opacity: 0; }
+            background-color: #8b5cf6;
         }
         
         
         
-        @keyframes scroll {
-            0% { transform: translateX(100%); }
-            100% { transform: translateX(-100%); }
+        .tab-navigation {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 24px 0;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .tab-button {
+            background: #f8fafc;
+            color: #64748b;
+            border: 1px solid #e2e8f0;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .tab-button:hover {
+            background: #f1f5f9;
+            color: #475569;
+            border-color: #cbd5e1;
+        }
+        
+        .tab-button.active {
+            background: #3b82f6;
+            color: #ffffff;
+            border-color: #3b82f6;
+        }
+        
+        .tab-content {
+            margin-top: 24px;
         }
         
         .performance-indicator {
@@ -570,71 +426,55 @@ def home():
         
         .status {
             text-align: center;
-            padding: 15px 25px;
-            border-radius: 15px;
-            margin: 15px 0;
-            position: relative;
-            z-index: 2;
-            backdrop-filter: blur(20px);
-            box-shadow: 
-                0 8px 25px rgba(0, 0, 0, 0.15),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin: 16px 0;
             font-weight: 600;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
             font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
         
         .status.live {
-            background: linear-gradient(135deg, 
-                rgba(40, 167, 69, 0.9) 0%, 
-                rgba(34, 139, 58, 0.8) 50%, 
-                rgba(25, 135, 84, 0.9) 100%);
-            color: #ffffff;
-            border: 1px solid rgba(40, 167, 69, 0.3);
-            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
-            box-shadow: 
-                0 8px 25px rgba(40, 167, 69, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 0 20px rgba(40, 167, 69, 0.3);
+            background: #f0fdf4;
+            color: #166534;
+            border: 1px solid #bbf7d0;
         }
         
         .status.demo {
-            background: linear-gradient(135deg, 
-                rgba(255, 193, 7, 0.9) 0%, 
-                rgba(255, 183, 0, 0.8) 50%, 
-                rgba(255, 171, 0, 0.9) 100%);
-            color: #ffffff;
-            border: 1px solid rgba(255, 193, 7, 0.3);
-            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
-            box-shadow: 
-                0 8px 25px rgba(255, 193, 7, 0.2),
-                inset 0 1px 0 rgba(255, 255, 255, 0.2),
-                0 0 20px rgba(255, 193, 7, 0.3);
+            background: #fffbeb;
+            color: #92400e;
+            border: 1px solid #fed7aa;
         }
         
         .dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 15px;
-            margin-bottom: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 24px;
         }
         
         .card {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            padding: 24px;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1), 0 1px 2px rgba(0, 0, 0, 0.06);
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s ease;
+        }
+        
+        .card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
         }
         
         
         .card h3 {
-            color: #2c3e50;
-            margin-bottom: 12px;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 8px;
+            color: #1a202c;
+            margin-bottom: 16px;
+            font-size: 1.25rem;
+            font-weight: 600;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 12px;
         }
         
         .metric {
@@ -832,61 +672,25 @@ def home():
         
         
         <!-- Tab Navigation -->
-        <div class="tab-navigation" style="margin: 15px 0; border-bottom: 2px solid #007bff;">
-            <button class="tab-button active" onclick="showTab('dashboard')" style="background: #007bff; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📊 Dashboard
-            </button>
-            <button class="tab-button" onclick="showTab('account')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                💼 Account
-            </button>
-            <button class="tab-button" onclick="showTab('trading')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🚀 Live Trading
-            </button>
-            <button class="tab-button" onclick="showTab('analytics')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📈 Analytics
-            </button>
-            <button class="tab-button" onclick="showTab('sentiment')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📰 Sentiment
-            </button>
-            <button class="tab-button" onclick="showTab('technical')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📊 Technical
-            </button>
-            <button class="tab-button" onclick="showTab('patterns')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🔍 Patterns
-            </button>
-            <button class="tab-button" onclick="showTab('prediction')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🔮 Prediction
-            </button>
-            <button class="tab-button" onclick="showTab('portfolio')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📊 Portfolio
-            </button>
-            <button class="tab-button" onclick="showTab('montecarlo')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🎲 Monte Carlo
-            </button>
-            <button class="tab-button" onclick="showTab('correlation')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🔗 Correlation
-            </button>
-            <button class="tab-button" onclick="showTab('stress')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                ⚡ Stress Test
-            </button>
-            <button class="tab-button" onclick="showTab('economic')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📅 Economic Calendar
-            </button>
-            <button class="tab-button" onclick="showTab('scanner')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                🔍 Market Scanner
-            </button>
-            <button class="tab-button" onclick="showTab('volumeProfile')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📊 Volume Profile
-            </button>
-            <button class="tab-button" onclick="showTab('backtesting')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-                📈 Backtesting Engine
-            </button>
-        <button class="tab-button" onclick="showTab('strategyBuilder')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-            🔧 Strategy Builder
-        </button>
-        <button class="tab-button" onclick="showTab('walkForward')" style="background: #6c757d; color: white; border: none; padding: 10px 20px; margin-right: 3px; cursor: pointer; border-radius: 4px 4px 0 0; font-size: 14px;">
-            📈 Walk-Forward Analysis
-        </button>
+        <div class="tab-navigation">
+            <button class="tab-button active" onclick="showTab('dashboard')">Dashboard</button>
+            <button class="tab-button" onclick="showTab('account')">Account</button>
+            <button class="tab-button" onclick="showTab('trading')">Live Trading</button>
+            <button class="tab-button" onclick="showTab('analytics')">Analytics</button>
+            <button class="tab-button" onclick="showTab('sentiment')">Sentiment</button>
+            <button class="tab-button" onclick="showTab('technical')">Technical</button>
+            <button class="tab-button" onclick="showTab('patterns')">Patterns</button>
+            <button class="tab-button" onclick="showTab('prediction')">Prediction</button>
+            <button class="tab-button" onclick="showTab('portfolio')">Portfolio</button>
+            <button class="tab-button" onclick="showTab('montecarlo')">Monte Carlo</button>
+            <button class="tab-button" onclick="showTab('correlation')">Correlation</button>
+            <button class="tab-button" onclick="showTab('stress')">Stress Test</button>
+            <button class="tab-button" onclick="showTab('economic')">Economic Calendar</button>
+            <button class="tab-button" onclick="showTab('scanner')">Market Scanner</button>
+            <button class="tab-button" onclick="showTab('volumeProfile')">Volume Profile</button>
+            <button class="tab-button" onclick="showTab('backtesting')">Backtesting Engine</button>
+            <button class="tab-button" onclick="showTab('strategyBuilder')">Strategy Builder</button>
+            <button class="tab-button" onclick="showTab('walkForward')">Walk-Forward Analysis</button>
         </div>
         
         <!-- Dashboard Tab Content -->
@@ -2892,7 +2696,6 @@ def home():
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(button => {
                 button.classList.remove('active');
-                button.style.background = '#6c757d';
             });
             
             /* Show selected tab */
@@ -2900,7 +2703,6 @@ def home():
             
             /* Add active class to clicked button */
             event.target.classList.add('active');
-            event.target.style.background = '#007bff';
         }
         
         function placeOrder() {
@@ -5887,7 +5689,6 @@ def home():
             const buttons = document.querySelectorAll('.tab-button');
             buttons.forEach(button => {
                 button.classList.remove('active');
-                button.style.background = '#6c757d';
             });
             
             // Show selected tab
@@ -5895,7 +5696,6 @@ def home():
             
             // Add active class to clicked button
             event.target.classList.add('active');
-            event.target.style.background = '#007bff';
             
             // Initialize strategy builder if that tab is selected
             if (tabName === 'strategyBuilder') {
