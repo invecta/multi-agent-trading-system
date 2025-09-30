@@ -419,20 +419,6 @@ def home():
         }
         
         
-        .news-ticker {
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 8px 0;
-            overflow: hidden;
-            white-space: nowrap;
-            margin: 15px 0;
-            border-radius: 6px;
-        }
-        
-        .news-content {
-            display: inline-block;
-            animation: scroll 30s linear infinite;
-        }
         
         @keyframes scroll {
             0% { transform: translateX(100%); }
@@ -705,12 +691,6 @@ def home():
             </div>
         </div>
         
-        <!-- News Ticker -->
-        <div class="news-ticker">
-            <div class="news-content" id="newsTicker">
-                📈 S&P 500 reaches new all-time high • 🏦 Fed maintains interest rates • 💰 Bitcoin surges 5% • 📊 Tech stocks lead market gains • 🌍 Global markets show positive momentum • ⚡ Tesla reports strong Q4 earnings • 🏛️ Economic indicators show growth • 📈 Oil prices stabilize • 💎 Gold maintains safe-haven status • 🚀 AI stocks continue rally
-            </div>
-        </div>
         
         <!-- Tab Navigation -->
         <div class="tab-navigation" style="margin: 15px 0; border-bottom: 2px solid #007bff;">
@@ -2979,8 +2959,7 @@ def home():
             updateClock();
             setInterval(updateClock, 1000);
             
-            // Initialize news ticker and global markets
-            updateNewsTicker();
+            // Initialize global markets
             updateGlobalMarkets();
             setInterval(updateGlobalMarkets, 1000); // Update every second
         });
@@ -3080,25 +3059,6 @@ def home():
         }
         
         
-        function updateNewsTicker() {
-            const newsItems = [
-                "📈 S&P 500 reaches new all-time high",
-                "🏦 Fed maintains interest rates",
-                "💰 Bitcoin surges 5%",
-                "📊 Tech stocks lead market gains",
-                "🌍 Global markets show positive momentum",
-                "⚡ Tesla reports strong Q4 earnings",
-                "🏛️ Economic indicators show growth",
-                "📈 Oil prices stabilize",
-                "💎 Gold maintains safe-haven status",
-                "🚀 AI stocks continue rally"
-            ];
-            
-            const ticker = document.getElementById('newsTicker');
-            if (ticker) {
-                ticker.textContent = newsItems.join(' • ');
-            }
-        }
         
         // Update chart when symbol changes
         document.getElementById('symbol').addEventListener('change', updateChart);
