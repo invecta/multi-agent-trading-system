@@ -2992,12 +2992,17 @@ def home():
         function updateGlobalMarkets() {
             const now = new Date();
             
+            // Get current UTC time
+            const utcTime = new Date(now.getTime() + (now.getTimezoneOffset() * 60000));
+            
             // Asian Markets (Tokyo) - JST (UTC+9)
-            const tokyoTime = new Date(now.getTime() + (9 * 60 * 60 * 1000));
+            const tokyoTime = new Date(utcTime.getTime() + (9 * 60 * 60 * 1000));
             const tokyoHour = tokyoTime.getHours();
+            const tokyoMinute = tokyoTime.getMinutes();
             const tokyoDay = tokyoTime.getDay();
             const isTokyoWeekday = tokyoDay >= 1 && tokyoDay <= 5;
-            const isTokyoOpen = isTokyoWeekday && tokyoHour >= 9 && tokyoHour < 15;
+            const tokyoTimeDecimal = tokyoHour + (tokyoMinute / 60);
+            const isTokyoOpen = isTokyoWeekday && tokyoTimeDecimal >= 9 && tokyoTimeDecimal < 15;
             
             document.getElementById('asianTime').textContent = `Tokyo: ${tokyoTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false})} JST`;
             const asianStatusDot = document.getElementById('asianStatusDot');
@@ -3012,11 +3017,13 @@ def home():
             }
             
             // European Markets (London) - GMT (UTC+0)
-            const londonTime = new Date(now.getTime());
+            const londonTime = new Date(utcTime.getTime());
             const londonHour = londonTime.getHours();
+            const londonMinute = londonTime.getMinutes();
             const londonDay = londonTime.getDay();
             const isLondonWeekday = londonDay >= 1 && londonDay <= 5;
-            const isLondonOpen = isLondonWeekday && londonHour >= 8 && londonHour < 16;
+            const londonTimeDecimal = londonHour + (londonMinute / 60);
+            const isLondonOpen = isLondonWeekday && londonTimeDecimal >= 8 && londonTimeDecimal < 16.5;
             
             document.getElementById('europeanTime').textContent = `London: ${londonTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false})} GMT`;
             const europeanStatusDot = document.getElementById('europeanStatusDot');
@@ -3030,16 +3037,22 @@ def home():
                 europeanStatus.textContent = 'Closed';
             }
             
-            // US Markets (New York) - EST (UTC-5)
-            const nyTime = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+            // US Markets (New York) - EST (UTC-5) / EDT (UTC-4)
+            // Check if it's daylight saving time (roughly March-November)
+            const isDST = now.getMonth() >= 2 && now.getMonth() <= 10;
+            const newYorkOffset = isDST ? -4 : -5;
+            const nyTime = new Date(utcTime.getTime() + (newYorkOffset * 60 * 60 * 1000));
             const nyHour = nyTime.getHours();
+            const nyMinute = nyTime.getMinutes();
             const nyDay = nyTime.getDay();
             const isNyWeekday = nyDay >= 1 && nyDay <= 5;
-            const isNyPreMarket = isNyWeekday && nyHour >= 4 && nyHour < 9;
-            const isNyOpen = isNyWeekday && nyHour >= 9 && nyHour < 16;
-            const isNyAfterHours = isNyWeekday && nyHour >= 16 && nyHour < 20;
+            const nyTimeDecimal = nyHour + (nyMinute / 60);
+            const isNyPreMarket = isNyWeekday && nyTimeDecimal >= 4 && nyTimeDecimal < 9.5;
+            const isNyOpen = isNyWeekday && nyTimeDecimal >= 9.5 && nyTimeDecimal < 16;
+            const isNyAfterHours = isNyWeekday && nyTimeDecimal >= 16 && nyTimeDecimal < 20;
             
-            document.getElementById('usTime').textContent = `New York: ${nyTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false})} EST`;
+            const timezoneLabel = isDST ? 'EDT' : 'EST';
+            document.getElementById('usTime').textContent = `New York: ${nyTime.toLocaleTimeString('en-US', {hour: '2-digit', minute: '2-digit', hour12: false})} ${timezoneLabel}`;
             const usStatusDot = document.getElementById('usStatusDot');
             const usStatus = document.getElementById('usStatus');
             
