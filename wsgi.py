@@ -9,7 +9,7 @@ import sys
 import os
 
 # Add your project directory to the Python path
-path = '/home/yourusername/pdf_analysis'  # Replace 'yourusername' with your actual PythonAnywhere username
+path = '/home/hindaouihani/pdf_analysis'  # Updated with actual PythonAnywhere username
 if path not in sys.path:
     sys.path.append(path)
 
