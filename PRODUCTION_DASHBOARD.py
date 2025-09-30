@@ -223,18 +223,24 @@ def home():
         }
         
         .header {
-            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #667eea 100%);
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 75%, #533483 100%);
             color: white;
-            padding: 20px 30px;
-            border-radius: 15px;
-            margin-bottom: 20px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15), 0 0 0 1px rgba(255, 255, 255, 0.1);
+            padding: 25px 35px;
+            border-radius: 20px;
+            margin-bottom: 25px;
+            box-shadow: 
+                0 15px 35px rgba(0, 0, 0, 0.2),
+                0 5px 15px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1),
+                0 0 0 1px rgba(255, 255, 255, 0.05);
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
             position: relative;
             overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
         .header::before {
@@ -244,83 +250,142 @@ def home():
             left: 0;
             right: 0;
             bottom: 0;
-            background: linear-gradient(45deg, rgba(255, 255, 255, 0.1) 0%, transparent 50%, rgba(255, 255, 255, 0.05) 100%);
+            background: 
+                linear-gradient(45deg, rgba(255, 255, 255, 0.08) 0%, transparent 30%, rgba(255, 255, 255, 0.03) 60%, transparent 100%),
+                radial-gradient(ellipse at top left, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                radial-gradient(ellipse at bottom right, rgba(255, 119, 198, 0.2) 0%, transparent 50%);
             pointer-events: none;
+            animation: headerShimmer 6s ease-in-out infinite;
         }
         
         .header::after {
             content: '';
             position: absolute;
             top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+            right: -30%;
+            width: 150%;
+            height: 150%;
+            background: 
+                radial-gradient(circle, rgba(83, 52, 131, 0.4) 0%, rgba(15, 52, 96, 0.2) 40%, transparent 70%),
+                radial-gradient(circle at 20% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
             pointer-events: none;
-            animation: headerGlow 8s ease-in-out infinite;
+            animation: headerFloat 12s ease-in-out infinite;
         }
         
-        @keyframes headerGlow {
-            0%, 100% { transform: rotate(0deg) scale(1); opacity: 0.3; }
-            50% { transform: rotate(180deg) scale(1.1); opacity: 0.6; }
+        @keyframes headerShimmer {
+            0%, 100% { opacity: 0.6; transform: translateX(-10px); }
+            50% { opacity: 1; transform: translateX(10px); }
+        }
+        
+        @keyframes headerFloat {
+            0%, 100% { transform: rotate(0deg) scale(1) translateY(0px); }
+            33% { transform: rotate(2deg) scale(1.05) translateY(-5px); }
+            66% { transform: rotate(-1deg) scale(0.98) translateY(3px); }
         }
         
         .header h1 {
             color: white;
             text-align: center;
             margin-bottom: 0;
-            font-size: 2.8em;
-            font-weight: 800;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+            font-size: 3.2em;
+            font-weight: 900;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.5),
+                0 0 20px rgba(83, 52, 131, 0.4),
+                0 0 30px rgba(15, 52, 96, 0.3),
+                2px 2px 4px rgba(0, 0, 0, 0.4);
             flex: 1;
             position: relative;
             z-index: 2;
-            letter-spacing: 1px;
-            background: linear-gradient(45deg, #ffffff 0%, #e3f2fd 50%, #ffffff 100%);
+            letter-spacing: 2px;
+            background: linear-gradient(135deg, 
+                #ffffff 0%, 
+                #e3f2fd 15%, 
+                #bbdefb 30%, 
+                #90caf9 45%, 
+                #64b5f6 60%, 
+                #42a5f5 75%, 
+                #2196f3 90%, 
+                #ffffff 100%);
+            background-size: 300% 300%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: titleShine 3s ease-in-out infinite;
+            animation: titleShine 4s ease-in-out infinite;
+            filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
         }
         
         @keyframes titleShine {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
+            0%, 100% { 
+                background-position: 0% 50%; 
+                filter: drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+            }
+            50% { 
+                background-position: 100% 50%; 
+                filter: drop-shadow(0 0 15px rgba(83, 52, 131, 0.6));
+            }
         }
         
         .clock-date {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
-            min-width: 200px;
+            min-width: 220px;
             position: relative;
             z-index: 2;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 8px 20px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .date-display {
-            font-size: 16px;
-            font-weight: 600;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 5px;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            font-size: 14px;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 8px;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
         }
         
         .time-display {
-            font-size: 26px;
-            font-weight: bold;
+            font-size: 28px;
+            font-weight: 700;
             color: #ffffff;
-            font-family: 'Courier New', monospace;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 0 0 30px rgba(0, 123, 255, 0.3);
-            background: linear-gradient(45deg, #ffffff 0%, #e3f2fd 50%, #ffffff 100%);
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            text-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.6),
+                0 0 20px rgba(83, 52, 131, 0.4),
+                0 0 30px rgba(15, 52, 96, 0.3);
+            background: linear-gradient(135deg, 
+                #ffffff 0%, 
+                #e3f2fd 20%, 
+                #bbdefb 40%, 
+                #90caf9 60%, 
+                #64b5f6 80%, 
+                #ffffff 100%);
+            background-size: 200% 200%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            animation: timeGlow 2s ease-in-out infinite;
+            animation: timeGlow 3s ease-in-out infinite;
+            letter-spacing: 1px;
         }
         
         @keyframes timeGlow {
-            0%, 100% { filter: brightness(1); }
-            50% { filter: brightness(1.2); }
+            0%, 100% { 
+                background-position: 0% 50%; 
+                filter: brightness(1) drop-shadow(0 0 8px rgba(255, 255, 255, 0.3));
+            }
+            50% { 
+                background-position: 100% 50%; 
+                filter: brightness(1.3) drop-shadow(0 0 15px rgba(83, 52, 131, 0.6));
+            }
         }
         
         @keyframes pulse {
@@ -332,22 +397,44 @@ def home():
         
         .global-markets {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 12px;
-            margin: 15px 0;
-            padding: 15px;
-            background: rgba(255, 255, 255, 0.9);
-            border-radius: 8px;
-            box-shadow: 0 3px 12px rgba(0, 0, 0, 0.1);
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 
+                0 10px 30px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
         
         .market-card {
             text-align: center;
-            padding: 12px;
-            border-radius: 6px;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            padding: 18px 15px;
+            border-radius: 12px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            backdrop-filter: blur(10px);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .market-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            transition: left 0.6s;
+        }
+        
+        .market-card:hover::before {
+            left: 100%;
         }
         
         .market-card:hover {
@@ -356,28 +443,35 @@ def home():
         }
         
         .market-card.asian {
-            border-color: #ff6b6b;
+            border-color: rgba(255, 107, 107, 0.3);
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(255, 107, 107, 0.05) 100%);
         }
         
         .market-card.european {
-            border-color: #4ecdc4;
+            border-color: rgba(78, 205, 196, 0.3);
+            background: linear-gradient(135deg, rgba(78, 205, 196, 0.1) 0%, rgba(78, 205, 196, 0.05) 100%);
         }
         
         .market-card.american {
-            border-color: #45b7d1;
+            border-color: rgba(69, 183, 209, 0.3);
+            background: linear-gradient(135deg, rgba(69, 183, 209, 0.1) 0%, rgba(69, 183, 209, 0.05) 100%);
         }
         
         .market-name {
             font-size: 16px;
-            font-weight: bold;
-            margin-bottom: 8px;
-            color: #2c3e50;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #ffffff;
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
+            letter-spacing: 0.5px;
         }
         
         .market-time {
-            font-size: 14px;
-            color: #6c757d;
-            margin-bottom: 8px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 10px;
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', monospace;
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.2);
         }
         
         .market-status-indicator {
@@ -386,36 +480,62 @@ def home():
             justify-content: center;
             gap: 8px;
             font-size: 12px;
-            font-weight: bold;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
         }
         
         .status-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             animation: pulse 2s infinite;
+            box-shadow: 0 0 8px currentColor;
+            position: relative;
+        }
+        
+        .status-dot::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            border-radius: 50%;
+            background: currentColor;
+            opacity: 0.3;
+            animation: pulse-ring 2s infinite;
         }
         
         .status-open {
             background-color: #28a745;
+            color: #28a745;
         }
         
         .status-closed {
             background-color: #dc3545;
+            color: #dc3545;
         }
         
         .status-pre-market {
             background-color: #ffc107;
+            color: #ffc107;
         }
         
         .status-after-hours {
             background-color: #6f42c1;
+            color: #6f42c1;
         }
         
         @keyframes pulse {
-            0% { opacity: 1; }
-            50% { opacity: 0.5; }
-            100% { opacity: 1; }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(1.1); }
+        }
+        
+        @keyframes pulse-ring {
+            0% { transform: scale(0.8); opacity: 0.3; }
+            50% { transform: scale(1.2); opacity: 0.1; }
+            100% { transform: scale(1.5); opacity: 0; }
         }
         
         
@@ -450,29 +570,48 @@ def home():
         
         .status {
             text-align: center;
-            padding: 12px 18px;
-            border-radius: 10px;
-            margin: 10px 0;
+            padding: 15px 25px;
+            border-radius: 15px;
+            margin: 15px 0;
             position: relative;
             z-index: 2;
-            backdrop-filter: blur(15px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(20px);
+            box-shadow: 
+                0 8px 25px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            font-size: 14px;
         }
         
         .status.live {
-            background: rgba(212, 237, 218, 0.9);
-            color: #155724;
-            border: 1px solid rgba(195, 230, 203, 0.8);
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(40, 167, 69, 0.9) 0%, 
+                rgba(34, 139, 58, 0.8) 50%, 
+                rgba(25, 135, 84, 0.9) 100%);
+            color: #ffffff;
+            border: 1px solid rgba(40, 167, 69, 0.3);
+            text-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+            box-shadow: 
+                0 8px 25px rgba(40, 167, 69, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(40, 167, 69, 0.3);
         }
         
         .status.demo {
-            background: rgba(255, 243, 205, 0.9);
-            color: #856404;
-            border: 1px solid rgba(255, 234, 167, 0.8);
-            font-weight: 600;
-            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(135deg, 
+                rgba(255, 193, 7, 0.9) 0%, 
+                rgba(255, 183, 0, 0.8) 50%, 
+                rgba(255, 171, 0, 0.9) 100%);
+            color: #ffffff;
+            border: 1px solid rgba(255, 193, 7, 0.3);
+            text-shadow: 0 0 10px rgba(255, 193, 7, 0.5);
+            box-shadow: 
+                0 8px 25px rgba(255, 193, 7, 0.2),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2),
+                0 0 20px rgba(255, 193, 7, 0.3);
         }
         
         .dashboard-grid {
