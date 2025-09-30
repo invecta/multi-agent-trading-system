@@ -401,6 +401,16 @@ def home():
             margin-top: 24px;
         }
         
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes slideOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-10px); }
+        }
+        
         .performance-indicator {
             display: inline-block;
             padding: 4px 8px;
@@ -693,6 +703,7 @@ def home():
             <button class="tab-button" onclick="showTab('backtesting')">Backtesting Engine</button>
             <button class="tab-button" onclick="showTab('strategyBuilder')">Strategy Builder</button>
             <button class="tab-button" onclick="showTab('walkForward')">Walk-Forward Analysis</button>
+            <button class="tab-button" onclick="showTab('compliance')">Compliance Reporting</button>
         </div>
         
         <!-- Dashboard Tab Content -->
@@ -2681,6 +2692,144 @@ def home():
             </div>
         </div>
         <!-- End Walk-Forward Analysis Tab -->
+        
+        <!-- Compliance Reporting Tab -->
+        <div id="complianceTab" class="tab-content" style="display: none;">
+            <div class="trading-section">
+                <h3>Compliance Reporting</h3>
+                <p>Regulatory requirements and compliance monitoring for trading activities.</p>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Risk Management</h3>
+                        <div class="metric">
+                            <span>Position Limits:</span>
+                            <span class="performance-positive">Within Limits</span>
+                        </div>
+                        <div class="metric">
+                            <span>Daily Loss Limit:</span>
+                            <span class="performance-positive">$2,500 / $5,000</span>
+                        </div>
+                        <div class="metric">
+                            <span>Max Drawdown:</span>
+                            <span class="performance-positive">8.5%</span>
+                        </div>
+                        <div class="metric">
+                            <span>VaR (95%):</span>
+                            <span class="performance-positive">$1,200</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Regulatory Compliance</h3>
+                        <div class="metric">
+                            <span>SEC Compliance:</span>
+                            <span class="performance-positive">Compliant</span>
+                        </div>
+                        <div class="metric">
+                            <span>FINRA Rules:</span>
+                            <span class="performance-positive">Compliant</span>
+                        </div>
+                        <div class="metric">
+                            <span>AML Status:</span>
+                            <span class="performance-positive">Active</span>
+                        </div>
+                        <div class="metric">
+                            <span>KYC Status:</span>
+                            <span class="performance-positive">Verified</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Trade Reporting</h3>
+                        <div class="metric">
+                            <span>Last Report:</span>
+                            <span>2024-01-15</span>
+                        </div>
+                        <div class="metric">
+                            <span>Next Report:</span>
+                            <span>2024-01-22</span>
+                        </div>
+                        <div class="metric">
+                            <span>Total Trades:</span>
+                            <span>1,247</span>
+                        </div>
+                        <div class="metric">
+                            <span>Report Status:</span>
+                            <span class="performance-positive">Up to Date</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Audit Trail</h3>
+                        <div class="metric">
+                            <span>Last Audit:</span>
+                            <span>2024-01-10</span>
+                        </div>
+                        <div class="metric">
+                            <span>Next Audit:</span>
+                            <span>2024-04-10</span>
+                        </div>
+                        <div class="metric">
+                            <span>Audit Status:</span>
+                            <span class="performance-positive">Clean</span>
+                        </div>
+                        <div class="metric">
+                            <span>Issues Found:</span>
+                            <span class="performance-positive">0</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Compliance Reports</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Monthly Risk Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Comprehensive risk assessment and compliance status</p>
+                            <button onclick="generateReport('monthly-risk')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Trade Activity Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Detailed trade execution and compliance log</p>
+                            <button onclick="generateReport('trade-activity')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Regulatory Filing</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">SEC and FINRA regulatory submissions</p>
+                            <button onclick="generateReport('regulatory-filing')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Audit Documentation</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Complete audit trail and documentation</p>
+                            <button onclick="generateReport('audit-docs')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Compliance Alerts</h3>
+                    <div id="complianceAlerts">
+                        <div style="padding: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; margin-bottom: 8px;">
+                            <strong style="color: #166534;">✓ All systems compliant</strong>
+                            <p style="margin: 4px 0 0 0; color: #166534; font-size: 14px;">No compliance issues detected</p>
+                        </div>
+                        <div style="padding: 12px; background: #fffbeb; border: 1px solid #fed7aa; border-radius: 8px; margin-bottom: 8px;">
+                            <strong style="color: #92400e;">⚠ Monthly report due in 3 days</strong>
+                            <p style="margin: 4px 0 0 0; color: #92400e; font-size: 14px;">Generate monthly risk report by January 18, 2024</p>
+                        </div>
+                        <div style="padding: 12px; background: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px;">
+                            <strong style="color: #166534;">✓ KYC verification up to date</strong>
+                            <p style="margin: 4px 0 0 0; color: #166534; font-size: 14px;">Customer verification completed</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Compliance Reporting Tab -->
     </div>
     
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -4642,6 +4791,72 @@ def home():
             `;
             
             container.innerHTML = html;
+        }
+        
+        // Compliance Reporting Functions
+        function generateReport(reportType) {
+            const reportNames = {
+                'monthly-risk': 'Monthly Risk Report',
+                'trade-activity': 'Trade Activity Report',
+                'regulatory-filing': 'Regulatory Filing',
+                'audit-docs': 'Audit Documentation'
+            };
+            
+            const reportName = reportNames[reportType] || 'Report';
+            
+            // Simulate report generation
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Generating...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Download Report';
+                button.style.background = '#22c55e';
+                
+                // Simulate download
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#3b82f6';
+                    button.disabled = false;
+                    
+                    // Show success message
+                    showComplianceAlert('success', `${reportName} generated successfully and downloaded.`);
+                }, 1000);
+            }, 2000);
+        }
+        
+        function showComplianceAlert(type, message) {
+            const alertsContainer = document.getElementById('complianceAlerts');
+            const alertClass = type === 'success' ? 'f0fdf4' : 'fffbeb';
+            const borderClass = type === 'success' ? 'bbf7d0' : 'fed7aa';
+            const textClass = type === 'success' ? '166534' : '92400e';
+            const icon = type === 'success' ? '✓' : '⚠';
+            
+            const alertDiv = document.createElement('div');
+            alertDiv.style.cssText = `
+                padding: 12px; 
+                background: #${alertClass}; 
+                border: 1px solid #${borderClass}; 
+                border-radius: 8px; 
+                margin-bottom: 8px;
+                animation: slideIn 0.3s ease;
+            `;
+            alertDiv.innerHTML = `
+                <strong style="color: #${textClass};">${icon} ${message}</strong>
+            `;
+            
+            alertsContainer.insertBefore(alertDiv, alertsContainer.firstChild);
+            
+            // Remove alert after 5 seconds
+            setTimeout(() => {
+                alertDiv.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    if (alertDiv.parentNode) {
+                        alertDiv.parentNode.removeChild(alertDiv);
+                    }
+                }, 300);
+            }, 5000);
         }
         
         // Backtesting Engine Functions
