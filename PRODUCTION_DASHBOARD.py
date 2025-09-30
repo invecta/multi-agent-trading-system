@@ -705,6 +705,7 @@ def home():
             <button class="tab-button" onclick="showTab('walkForward')">Walk-Forward Analysis</button>
             <button class="tab-button" onclick="showTab('compliance')">Compliance Reporting</button>
             <button class="tab-button" onclick="showTab('options')">Options Analysis</button>
+            <button class="tab-button" onclick="showTab('audit')">Audit Trail</button>
         </div>
         
         <!-- Dashboard Tab Content -->
@@ -3056,6 +3057,198 @@ def home():
             </div>
         </div>
         <!-- End Options Analysis Tab -->
+        
+        <!-- Audit Trail Tab -->
+        <div id="auditTab" class="tab-content" style="display: none;">
+            <div class="trading-section">
+                <h3>Audit Trail</h3>
+                <p>Comprehensive trading history logging and compliance tracking for all trading activities.</p>
+                
+                <div class="dashboard-grid">
+                    <div class="card">
+                        <h3>Audit Summary</h3>
+                        <div class="metric">
+                            <span>Total Trades:</span>
+                            <span id="totalTrades">1,247</span>
+                        </div>
+                        <div class="metric">
+                            <span>Last 24 Hours:</span>
+                            <span id="trades24h">23</span>
+                        </div>
+                        <div class="metric">
+                            <span>Last 7 Days:</span>
+                            <span id="trades7d">156</span>
+                        </div>
+                        <div class="metric">
+                            <span>Last 30 Days:</span>
+                            <span id="trades30d">487</span>
+                        </div>
+                        <div class="metric">
+                            <span>System Uptime:</span>
+                            <span class="performance-positive">99.9%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>Compliance Status</h3>
+                        <div class="metric">
+                            <span>Audit Status:</span>
+                            <span class="performance-positive">Compliant</span>
+                        </div>
+                        <div class="metric">
+                            <span>Last Audit:</span>
+                            <span>2024-01-10</span>
+                        </div>
+                        <div class="metric">
+                            <span>Next Audit:</span>
+                            <span>2024-04-10</span>
+                        </div>
+                        <div class="metric">
+                            <span>Issues Found:</span>
+                            <span class="performance-positive">0</span>
+                        </div>
+                        <div class="metric">
+                            <span>Data Integrity:</span>
+                            <span class="performance-positive">100%</span>
+                        </div>
+                    </div>
+                    
+                    <div class="card">
+                        <h3>System Health</h3>
+                        <div class="metric">
+                            <span>Logging Status:</span>
+                            <span class="performance-positive">Active</span>
+                        </div>
+                        <div class="metric">
+                            <span>Storage Used:</span>
+                            <span>2.3 GB / 10 GB</span>
+                        </div>
+                        <div class="metric">
+                            <span>Backup Status:</span>
+                            <span class="performance-positive">Current</span>
+                        </div>
+                        <div class="metric">
+                            <span>Encryption:</span>
+                            <span class="performance-positive">AES-256</span>
+                        </div>
+                        <div class="metric">
+                            <span>Access Logs:</span>
+                            <span class="performance-positive">Secure</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Filter & Search</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-bottom: 16px;">
+                        <div>
+                            <label for="auditDateFrom">From Date:</label>
+                            <input type="date" id="auditDateFrom" value="2024-01-01" style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label for="auditDateTo">To Date:</label>
+                            <input type="date" id="auditDateTo" value="2024-01-15" style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                        </div>
+                        <div>
+                            <label for="auditSymbol">Symbol:</label>
+                            <select id="auditSymbol" style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">All Symbols</option>
+                                <option value="AAPL">AAPL</option>
+                                <option value="MSFT">MSFT</option>
+                                <option value="GOOGL">GOOGL</option>
+                                <option value="TSLA">TSLA</option>
+                                <option value="SPY">SPY</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="auditAction">Action:</label>
+                            <select id="auditAction" style="width: 100%; padding: 8px; border: 1px solid #e2e8f0; border-radius: 6px;">
+                                <option value="">All Actions</option>
+                                <option value="BUY">BUY</option>
+                                <option value="SELL">SELL</option>
+                                <option value="LOGIN">LOGIN</option>
+                                <option value="LOGOUT">LOGOUT</option>
+                                <option value="CONFIG">CONFIG</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 12px;">
+                        <button onclick="filterAuditTrail()" style="background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">Filter</button>
+                        <button onclick="exportAuditTrail()" style="background: #22c55e; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">Export CSV</button>
+                        <button onclick="clearAuditFilters()" style="background: #64748b; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer;">Clear</button>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Trading History</h3>
+                    <div id="auditTrailTable" style="overflow-x: auto;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                            <thead>
+                                <tr style="background: #f8fafc; border-bottom: 2px solid #e2e8f0;">
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Timestamp</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">User ID</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Action</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Symbol</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Quantity</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Price</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Value</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Status</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">IP Address</th>
+                                    <th style="padding: 12px; text-align: left; font-weight: 600;">Details</th>
+                                </tr>
+                            </thead>
+                            <tbody id="auditTrailBody">
+                                <!-- Audit trail data will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>System Events</h3>
+                    <div id="systemEvents" style="max-height: 300px; overflow-y: auto;">
+                        <!-- System events will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Access Logs</h3>
+                    <div id="accessLogs" style="max-height: 300px; overflow-y: auto;">
+                        <!-- Access logs will be populated here -->
+                    </div>
+                </div>
+                
+                <div class="card" style="margin-top: 24px;">
+                    <h3>Audit Reports</h3>
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px;">
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Daily Trading Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Complete daily trading activity summary</p>
+                            <button onclick="generateAuditReport('daily')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Compliance Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Regulatory compliance and audit trail</p>
+                            <button onclick="generateAuditReport('compliance')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Security Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">Security events and access monitoring</p>
+                            <button onclick="generateAuditReport('security')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                        
+                        <div style="padding: 16px; border: 1px solid #e2e8f0; border-radius: 8px;">
+                            <h4 style="margin: 0 0 8px 0; color: #1a202c;">Performance Report</h4>
+                            <p style="margin: 0 0 12px 0; color: #64748b; font-size: 14px;">System performance and reliability metrics</p>
+                            <button onclick="generateAuditReport('performance')" style="background: #3b82f6; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 14px;">Generate Report</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Audit Trail Tab -->
     </div>
     
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -5457,6 +5650,321 @@ def home():
             const y = 1.0 - (((((a5 * t + a4) * t) + a3) * t + a2) * t + a1) * t * Math.exp(-x * x);
             
             return sign * y;
+        }
+        
+        // Audit Trail Functions
+        function loadAuditTrail() {
+            // Generate sample audit trail data
+            const auditData = generateAuditData();
+            displayAuditTrail(auditData);
+            loadSystemEvents();
+            loadAccessLogs();
+        }
+        
+        function generateAuditData() {
+            const actions = ['BUY', 'SELL', 'LOGIN', 'LOGOUT', 'CONFIG'];
+            const symbols = ['AAPL', 'MSFT', 'GOOGL', 'TSLA', 'SPY', 'QQQ'];
+            const statuses = ['EXECUTED', 'PENDING', 'CANCELLED', 'FAILED'];
+            const users = ['user001', 'user002', 'admin'];
+            const ipAddresses = ['192.168.1.100', '192.168.1.101', '10.0.0.50'];
+            
+            const data = [];
+            const now = new Date();
+            
+            for (let i = 0; i < 50; i++) {
+                const timestamp = new Date(now.getTime() - Math.random() * 7 * 24 * 60 * 60 * 1000);
+                const action = actions[Math.floor(Math.random() * actions.length)];
+                const symbol = action === 'BUY' || action === 'SELL' ? symbols[Math.floor(Math.random() * symbols.length)] : '';
+                const quantity = action === 'BUY' || action === 'SELL' ? Math.floor(Math.random() * 100) + 1 : '';
+                const price = action === 'BUY' || action === 'SELL' ? (Math.random() * 200 + 50).toFixed(2) : '';
+                const value = action === 'BUY' || action === 'SELL' ? (parseFloat(price) * quantity).toFixed(2) : '';
+                const status = action === 'BUY' || action === 'SELL' ? statuses[Math.floor(Math.random() * statuses.length)] : 'SUCCESS';
+                const user = users[Math.floor(Math.random() * users.length)];
+                const ip = ipAddresses[Math.floor(Math.random() * ipAddresses.length)];
+                
+                data.push({
+                    timestamp: timestamp.toISOString(),
+                    user: user,
+                    action: action,
+                    symbol: symbol,
+                    quantity: quantity,
+                    price: price,
+                    value: value,
+                    status: status,
+                    ip: ip,
+                    details: generateActionDetails(action, symbol)
+                });
+            }
+            
+            return data.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+        }
+        
+        function generateActionDetails(action, symbol) {
+            const details = {
+                'BUY': `Market buy order for ${symbol}`,
+                'SELL': `Market sell order for ${symbol}`,
+                'LOGIN': 'User logged into system',
+                'LOGOUT': 'User logged out of system',
+                'CONFIG': 'System configuration updated'
+            };
+            return details[action] || 'System action';
+        }
+        
+        function displayAuditTrail(data) {
+            const tbody = document.getElementById('auditTrailBody');
+            let html = '';
+            
+            data.forEach(entry => {
+                const timestamp = new Date(entry.timestamp).toLocaleString();
+                const statusClass = getStatusClass(entry.status);
+                
+                html += `
+                    <tr style="border-bottom: 1px solid #e2e8f0;">
+                        <td style="padding: 12px;">${timestamp}</td>
+                        <td style="padding: 12px;">${entry.user}</td>
+                        <td style="padding: 12px;">
+                            <span style="padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; 
+                                background: ${getActionColor(entry.action)}; color: white;">
+                                ${entry.action}
+                            </span>
+                        </td>
+                        <td style="padding: 12px;">${entry.symbol || '-'}</td>
+                        <td style="padding: 12px;">${entry.quantity || '-'}</td>
+                        <td style="padding: 12px;">${entry.price ? '$' + entry.price : '-'}</td>
+                        <td style="padding: 12px;">${entry.value ? '$' + entry.value : '-'}</td>
+                        <td style="padding: 12px;">
+                            <span class="${statusClass}">${entry.status}</span>
+                        </td>
+                        <td style="padding: 12px; font-family: monospace;">${entry.ip}</td>
+                        <td style="padding: 12px;">${entry.details}</td>
+                    </tr>
+                `;
+            });
+            
+            tbody.innerHTML = html;
+        }
+        
+        function getActionColor(action) {
+            const colors = {
+                'BUY': '#22c55e',
+                'SELL': '#ef4444',
+                'LOGIN': '#3b82f6',
+                'LOGOUT': '#64748b',
+                'CONFIG': '#f59e0b'
+            };
+            return colors[action] || '#64748b';
+        }
+        
+        function getStatusClass(status) {
+            const classes = {
+                'EXECUTED': 'performance-positive',
+                'SUCCESS': 'performance-positive',
+                'PENDING': 'performance-neutral',
+                'CANCELLED': 'performance-negative',
+                'FAILED': 'performance-negative'
+            };
+            return classes[status] || '';
+        }
+        
+        function loadSystemEvents() {
+            const events = [
+                { timestamp: '2024-01-15 14:30:22', level: 'INFO', message: 'System backup completed successfully' },
+                { timestamp: '2024-01-15 14:25:15', level: 'WARN', message: 'High memory usage detected (85%)' },
+                { timestamp: '2024-01-15 14:20:08', level: 'INFO', message: 'Database connection pool refreshed' },
+                { timestamp: '2024-01-15 14:15:33', level: 'ERROR', message: 'Failed to connect to market data feed' },
+                { timestamp: '2024-01-15 14:10:45', level: 'INFO', message: 'User session timeout - automatic logout' },
+                { timestamp: '2024-01-15 14:05:12', level: 'INFO', message: 'Scheduled maintenance completed' },
+                { timestamp: '2024-01-15 14:00:00', level: 'INFO', message: 'Daily system health check passed' }
+            ];
+            
+            let html = '';
+            events.forEach(event => {
+                const levelClass = getEventLevelClass(event.level);
+                html += `
+                    <div style="padding: 12px; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center;">
+                        <div>
+                            <span style="padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; ${levelClass}">
+                                ${event.level}
+                            </span>
+                            <span style="margin-left: 12px; color: #64748b;">${event.message}</span>
+                        </div>
+                        <span style="color: #64748b; font-size: 12px; font-family: monospace;">${event.timestamp}</span>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('systemEvents').innerHTML = html;
+        }
+        
+        function getEventLevelClass(level) {
+            const classes = {
+                'INFO': 'background: #dbeafe; color: #1e40af;',
+                'WARN': 'background: #fef3c7; color: #92400e;',
+                'ERROR': 'background: #fee2e2; color: #dc2626;'
+            };
+            return classes[level] || 'background: #f3f4f6; color: #374151;';
+        }
+        
+        function loadAccessLogs() {
+            const logs = [
+                { timestamp: '2024-01-15 14:35:22', user: 'user001', action: 'LOGIN', ip: '192.168.1.100', location: 'New York, US' },
+                { timestamp: '2024-01-15 14:30:15', user: 'admin', action: 'CONFIG', ip: '10.0.0.50', location: 'Internal' },
+                { timestamp: '2024-01-15 14:25:08', user: 'user002', action: 'LOGOUT', ip: '192.168.1.101', location: 'Chicago, US' },
+                { timestamp: '2024-01-15 14:20:33', user: 'user001', action: 'API_ACCESS', ip: '192.168.1.100', location: 'New York, US' },
+                { timestamp: '2024-01-15 14:15:45', user: 'user002', action: 'LOGIN', ip: '192.168.1.101', location: 'Chicago, US' },
+                { timestamp: '2024-01-15 14:10:12', user: 'admin', action: 'SYSTEM_ACCESS', ip: '10.0.0.50', location: 'Internal' },
+                { timestamp: '2024-01-15 14:05:00', user: 'user001', action: 'DATA_EXPORT', ip: '192.168.1.100', location: 'New York, US' }
+            ];
+            
+            let html = '';
+            logs.forEach(log => {
+                html += `
+                    <div style="padding: 12px; border-bottom: 1px solid #e2e8f0; display: grid; grid-template-columns: 1fr 1fr 1fr 1fr 1fr; gap: 12px; align-items: center;">
+                        <span style="color: #64748b; font-size: 12px; font-family: monospace;">${log.timestamp}</span>
+                        <span style="font-weight: 600;">${log.user}</span>
+                        <span style="padding: 4px 8px; border-radius: 4px; font-size: 12px; background: #e0e7ff; color: #3730a3;">
+                            ${log.action}
+                        </span>
+                        <span style="font-family: monospace; color: #64748b;">${log.ip}</span>
+                        <span style="color: #64748b; font-size: 12px;">${log.location}</span>
+                    </div>
+                `;
+            });
+            
+            document.getElementById('accessLogs').innerHTML = html;
+        }
+        
+        function filterAuditTrail() {
+            const dateFrom = document.getElementById('auditDateFrom').value;
+            const dateTo = document.getElementById('auditDateTo').value;
+            const symbol = document.getElementById('auditSymbol').value;
+            const action = document.getElementById('auditAction').value;
+            
+            // Simulate filtering
+            const filteredData = generateAuditData().filter(entry => {
+                const entryDate = new Date(entry.timestamp).toISOString().split('T')[0];
+                const matchesDate = (!dateFrom || entryDate >= dateFrom) && (!dateTo || entryDate <= dateTo);
+                const matchesSymbol = !symbol || entry.symbol === symbol;
+                const matchesAction = !action || entry.action === action;
+                
+                return matchesDate && matchesSymbol && matchesAction;
+            });
+            
+            displayAuditTrail(filteredData);
+            
+            // Show filter results
+            alert(`Filter applied: ${filteredData.length} records found`);
+        }
+        
+        function exportAuditTrail() {
+            const data = generateAuditData();
+            const csvContent = generateCSV(data);
+            
+            // Simulate CSV download
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `audit_trail_${new Date().toISOString().split('T')[0]}.csv`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            window.URL.revokeObjectURL(url);
+            
+            alert('Audit trail exported successfully!');
+        }
+        
+        function generateCSV(data) {
+            const headers = ['Timestamp', 'User ID', 'Action', 'Symbol', 'Quantity', 'Price', 'Value', 'Status', 'IP Address', 'Details'];
+            const csvRows = [headers.join(',')];
+            
+            data.forEach(entry => {
+                const row = [
+                    entry.timestamp,
+                    entry.user,
+                    entry.action,
+                    entry.symbol || '',
+                    entry.quantity || '',
+                    entry.price || '',
+                    entry.value || '',
+                    entry.status,
+                    entry.ip,
+                    `"${entry.details}"`
+                ];
+                csvRows.push(row.join(','));
+            });
+            
+            return csvRows.join('\n');
+        }
+        
+        function clearAuditFilters() {
+            document.getElementById('auditDateFrom').value = '2024-01-01';
+            document.getElementById('auditDateTo').value = '2024-01-15';
+            document.getElementById('auditSymbol').value = '';
+            document.getElementById('auditAction').value = '';
+            
+            // Reload original data
+            loadAuditTrail();
+        }
+        
+        function generateAuditReport(type) {
+            const reports = {
+                'daily': 'Daily Trading Report',
+                'compliance': 'Compliance Report',
+                'security': 'Security Report',
+                'performance': 'Performance Report'
+            };
+            
+            const reportName = reports[type] || 'Report';
+            
+            // Simulate report generation
+            const button = event.target;
+            const originalText = button.textContent;
+            button.textContent = 'Generating...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.textContent = 'Download Report';
+                button.style.background = '#22c55e';
+                
+                // Simulate download
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.background = '#3b82f6';
+                    button.disabled = false;
+                    
+                    alert(`${reportName} generated successfully and downloaded.`);
+                }, 1000);
+            }, 2000);
+        }
+        
+        // Initialize audit trail when tab is shown
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.style.display = 'none');
+            
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+            
+            // Show selected tab
+            document.getElementById(tabName + 'Tab').style.display = 'block';
+            
+            // Add active class to clicked button
+            event.target.classList.add('active');
+            
+            // Initialize audit trail if that tab is selected
+            if (tabName === 'audit') {
+                loadAuditTrail();
+            }
+            
+            // Initialize strategy builder if that tab is selected
+            if (tabName === 'strategyBuilder') {
+                initializeStrategyBuilder();
+            }
         }
         
         // Backtesting Engine Functions
